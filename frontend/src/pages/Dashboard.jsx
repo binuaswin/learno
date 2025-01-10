@@ -1,20 +1,14 @@
 
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
+import NavigationBar from "../components/NavigationBar";
 
 const Dashboard = () => {
     
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <h1>Welcome to Your Dashboard</h1>
-        <nav>
-          <ul className="dashboard-nav">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/profile">Profile</Link></li>
-            <li><Link to="/logout">Logout</Link></li>
-          </ul>
-        </nav>
+        <NavigationBar />
       </header>
       <main className="dashboard-main">
         <section className="dashboard-section">

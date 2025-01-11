@@ -1,0 +1,67 @@
+.study-planner-container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .calendar-date {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+  }
+  
+  .calendar-date span {
+    font-weight: bold;
+  }
+  
+  .calendar-date.selected {
+    border: 2px solid #007bff;
+    background-color: #e7f0ff;
+  }
+  
+  .tasks {
+    margin-top: 5px;
+    font-size: 0.8rem;
+  }
+  
+  .task-form {
+    margin-top: 20px;
+  }
+  
+  .task-form input {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .task-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .task-form button:hover {
+    background-color: #0056b3;
+  }
+  

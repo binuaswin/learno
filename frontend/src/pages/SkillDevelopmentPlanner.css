@@ -1,0 +1,67 @@
+.skill-planner-container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  .add-skill-form {
+    margin-bottom: 20px;
+  }
+  
+  .add-skill-form input {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: calc(40% - 20px);
+  }
+  
+  .add-skill-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-skill-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .skill-list {
+    margin-top: 20px;
+  }
+  
+  .skill-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .skill-item h3 {
+    flex: 2;
+    margin: 0;
+  }
+  
+  .skill-item input[type="range"] {
+    flex: 3;
+    margin: 0 10px;
+  }
+  
+  .skill-item span {
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+  }
+  

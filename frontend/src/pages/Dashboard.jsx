@@ -23,12 +23,12 @@ const Dashboard = () => {
         <section className="dashboard-section">
           <h2>Study Planner</h2>
           <p>Plan and track your study schedule effectively.</p>
-          <Link to="/study-planner" className="dashboard-button">Open Planner</Link>
+          <Link to="/studyplanner" className="dashboard-button">Open Planner</Link>
         </section>
         <section className="dashboard-section">
           <h2>Skill Development</h2>
           <p>Track and improve your skill set.</p>
-          <Link to="/skill-tracker" className="dashboard-button">Track Skills</Link>
+          <Link to="/skilldev" className="dashboard-button">Track Skills</Link>
         </section>
       </main>
     </div>

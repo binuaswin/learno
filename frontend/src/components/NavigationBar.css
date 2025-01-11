@@ -36,4 +36,47 @@
   .navbar-links a:hover {
     text-decoration: underline;
   }
+
+  .notification-icon {
+    position: relative;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .notification-dot {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  .notification-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: #fff;
+    color:black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 15px;
+    z-index: 9999;
+  }
+  
+  .notification-dropdown {
+    animation: fadeIn 0.3s ease-in;
+    margin-top: 50px;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   

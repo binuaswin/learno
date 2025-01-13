@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useTheme } from './ThemeContext';
+import { FaMoon, FaSun } from 'react-icons/fa';
 import "./NavigationBar.css";
 import Notification from "./Notification"; // Import Notification component
 
 const NavigationBar = () => {
+  const { theme,toggleTheme } = useTheme(); 
   const [showNotifications, setShowNotifications] = useState(false);
   const [hasNewNotifications, setHasNewNotifications] = useState(true); // Flag to indicate new notifications
 
@@ -37,6 +40,9 @@ const NavigationBar = () => {
           <Notification />
         </div>
       )}
+       <button onClick={toggleTheme} className="theme-toggle-btn">
+        {theme === 'light' ? <FaMoon /> : <FaSun />} {/* Toggle icons based on theme */}
+      </button>
     </nav>
   );
 };

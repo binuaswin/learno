@@ -80,3 +80,61 @@
     }
   }
   
+  /* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+body.dark .navbar {
+  background-color: #212529;
+}
+
+.navbar-logo a {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.navbar-links li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+body.dark .navbar-links a {
+  color: #66b3ff;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  padding: 8px;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+body.dark .theme-toggle-btn {
+  color: #fff;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+body.dark .theme-toggle-btn:hover {
+  color: #66b3ff;
+}
+

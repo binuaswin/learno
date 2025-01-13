@@ -10,6 +10,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     alert("Logged in successfully!");
+    localStorage.setItem("userToken", "your-auth-token");
     navigate("/dashboard");
   };
 

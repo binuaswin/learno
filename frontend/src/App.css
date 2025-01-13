@@ -1,0 +1,54 @@
+/* Global Styles */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  body.light {
+    background-color: #fff;
+   
+  }
+  
+  body.dark {
+    background-color: #333;
+  
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+  }
+  
+  body.dark .navbar {
+    background-color: #212529;
+  }
+  
+  /* Button Styles */
+
+  
+  /* Card Styles */
+  .card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  body.dark .card {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #888;
+  }
+  
+  /* Links */
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  body.dark a {
+    color: #66b3ff;
+  }
+  
+  /* Add more component-specific styles below if necessary */
+  

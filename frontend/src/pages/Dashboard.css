@@ -60,6 +60,11 @@
     border-radius: 5px;
     font-weight: bold;
   }
+
+  .dark .dashboard-button{
+    color:black;
+
+  }
   
   .dashboard-button:hover {
     background-color: #0056b3;

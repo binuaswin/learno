@@ -1,5 +1,6 @@
 import  { useState } from "react";
 import "./LearningModules.css";
+import NavigationBar from "../components/NavigationBar";
 
 const LearningModules = () => {
   const [modules] = useState([
@@ -14,7 +15,9 @@ const LearningModules = () => {
   };
 
   return (
+    
     <div className="learning-modules-container">
+      <NavigationBar />
       <h1>Learning Modules</h1>
       <div className="modules-list">
         {modules.map((module) => (

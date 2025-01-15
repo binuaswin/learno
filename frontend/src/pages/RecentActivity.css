@@ -1,0 +1,59 @@
+.recent-activity {
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: var(--text-color);
+  }
+  
+  .activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .activity-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--divider-color);
+  }
+  
+  .activity-item:last-child {
+    border-bottom: none;
+  }
+  
+  .activity-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-right: 12px;
+  }
+  
+  .activity-details {
+    flex: 1;
+  }
+  
+  .activity-description {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin: 0;
+  }
+  
+  .activity-time {
+    font-size: 0.875rem;
+    color: var(--subtext-color);
+    margin: 0;
+  }
+  
+  .no-activity {
+    text-align: center;
+    color: var(--subtext-color);
+    font-style: italic;
+  }
+  

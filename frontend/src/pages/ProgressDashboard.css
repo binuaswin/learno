@@ -103,3 +103,140 @@
   font-size: 1rem;
   color: #333;
 }
+.upcoming-tasks {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.upcoming-tasks h2 {
+  margin-bottom: 10px;
+}
+
+.upcoming-tasks ul {
+  list-style: none;
+  padding: 0;
+}
+
+.upcoming-tasks li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+.upcoming-tasks .task-name {
+  font-weight: bold;
+}
+
+.upcoming-tasks .due-date {
+  color: #666;
+}
+
+.upcoming-tasks .mark-complete-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upcoming-tasks .mark-complete-btn:hover {
+  background-color: #45a049;
+}
+
+.upcoming-tasks .completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Personalized Recommendations Section */
+.personalized-recommendations {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.personalized-recommendations h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #343a40;
+}
+
+.recommendations-list {
+  margin-top: 20px;
+}
+
+.recommendations-list h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.recommendations-list ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.recommendations-list ul li {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.recommendations-list ul li:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.recommendations-list ul li:before {
+  content: '📘';  /* Add an icon before each module or skill */
+  margin-right: 8px;
+}
+
+.recommendations-list ul li span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #343a40;
+}
+
+.charts-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.chart-item {
+  width: 45%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .charts-section {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .chart-item {
+    width: 100%;
+    
+  }
+}

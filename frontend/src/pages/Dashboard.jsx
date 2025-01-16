@@ -1,13 +1,10 @@
 
-import { Link,useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Dashboard.css";
 import NavigationBar from "../components/NavigationBar";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-  const handleclick=()=>{
-    navigate("/learningmodule")
-  }
+  
     
   return (
     <div className="dashboard-container">
@@ -18,7 +15,7 @@ const Dashboard = () => {
         <section className="dashboard-section">
           <h2>Adaptive Learning</h2>
           <p>Explore personalized learning paths tailored to your skills.</p>
-          <Link to="/learningmodule" className="dashboard-button" onClick={handleclick}>Go to Learning</Link>
+          <Link to="/adaptivelearn" className="dashboard-button" >Go to Learning</Link>
         </section>
         <section className="dashboard-section">
           <h2>Study Planner</h2>

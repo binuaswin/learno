@@ -1,0 +1,31 @@
+.personalized-recommendations {
+    margin-top: 30px;
+  }
+  
+  .recommendation {
+    margin-bottom: 20px;
+  }
+  
+  .recommendation h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .recommendation ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .recommendation li {
+    margin: 5px 0;
+  }
+  
+  .recommendation a {
+    color: #1a73e8;
+    text-decoration: none;
+  }
+  
+  .recommendation a:hover {
+    text-decoration: underline;
+  }
+  

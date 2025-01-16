@@ -1,0 +1,34 @@
+.learning-resources {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .resources-section {
+    margin-bottom: 20px;
+  }
+  
+  .resources-section h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .resources-section ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .resources-section li {
+    margin-bottom: 10px;
+  }
+  
+  .resources-section a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .resources-section a:hover {
+    text-decoration: underline;
+  }
+  

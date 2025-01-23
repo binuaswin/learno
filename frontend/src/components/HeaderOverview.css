@@ -1,0 +1,49 @@
+/* HeaderOverview.css */
+.header-overview {
+    padding: 20px;
+    border-bottom: 2px solid #ccc;
+    text-align: center;
+  }
+  
+  .header-overview h1 {
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  .header-overview p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .stats {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.1rem;
+  }
+  
+  .progress-bar-container {
+    position: relative;
+    height: 20px;
+    width: 80%;
+    margin: 10px auto;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+  }
+  
+  .motivational-message {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    color: #444;
+    font-weight: bold;
+  }
+  

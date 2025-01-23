@@ -1,67 +1,166 @@
-.study-planner-container {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 20px auto;
-    text-align: center;
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
-  .calendar {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    margin: 20px 0;
-  }
-  
-  .calendar-date {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    text-align: left;
-    position: relative;
-  }
-  
-  .calendar-date span {
-    font-weight: bold;
-  }
-  
-  .calendar-date.selected {
-    border: 2px solid #007bff;
-    background-color: #e7f0ff;
-  }
-  
-  .tasks {
-    margin-top: 5px;
-    font-size: 0.8rem;
-  }
-  
-  .task-form {
-    margin-top: 20px;
-  }
-  
-  .task-form input {
-    padding: 10px;
-    width: 70%;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-  
-  .task-form button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .task-form button:hover {
-    background-color: #0056b3;
-  }
-  
+/* General Styles */
+.study-planner {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+h2 {
+  color: #333;
+}
+
+.stats, .task-list ul, .tasks-for-date ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Header Overview */
+.header-overview {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.header-overview .stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+.header-overview .stat {
+  font-size: 16px;
+}
+
+.progress-bar {
+  height: 10px;
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4caf50;
+}
+
+/* Task List */
+.task-list {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.task-list h2 {
+  margin-bottom: 15px;
+}
+
+.task-list li {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fafafa;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-list li button {
+  margin-left: 10px;
+}
+
+/* Add Task Form */
+.add-task-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.add-task-form .form-group {
+  margin-bottom: 15px;
+}
+
+.add-task-form input,
+.add-task-form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.add-task-form button {
+  background-color: #4CAF50;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.add-task-form button:hover {
+  background-color: #45a049;
+}
+
+/* Calendar */
+.task-calendar {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.task-calendar .tasks-for-date {
+  margin-top: 15px;
+}
+
+.task-calendar .tasks-for-date h3 {
+  margin-bottom: 10px;
+}
+
+.task-calendar ul {
+  list-style-type: none;
+}
+
+.task-calendar li {
+  background-color: #f0f0f0;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+/* Analytics */
+.task-analytics {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.task-analytics h2 {
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  max-width: 800px;
+  margin: 0 auto;
+}

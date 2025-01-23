@@ -3,16 +3,23 @@ import { useNavigate } from "react-router-dom";
 const LogoutPage = () => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    // Clear the user authentication data, e.g., from localStorage
-    localStorage.removeItem("userToken");  // Or sessionStorage.clear() if you use sessionStorage
 
-    // You can also reset any global states here if needed (like Redux or context API)
-    // Dispatch log out action in global state if needed
-
-    // Redirect to Login page
-    navigate("/");
-  };
+  
+    const handleLogout = () => {
+      // Clear session or token
+      localStorage.removeItem("authToken"); // Example for clearing token
+      sessionStorage.clear();
+  
+      // Redirect and replace history
+      navigate("/", { replace: true });
+  
+      // Optional: Clear browser cache to ensure no back navigation
+      window.history.pushState(null, null, window.location.href);
+      window.onpopstate = function () {
+        window.history.go(1);
+      };
+    };
+  
 
   return (
     <div className="logout-page">

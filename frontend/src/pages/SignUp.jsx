@@ -3,46 +3,57 @@ import { Link,useNavigate } from "react-router-dom";
 import "./SignUp.css";
 
 const SignUp = () => {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Frontend validation for password match
     if (formData.password !== formData.confirmPassword) {
-      setErrorMessage("Passwords do not match!");
+      setMessage("Passwords do not match.");
       return;
     }
 
-    if (!formData.name || !formData.email || !formData.password) {
-      setErrorMessage("All fields are required!");
-      return;
+    try {
+      const response = await fetch("http://localhost:5000/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Account created successfully");
+        navigate('/');
+      } else {
+        setMessage(data.error || "Something went wrong.");
+      }
+    } catch (error) {
+      setMessage("Error: Unable to connect to the server.",error);
     }
-
-    alert("Account created successfully!");
-
-    navigate("/");
-
-    setErrorMessage("");
   };
-
   return (
     <div className="signup-container">
       <div className="signup-card">
         <h1 className="signup-title">Sign Up</h1>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {message && <p className="error-message">{message}</p>}
         <form onSubmit={handleSubmit} className="signup-form">
           <div className="input-group">
             <label htmlFor="name" className="label">

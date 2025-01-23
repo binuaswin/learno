@@ -1,24 +1,40 @@
 import { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import axios from 'axios';
 
 const Login = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate(); // Hook for navigation
 
-  const handleLogin = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Logged in successfully!");
-    localStorage.setItem("userToken", "your-auth-token");
-    navigate("/dashboard");
+    try {
+      const response = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password,
+      });
+      // Handle success (e.g., save token and redirect)
+      localStorage.setItem("token", response.data.token);
+      alert("Login successful!");
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed!");
+    }
   };
 
   return (
     <div className="login-container">
       <div className="login-card">
         <h1 className="login-title">Login</h1>
-        <form onSubmit={handleLogin} className="login-form">
+
+        {/* Show error message if there's any */}
+        {error && <p className="error">{error}</p>}
+
+        <form onSubmit={handleSubmit} className="login-form">
           <div className="input-group">
             <label htmlFor="email" className="label">
               Email:
@@ -32,6 +48,7 @@ const Login = () => {
               placeholder="Enter your email"
             />
           </div>
+
           <div className="input-group">
             <label htmlFor="password" className="label">
               Password:
@@ -45,12 +62,14 @@ const Login = () => {
               placeholder="Enter your password"
             />
           </div>
+
           <button type="submit" className="login-button">
             Login
           </button>
         </form>
+
         <p className="login-footer">
-          Dont have an account? <Link to="/signup">Sign Up</Link>
+          Dont have an account? <a href="/signup">Sign Up</a>
         </p>
       </div>
     </div>

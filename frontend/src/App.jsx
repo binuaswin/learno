@@ -7,10 +7,25 @@ import StudyPlanner from "./pages/StudyPlanner";
 import SkillDevelopmentPlanner from "./pages/SkillDevelopmentPlanner";
 import ProgressDashboard from "./pages/ProgressDashboard";
 import LogoutPage from "./pages/LogoutPage";
-import ProtectedRoute from "./components/ProtectedRoute";
 import { ThemeProvider } from "./components/ThemeContext"; // Import the ThemeProvider
 import AdaptiveLearningPage from "./pages/AdaptiveLearningPage";
 import "./App.css";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
+
+// Register the required components (including CategoryScale)
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  
+);
+
+
 
 const App = () => {
  
@@ -24,8 +39,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/dashboard" element={<ProtectedRoute><Dash /></ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/dashboard" element={<Dash />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/studyplanner" element={<StudyPlanner />} />
         <Route path="/skilldev" element={<SkillDevelopmentPlanner />} />
         <Route path="/progress" element={<ProgressDashboard />} />

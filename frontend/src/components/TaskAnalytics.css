@@ -1,0 +1,15 @@
+/* Analytics */
+.task-analytics {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .task-analytics h2 {
+    margin-bottom: 20px;
+  }
+  
+  .chart-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }

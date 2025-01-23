@@ -2,11 +2,19 @@ import  { useState, useEffect } from 'react';
 import './ProgressDashboard.css';
 import ChartsSection from '../components/ChartSection';
 import RecentActivity from './RecentActivity';
+//import QuickStats from '../components/QuickStats';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+
 import MotivationalElement from '../components/MotivationalElement';
+//import axios from 'axios';
 
 
 
 const ProgressDashboard = () => {
+
+ 
+
   // Example static user data
   
   const tasks = [
@@ -24,13 +32,24 @@ const ProgressDashboard = () => {
     );
     setTaskList(updatedTasks);
   };
+
+  const [userName, setUserName] = useState('');
+
+useEffect(() => {
+  async function fetchUserData() {
+    const response = await axios.get('http://localhost:3000/user/profile');
+    setUserName(response.data.name || 'Guest');
+  }
+
+  fetchUserData();
+}, []);
   const recentActivities = [
     { icon: "📘", description: "Completed 'React Basics' module", time: "2 hours ago" },
     { icon: "📝", description: "Submitted a quiz on JavaScript", time: "1 day ago" },
     { icon: "🏆", description: "Achieved Skill Level 2 in Python", time: "3 days ago" },
   ];
   
-  const userName = "John Doe";  // This can be fetched dynamically from authentication data
+  //const userName = "John Doe";  // This can be fetched dynamically from authentication data
   const completedLearningModules = 7;  // Example completed modules
   const totalLearningModules = 10; // Total modules
   const skillsLearned = ['JavaScript', 'React', 'CSS'];  // Example learned skills
@@ -124,7 +143,7 @@ const ProgressDashboard = () => {
           </ul>
         </div>
       </section>
-      {/* Recent Activity Section */}
+      {/*Recent Activity Section*/} 
       <RecentActivity activities={recentActivities} />
 
       {/* Other sections like progress, tasks, goals, etc. */}
@@ -180,5 +199,10 @@ const ProgressDashboard = () => {
     </div>
   );
 };
+
+RecentActivity.propTypes = {
+    name: PropTypes.string.isRequired,
+    activities: PropTypes.node
+  };
 
 export default ProgressDashboard;

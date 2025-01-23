@@ -33,7 +33,7 @@ const NavigationBar = () => {
       <ul className="navbar-links">
         <li><Link to="/progress">Dashboard</Link></li>
         <li><Link to="/profile">Profile</Link></li>
-        <li><Link to="/logout">Logout</Link></li>
+        <li><Link to="/logout" onClick={() => navigate("/logout",{ replace: true })}>Logout</Link></li>
         
         {/* Bell Icon for Notifications */}
         <li className="notification-icon" onClick={toggleNotifications}>
@@ -54,7 +54,7 @@ const NavigationBar = () => {
             <div className="dropdown-menu">
               <Link to="/settings">Settings</Link>
               <button onClick={() => alert("Dark Mode toggled!")}>Dark Mode</button>
-              <button onClick={() => navigate("/logout")}>Logout</button>
+              <button onClick={() => navigate("/logout",{ replace: true })}>Logout</button>
             </div>
           )}
         </li>

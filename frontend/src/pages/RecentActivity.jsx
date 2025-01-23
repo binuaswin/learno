@@ -24,8 +24,9 @@ const RecentActivity = ({ activities }) => {
   );
 };
 RecentActivity.propTypes = {
-    name: PropTypes.string.isRequired,
-    activities: PropTypes.node
-  };
+  name: PropTypes.string.isRequired,
+  activities: PropTypes.node.isRequired,
+};
+
 
 export default RecentActivity;

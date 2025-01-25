@@ -1,0 +1,270 @@
+/* SkillDevelopmentHeader.css */
+.header-container {
+    padding: 1.5rem;
+    background-color: #f3f4f6; /* Tailwind's bg-gray-100 */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-title {
+    font-size: 1.875rem; /* Tailwind's text-3xl */
+    font-weight: bold;
+    color: #1f2937; /* Tailwind's text-gray-800 */
+    margin-bottom: 1rem;
+  }
+  
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .summary-grid {
+      grid-template-columns: repeat(3, 1fr); /* Tailwind's md:grid-cols-3 */
+    }
+  }
+  
+  .summary-card {
+    padding: 1rem;
+    background-color: #ffffff; /* Tailwind's bg-white */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .card-title {
+    font-size: 1.25rem; /* Tailwind's text-xl */
+    font-weight: 600; /* Tailwind's font-semibold */
+    color: #4b5563; /* Tailwind's text-gray-600 */
+  }
+  
+  .card-value {
+    font-size: 1.5rem; /* Tailwind's text-2xl */
+    font-weight: bold;
+  }
+  
+  .value-blue {
+    color: #2563eb; /* Tailwind's text-blue-600 */
+  }
+  
+  .value-yellow {
+    color: #f59e0b; /* Tailwind's text-yellow-500 */
+  }
+  
+  .value-red {
+    color: #ef4444; /* Tailwind's text-red-500 */
+  }
+  
+  .progress-container {
+    margin-top: 1.5rem;
+  }
+  
+  .progress-title {
+    font-size: 1rem; /* Tailwind's text-lg */
+    font-weight: 500; /* Tailwind's font-medium */
+    color: #374151; /* Tailwind's text-gray-700 */
+    margin-bottom: 0.5rem;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    background-color: #d1d5db; /* Tailwind's bg-gray-300 */
+    border-radius: 0.5rem;
+    height: 1rem;
+  }
+  
+  .progress-fill {
+    background-color: #10b981; /* Tailwind's bg-green-500 */
+    height: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .progress-text {
+    font-size: 0.875rem; /* Tailwind's text-sm */
+    color: #6b7280; /* Tailwind's text-gray-500 */
+    margin-top: 0.5rem;
+  }
+
+  /* Skill List Section */
+.skill-list-container {
+    margin-top: 5rem;
+  }
+  
+  .skill-list-title {
+    font-size: 1.5rem; /* Tailwind's text-2xl */
+    font-weight: bold;
+    color: #1f2937; /* Tailwind's text-gray-800 */
+    margin-bottom: 1rem;
+  }
+  
+  .skill-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .skill-grid {
+      grid-template-columns: repeat(3, 1fr); /* Tailwind's md:grid-cols-3 */
+    }
+  }
+  
+  .skill-card {
+    padding: 1rem;
+    background-color: #ffffff; /* Tailwind's bg-white */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .skill-name {
+    font-size: 1.25rem; /* Tailwind's text-xl */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .skill-category {
+    font-size: 1rem; /* Tailwind's text-lg */
+    color: #6b7280; /* Tailwind's text-gray-500 */
+    margin-bottom: 0.5rem;
+  }
+  
+  .skill-progress-bar {
+    width: 100%;
+    background-color: #d1d5db; /* Tailwind's bg-gray-300 */
+    border-radius: 0.5rem;
+    height: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .skill-progress-fill {
+    background-color: #10b981; /* Tailwind's bg-green-500 */
+    height: 0.75rem;
+    border-radius: 0.5rem;
+  }
+  
+  .skill-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+  
+  .skill-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem; /* Tailwind's text-sm */
+    font-weight: bold;
+    color: #ffffff; /* Tailwind's text-white */
+    border-radius: 0.375rem;
+    cursor: pointer;
+  }
+  
+  .edit-button {
+    background-color: #3b82f6; /* Tailwind's bg-blue-500 */
+  }
+  
+  .delete-button {
+    background-color: #ef4444; /* Tailwind's bg-red-500 */
+  }
+  
+  /* Add New Skill Form */
+.add-skill-container {
+    padding: 1.5rem;
+    background-color: #ffffff; /* Tailwind's bg-white */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+  }
+  
+  .add-skill-title {
+    font-size: 1.5rem; /* Tailwind's text-2xl */
+    font-weight: bold;
+    color: #1f2937; /* Tailwind's text-gray-800 */
+    margin-bottom: 1rem;
+  }
+  
+  .add-skill-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .add-skill-input {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db; /* Tailwind's border-gray-300 */
+    border-radius: 0.375rem;
+    font-size: 1rem; /* Tailwind's text-lg */
+  }
+  
+  .add-skill-button {
+    padding: 0.75rem 1rem;
+    background-color: #10b981; /* Tailwind's bg-green-500 */
+    color: #ffffff; /* Tailwind's text-white */
+    border-radius: 0.375rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .add-skill-button:hover {
+    background-color: #059669; /* Tailwind's bg-green-600 */
+  }
+  
+  /* Edit Skill Form */
+.edit-skill-container {
+    padding: 1.5rem;
+    background-color: #ffffff; /* Tailwind's bg-white */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    z-index: 1000;
+  }
+  
+  .edit-skill-title {
+    font-size: 1.5rem; /* Tailwind's text-2xl */
+    font-weight: bold;
+    color: #1f2937; /* Tailwind's text-gray-800 */
+    margin-bottom: 1rem;
+  }
+  
+  .edit-skill-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .edit-skill-input {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db; /* Tailwind's border-gray-300 */
+    border-radius: 0.375rem;
+    font-size: 1rem; /* Tailwind's text-lg */
+  }
+  
+  .edit-skill-button {
+    padding: 0.75rem 1rem;
+    background-color: #10b981; /* Tailwind's bg-green-500 */
+    color: #ffffff; /* Tailwind's text-white */
+    border-radius: 0.375rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .edit-skill-button:hover {
+    background-color: #059669; /* Tailwind's bg-green-600 */
+  }
+  
+  .edit-skill-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #e74c3c; /* Tailwind's text-red-500 */
+  }
+  
+  

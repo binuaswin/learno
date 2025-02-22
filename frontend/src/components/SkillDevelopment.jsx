@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './SkillDevelopment.css';
 
 const SkillDevelopment = () => {
@@ -28,23 +28,23 @@ const SkillDevelopment = () => {
 
   const [recommendedSkills, setRecommendedSkills] = useState([]);
 
-  const allSkills = [
-    { skillName: 'Python', category: 'Technical', level: 'Beginner' },
-    { skillName: 'Creative Writing', category: 'Creative', level: 'Advanced' },
-    { skillName: 'UI/UX Design', category: 'Creative', level: 'Intermediate' },
-    { skillName: 'Machine Learning', category: 'Technical', level: 'Advanced' },
-    { skillName: 'Time Management', category: 'Soft Skills', level: 'Beginner' },
-    { skillName: 'Public Speaking', category: 'Soft Skills', level: 'Intermediate' }
-  ];
-
   // Generate recommendations based on user's current skills
   useEffect(() => {
+    const allSkills = [
+      { skillName: 'Python', category: 'Technical', level: 'Beginner' },
+      { skillName: 'Creative Writing', category: 'Creative', level: 'Advanced' },
+      { skillName: 'UI/UX Design', category: 'Creative', level: 'Intermediate' },
+      { skillName: 'Machine Learning', category: 'Technical', level: 'Advanced' },
+      { skillName: 'Time Management', category: 'Soft Skills', level: 'Beginner' },
+      { skillName: 'Public Speaking', category: 'Soft Skills', level: 'Intermediate' }
+    ];
+  
     const recommended = allSkills.filter(skill => {
-      return !skills.some(userSkill => userSkill.skillName === skill.skillName) && 
-             (skills.category === skill.category || skills.level === skill.level);
+      return !skills.some(userSkill => userSkill.skillName === skill.skillName) &&
+             skills.some(userSkill => userSkill.category === skill.category || userSkill.targetLevel === skill.level);
     });
     setRecommendedSkills(recommended);
-  }, [allSkills]);
+  }, [skills]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,6 +65,7 @@ const SkillDevelopment = () => {
       setSkills([...skills, newSkill]);
     }
 
+    // Reset form
     setSkillName('');
     setCategory('Technical');
     setDescription('');
@@ -87,7 +88,6 @@ const SkillDevelopment = () => {
     setEditIndex(index);
   };
 
-  // **This is the missing function that resolves the error**
   const handleAddRecommendation = (recommendedSkill) => {
     setSkills([...skills, recommendedSkill]);
   };

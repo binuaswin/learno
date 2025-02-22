@@ -8,14 +8,14 @@ const Sidebar = () => {
 
   return (
     <div className={`h bg-gray-900 text-white ${isOpen ? "w-70" : "w-24"} transition-all duration-300 p-4`}>
-      <button onClick={() => setIsOpen(!isOpen)} className="text-white mb-4 focus:outline-none color-red">
+      <button onClick={() => setIsOpen(!isOpen)} className="text-white mb-4 ">
         {isOpen ? "☰ Close" : "☰ Open"}
       </button>
       <nav className="space-y-4">
         <NavItem to="/dashboard" icon={<Home size={24} />} label="Dashboard" isOpen={isOpen} />
-        <NavItem to="/study-planner" icon={<Book size={24} />} label="Study Planner" isOpen={isOpen} />
-        <NavItem to="/skill-development" icon={<CheckCircle size={24} />} label="Skill Development" isOpen={isOpen} />
-        <NavItem to="/adaptive-learning" icon={<Users size={24} />} label="Adaptive Learning" isOpen={isOpen} />
+        <NavItem to="/studyplanner" icon={<Book size={24} />} label="Study Planner" isOpen={isOpen} />
+        <NavItem to="/skilldev" icon={<CheckCircle size={24} />} label="Skill Development" isOpen={isOpen} />
+        <NavItem to="/adaptivelearn" icon={<Users size={24} />} label="Adaptive Learning" isOpen={isOpen} />
         <NavItem to="/calendar" icon={<Calendar size={24} />} label="Calendar" isOpen={isOpen} />
         <NavItem to="/analytics" icon={<BarChart size={24} />} label="Analytics" isOpen={isOpen} />
         <NavItem to="/notifications" icon={<Bell size={24} />} label="Notifications" isOpen={isOpen} />

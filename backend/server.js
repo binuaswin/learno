@@ -1,132 +1,147 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const mysql = require("mysql2");
+const mongoose = require("mongoose");
+const userRoutes = require('./routes/userRoutes');
+const taskRoutes = require('./routes/taskRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const User = require('./models/userModel');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/learno_db";
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(userRoutes);
+app.use(taskRoutes);
+app.use('/api/admin', adminRoutes);
 
-// MySQL Connection
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "qwerty",
-  database: "learno_db",
-  port:3306,
-});
+// Connect to MongoDB
+mongoose
+  .connect(MONGO_URI)
+  .then(() => {
+    console.log("✅ Connected to MongoDB");
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection failed:", err.message);
+    process.exit(1);
+  });
 
-db.connect((err) => {
-  if (err) {
-    console.error("Database connection failed:", err.message);
-    return;
-  }
-  console.log("Connected to the MySQL database.");
+// Define UserStats Schema
+const userStatsSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  learningProgress: { type: Number, default: 0 },
+  skillsLearned: { type: Number, default: 0 },
+  pendingTasks: { type: Number, default: 0 },
+  completedTasks: { type: Number, default: 0 },
 });
+const UserStats = mongoose.model("UserStats", userStatsSchema);
 
 // Login Route
-app.post("/api/login", (req, res) => {
-  const { email, password } = req.body;
+app.post("/api/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password are required." });
+    }
 
-  const query = "SELECT * FROM Users WHERE email = ?";
-  db.query(query, [email], (err, results) => {
-    if (err) return res.status(500).send({ message: "Database error." });
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: "User not found." });
 
-    if (results.length === 0)
-      return res.status(404).send({ message: "User not found." });
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) return res.status(401).json({ message: "Invalid credentials." });
 
-    const user = results[0];
-    const isPasswordValid = bcrypt.compareSync(password, user.password);
+    const accessToken = jwt.sign(
+      { id: user._id, role: user.role || "user" },
+      process.env.JWT_SECRET,
+      { expiresIn: "15m" }
+    );
 
-    if (!isPasswordValid)
-      return res.status(401).send({ message: "Invalid credentials." });
+    const refreshToken = jwt.sign(
+      { id: user._id, role: user.role || "user" },
+      process.env.JWT_REFRESH_SECRET,
+      { expiresIn: "7d" }
+    );
 
-    const token = jwt.sign({ id: user.id, role: user.role }, "secret_key", {
-      expiresIn: "1h",
-    });
+    res.json({ accessToken, refreshToken });
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ message: "Server error. Please try again." });
+  }
+});
 
-    res.send({ message: "Login successful!", token });
+// Refresh Token Route
+app.post("/api/refresh-token", (req, res) => {
+  const { refreshToken } = req.body;
+  if (!refreshToken) {
+    return res.status(401).json({ message: "Refresh token is required." });
+  }
+
+  jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(403).json({ message: "Invalid refresh token." });
+    }
+
+    const newAccessToken = jwt.sign(
+      { id: decoded.id, role: decoded.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "15m" }
+    );
+
+    res.json({ accessToken: newAccessToken });
   });
 });
 
-//SignUp Route
-
+// SignUp Route
 app.post("/api/signup", async (req, res) => {
-  const { name, email, password } = req.body;
-
-  if (!name || !email || !password) {
-    return res.status(400).json({ error: "All fields are required." });
-  }
-
   try {
-    // Check if email already exists
-    const [existingUser] = await db
-      .promise()
-      .query("SELECT * FROM users WHERE email = ?",[email]);
+    const { name, email, password } = req.body;
 
-    if (existingUser.length > 0) {
-      return res.status(400).json({ error: "Email already registered or Username already exists" });
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: "All fields are required." });
     }
 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: "Email already registered." });
+    }
 
-    // Insert user into the database
-    await db
-      .promise()
-      .query("INSERT INTO Users (username, email, password) VALUES (?, ?, ?)", [
-        name,
-        email,
-        hashedPassword,
-      ]);
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ name, email, password: hashedPassword });
+    await newUser.save();
+
+    const newUserStats = new UserStats({ userId: newUser._id });
+    await newUserStats.save();
 
     res.status(201).json({ message: "User registered successfully." });
   } catch (error) {
-    console.error(error);
+    console.error("Signup error:", error);
     res.status(500).json({ error: "Server error. Please try again later." });
   }
 });
 
-//1. Fetch Quick Stats
-app.get('/dashboard/quick-stats/:userId', (req, res) => {
-  const userId = req.params.userId;
-  const query = `SELECT learningProgress, skillsLearned, pendingTasks, completedTasks FROM UserStats WHERE userId = ?`;
-  db.query(query, [userId], (err, results) => {
-      if (err) return res.status(500).json({ error: err.message });
-      if (results.length === 0) return res.status(404).json({ message: 'Stats not found' });
-      res.json(results[0]);
-  });
-});
+// Fetch Quick Stats Route
+app.get("/dashboard/quick-stats/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
 
-// // 2. Fetch Recent Activity
-// app.get('/dashboard/recent-activity/:userId', (req, res) => {
-//   const userId = req.params.userId;
-//   const query = `SELECT action, timestamp FROM RecentActivity WHERE userId = ? ORDER BY timestamp DESC`;
-//   db.query(query, [userId], (err, results) => {
-//       if (err) return res.status(500).json({ error: err.message });
-//       if (results.length === 0) return res.status(404).json({ message: 'No recent activity found' });
-//       res.json(results);
-//   });
-// });
+    const stats = await UserStats.findOne({ userId });
+    if (!stats) {
+      return res.status(404).json({ message: "Stats not found." });
+    }
 
-// // 3. Fetch Motivational Element
-// app.get('/dashboard/motivational-element', (req, res) => {
-//   const query = `SELECT message, category FROM MotivationalMessages ORDER BY RAND() LIMIT 1`;
-//   db.query(query, (err, results) => {
-//       if (err) return res.status(500).json({ error: err.message });
-//       if (results.length === 0) return res.status(404).json({ message: 'No motivational messages available' });
-//       res.json(results[0]);
-//   });
-// });
-
-
-// Start Server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+    res.json(stats);
+  } catch (error) {
+    console.error("Fetch Quick Stats error:", error);
+    res.status(500).json({ error: "Server error. Please try again." });
+  }
 });

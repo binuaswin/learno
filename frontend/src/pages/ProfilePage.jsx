@@ -1,6 +1,7 @@
 import "./Profile.css";
 import ProgressOverview from "../components/ProgressOverview";
 import ActivityLogSection from "../components/ActivityLogSection";
+import ProfilePictureUpdater from "../components/Home/ProfilePictureUpdater";
 
 const ProfilePage = () => {
   const activities = [
@@ -22,10 +23,15 @@ const ProfilePage = () => {
     <div className="profile-page-container">
       {/* Profile Header */}
       <div className="profile-header">
-        <div className="profile-avatar">
-          <img src="/placeholder-avatar.png" alt="User Avatar" />
-          <div className="avatar-fallback">AB</div>
+      <div className="flex items-center space-x-4 border-b pb-4">
+        <ProfilePictureUpdater />
+        <div>
+          <h2 className="text-xl font-semibold text-black ">
+            User Profile
+          </h2>
+          <p className="text-sm text-black">Manage your account settings</p>
         </div>
+      </div>
         <h2 className="profile-name">Aswin Binu</h2>
         <p className="profile-email">aswin@example.com</p>
         <p className="profile-description">M.Sc. Computer Science Student | AI Enthusiast</p>

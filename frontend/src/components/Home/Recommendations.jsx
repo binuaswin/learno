@@ -1,5 +1,4 @@
-import React from "react";
-import { BookOpen, TrendingUp } from "lucide-react";
+import {  TrendingUp } from "lucide-react";
 
 const recommendations = [
   { title: "Mastering React", category: "Web Development" },

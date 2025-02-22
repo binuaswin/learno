@@ -1,39 +1,29 @@
-import  { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
+import { Sun, Moon } from "lucide-react";
 
 const ThemeToggle = () => {
-  // Check for user's preference on initial load
-  const [darkMode, setDarkMode] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") || "light";
+    }
+    return "light";
+  });
 
-  // Update the darkMode state based on user's preference
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setDarkMode(savedTheme === 'dark');
-    }
-  }, []);
-
-  // Toggle dark mode and save preference to localStorage
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    const theme = !darkMode ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
-  };
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
     <button
-      onClick={toggleTheme}
-      className="p-2 bg-gray-800 text-white rounded-full focus:outline-none"
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all"
     >
-      {darkMode ? (
-        <span className="text-xl">🌙</span> // Dark Mode Icon
-      ) : (
-        <span className="text-xl">☀️</span> // Light Mode Icon
-      )}
+      {theme === "dark" ? <Sun className="text-yellow-400" /> : <Moon className="text-gray-800" />}
     </button>
   );
 };

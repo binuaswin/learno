@@ -4,7 +4,6 @@ const User = require('../models/userModel');  // Adjust the path if needed
 const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
 
-
 // Update User Profile Route
 router.put('/api/user/:userId', async (req, res) => {
   try {
@@ -12,17 +11,17 @@ router.put('/api/user/:userId', async (req, res) => {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
-      return res.status(400).json({ message: "Name, email, and password are required." });
+      return res.status(400).json({ message: 'Name, email, and password are required.' });
     }
 
     // Find user by ID
     const user = await User.findById(userId);
-    if (!user) return res.status(404).json({ message: "User not found." });
+    if (!user) return res.status(404).json({ message: 'User not found.' });
 
     // Check if the email is already taken by another user
     const existingUser = await User.findOne({ email });
     if (existingUser && existingUser._id.toString() !== userId) {
-      return res.status(400).json({ message: "Email is already in use." });
+      return res.status(400).json({ message: 'Email is already in use.' });
     }
 
     // Hash the new password
@@ -35,12 +34,12 @@ router.put('/api/user/:userId', async (req, res) => {
 
     await user.save();
 
-    res.status(200).json({ message: "User profile updated successfully." });
-  } catch (error) {
-    console.error("Error updating profile:", error);
-    res.status(500).json({ message: "Server error. Please try again later." });
+    res.status(200).json({ message: 'User profile updated successfully.' });
+  } catch {
+    res.status(500).json({ message: 'Server error. Please try again later.' });
   }
 });
+
 // Protected route: Only authenticated users can access this route.
 router.get('/profile', authMiddleware, async (req, res) => {
   try {
@@ -50,7 +49,7 @@ router.get('/profile', authMiddleware, async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
     res.json(user);
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: 'Server error' });
   }
 });

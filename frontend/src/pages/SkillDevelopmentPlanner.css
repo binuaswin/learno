@@ -1,67 +1,255 @@
-.skill-planner-container {
-    font-family: Arial, sans-serif;
-   
-    margin: 20px auto;
-    text-align: center;
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
-  .add-skill-form {
-    margin-bottom: 20px;
-  }
-  
-  .add-skill-form input {
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: calc(40% - 20px);
-  }
-  
-  .add-skill-form button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .add-skill-form button:hover {
-    background-color: #0056b3;
-  }
-  
-  .skill-list {
-    margin-top: 20px;
-  }
-  
-  .skill-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .skill-item h3 {
-    flex: 2;
-    margin: 0;
-  }
-  
-  .skill-item input[type="range"] {
-    flex: 3;
-    margin: 0 10px;
-  }
-  
-  .skill-item span {
-    flex: 1;
-    text-align: right;
-    font-weight: bold;
-  }
-  
+/* Main container with flex for sidebar and content */
+.skill-planner-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f7fa; /* Light background for contrast */
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Fixed Sidebar */
+.skill-planner-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px; /* Fixed width for sidebar */
+  height: 100vh; /* Full height */
+  background-color: #e4e8eb; /* Darker background for sidebar */
+  color: #fff;
+  padding: 0%;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1100; /* Ensure it stays above content */
+}
+
+/* Main content area with padding to avoid overlap with sidebar */
+.skill-planner-content {
+  margin-left: 250px; /* Offset by sidebar width */
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto; /* Allow scrolling for content */
+}
+
+/* Fixed Header */
+.skill-planner-header {
+  position: fixed;
+  top: 0;
+  left: 250px; /* Align with content, offset by sidebar */
+  right: 0;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 900; /* Below sidebar but above content */
+}
+
+.skill-planner-header h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #2c3e50;
+}
+
+.skill-planner-header p {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #666;
+}
+
+/* Component Sections */
+.skill-development-overview,
+.skill-list-tracker,
+.progress-visualization,
+.personalized-skill-plan,
+.learning-resources,
+.skill-challenges,
+.milestones-achievements,
+.skill-review-feedback,
+.analytics-insights,
+.motivational-section,
+.settings-customization,
+.sync-across-devices {
+  margin-bottom: 30px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover Effects for Attractiveness */
+.skill-development-overview:hover,
+.skill-list-tracker:hover,
+.progress-visualization:hover,
+.personalized-skill-plan:hover,
+.learning-resources:hover,
+.skill-challenges:hover,
+.milestones-achievements:hover,
+.skill-review-feedback:hover,
+.analytics-insights:hover,
+.motivational-section:hover,
+.settings-customization:hover,
+.sync-across-devices:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Inner Section Details */
+.skill-development-overview .overview-details,
+.skill-list-tracker .tracker-details,
+.personalized-skill-plan .plan-details {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.action-btn,
+.challenge-btn,
+.save-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.action-btn {
+  background: #007bff;
+}
+
+.action-btn:hover {
+  background: #0056b3;
+}
+
+.challenge-btn {
+  background: #28a745;
+}
+
+.challenge-btn:hover {
+  background: #218838;
+}
+
+.save-btn {
+  background: #007bff;
+}
+
+.save-btn.saved {
+  background: #28a745;
+}
+
+/* Lists */
+.learning-resources ul,
+.skill-challenges ul {
+  list-style: none;
+  padding: 0;
+}
+
+.learning-resources li,
+.skill-challenges li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #eef2f7;
+  border-radius: 5px;
+}
+
+/* Progress Visualization */
+.progress-visualization .progress-bar {
+  background: #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 20px;
+  width: 100%;
+}
+
+.progress-visualization .progress {
+  background: #007bff;
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Motivational Section */
+.motivational-section blockquote {
+  font-size: 18px;
+  font-style: italic;
+  text-align: center;
+  margin: 0;
+  color: #2c3e50;
+  padding: 10px;
+  background: #f1f8ff;
+  border-left: 4px solid #007bff;
+}
+
+/* Milestones and Achievements */
+.milestones-achievements .achievement {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+/* Feedback Form */
+.skill-review-feedback form {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-review-feedback form input,
+.skill-review-feedback form textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.skill-review-feedback form button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.skill-review-feedback form button:hover {
+  background-color: #2980b9;
+}
+
+/* Settings and Customization */
+.settings-customization form {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-customization form select,
+.settings-customization form button {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.settings-customization form button {
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+}
+
+.settings-customization form button:hover {
+  background-color: #2980b9;
+}
+
+/* Ensure content is visible and attractive */
+h2 {
+  color: #2c3e50;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: #34495e;
+  font-size: 1.25em;
+  margin-bottom: 8px;
+}

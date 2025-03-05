@@ -1,0 +1,1 @@
+export const DEFAULT_PROFILE_IMAGE = "D:/JPEG ME.jpg";

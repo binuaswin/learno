@@ -8,7 +8,7 @@ router.post('/api/tasks', async (req, res) => {
     const { userId, title, description, dueDate, priority } = req.body;
 
     if (!userId || !title || !description || !dueDate || !priority) {
-      return res.status(400).json({ message: "All fields are required." });
+      return res.status(400).json({ message: 'All fields are required.' });
     }
 
     const newTask = new Task({
@@ -17,15 +17,15 @@ router.post('/api/tasks', async (req, res) => {
       description,
       dueDate,
       priority,
-      status: "Pending", // Default status
+      status: 'Pending', // Default status
     });
 
     await newTask.save();
 
-    res.status(201).json({ message: "Task created successfully." });
+    res.status(201).json({ message: 'Task created successfully.' });
   } catch (error) {
-    console.error("Error creating task:", error);
-    res.status(500).json({ message: "Server error. Please try again." });
+    console.error('Error creating task:', error);
+    res.status(500).json({ message: 'Server error. Please try again.' });
   }
 });
 
@@ -36,7 +36,7 @@ router.put('/api/tasks/:taskId', async (req, res) => {
     const { title, description, dueDate, priority, status } = req.body;
 
     const task = await Task.findById(taskId);
-    if (!task) return res.status(404).json({ message: "Task not found." });
+    if (!task) return res.status(404).json({ message: 'Task not found.' });
 
     // Update task details
     task.title = title || task.title;
@@ -47,10 +47,10 @@ router.put('/api/tasks/:taskId', async (req, res) => {
 
     await task.save();
 
-    res.status(200).json({ message: "Task updated successfully." });
+    res.status(200).json({ message: 'Task updated successfully.' });
   } catch (error) {
-    console.error("Error updating task:", error);
-    res.status(500).json({ message: "Server error. Please try again." });
+    console.error('Error updating task:', error);
+    res.status(500).json({ message: 'Server error. Please try again.' });
   }
 });
 
@@ -60,12 +60,12 @@ router.delete('/api/tasks/:taskId', async (req, res) => {
     const { taskId } = req.params;
 
     const task = await Task.findByIdAndDelete(taskId);
-    if (!task) return res.status(404).json({ message: "Task not found." });
+    if (!task) return res.status(404).json({ message: 'Task not found.' });
 
-    res.status(200).json({ message: "Task deleted successfully." });
+    res.status(200).json({ message: 'Task deleted successfully.' });
   } catch (error) {
-    console.error("Error deleting task:", error);
-    res.status(500).json({ message: "Server error. Please try again." });
+    console.error('Error deleting task:', error);
+    res.status(500).json({ message: 'Server error. Please try again.' });
   }
 });
 

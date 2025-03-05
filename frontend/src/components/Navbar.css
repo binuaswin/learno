@@ -1,0 +1,193 @@
+/* NavigationBar.css */
+
+/* General Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--navbar-bg); /* Use CSS variables for theming */
+  color: var(--text-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Required for absolute positioning of dropdowns */
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar-logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  position: relative; /* Required for dropdown positioning */
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+/* Notification Icon */
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.8);
+}
+
+/* Settings Dropdown */
+.navbar-dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%; /* Place it below the icon */
+  right: 0;
+  background-color: var(--dropdown-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 150px;
+  padding: 0.5rem 0;
+}
+
+.navbar-dropdown .dropdown-menu a,
+.navbar-dropdown .dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  color: var(--text-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.navbar-dropdown .dropdown-menu a:hover,
+.navbar-dropdown .dropdown-menu button:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-left: 1rem;
+}
+
+.theme-toggle-btn:hover {
+  opacity: 0.8;
+}
+
+/* NotificationDropdown Styles */
+.notification-dropdown {
+  position: absolute;
+  top: 100%; /* Place it below the bell icon */
+  right: 0;
+  z-index: 1000;
+  width: 300px; /* Adjust as needed */
+  background-color: var(--dropdown-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.notification-dropdown h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.notification-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notification-dropdown li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.notification-dropdown li.bg-gray-100 {
+  background-color: #f3f4f6; /* Tailwind equivalent */
+}
+
+.notification-dropdown li.bg-blue-50 {
+  background-color: #eef2ff; /* Tailwind equivalent */
+}
+
+.notification-dropdown li.bg-blue-50:hover {
+  background-color: #dbeafe; /* Hover effect */
+}
+
+.notification-dropdown li span {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.notification-dropdown button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: green;
+}
+
+.notification-dropdown button:hover {
+  opacity: 0.8;
+}
+
+.notification-dropdown .clear-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: var(--error-color);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.notification-dropdown .clear-all:hover {
+  background-color: var(--error-hover-color);
+}

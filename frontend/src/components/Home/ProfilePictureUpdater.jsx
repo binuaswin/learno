@@ -1,17 +1,18 @@
-import  { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Cropper from "react-easy-crop";
 import { Camera, X, Save } from "lucide-react";
-import { useProfile } from "./ProfileContext"; // Import Profile Context
+import { useProfile } from "./useProfile";
+import axios from "axios";
 
 const ProfilePictureUpdater = () => {
-  const { profileImage, updateProfileImage } = useProfile(); // Use Global State
+  const { profileImage, updateProfileImage } = useProfile();
   const [imageSrc, setImageSrc] = useState(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [showCropper, setShowCropper] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Handle file selection
   const handleFileChange = (event) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -19,27 +20,41 @@ const ProfilePictureUpdater = () => {
       reader.onload = () => {
         setImageSrc(reader.result);
         setShowCropper(true);
+        setError(null);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  // Handle crop completion
   const onCropComplete = useCallback((_, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   }, []);
 
-  // Crop and update global profile picture
   const handleCropImage = async () => {
     if (!imageSrc || !croppedAreaPixels) return;
-    const croppedImage = await getCroppedImg(imageSrc, croppedAreaPixels);
-    updateProfileImage(croppedImage); // Update Global & Local Storage
-    setShowCropper(false);
+
+    try {
+      const croppedImage = await getCroppedImg(imageSrc, croppedAreaPixels);
+      const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token available");
+
+      updateProfileImage(croppedImage);
+
+      await axios.put(
+        "http://localhost:5000/api/auth/profile",
+        { profileImage: croppedImage },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      setShowCropper(false);
+    } catch (err) {
+      console.error("Error updating profile image:", err);
+      setError("Failed to update profile image");
+    }
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Profile Picture Display */}
+    <div className="profile-picture-updater">
       <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-gray-300 shadow-md">
         {profileImage ? (
           <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
@@ -49,15 +64,20 @@ const ProfilePictureUpdater = () => {
           </div>
         )}
       </div>
-
-      {/* Upload Button */}
-      <label className="cursor-pointer flex items-center gap-2 bg-blue-600 text-black px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+      <button
+        className="change-profile-btn"
+        onClick={() => document.querySelector('input[type="file"]').click()}
+      >
         <Camera size={18} />
-        <span>Change Profile Picture</span>
-        <input type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
-      </label>
-
-      {/* Cropper Modal */}
+        Change Profile Picture
+      </button>
+      <input
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={handleFileChange}
+      />
+      {error && <p className="text-red-500 text-sm">{error}</p>}
       {showCropper && imageSrc && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-4 rounded-lg shadow-lg w-[90%] max-w-md">
@@ -72,8 +92,6 @@ const ProfilePictureUpdater = () => {
                 onCropComplete={onCropComplete}
               />
             </div>
-
-            {/* Controls */}
             <div className="flex justify-between mt-4">
               <button
                 onClick={() => setShowCropper(false)}
@@ -99,7 +117,6 @@ const ProfilePictureUpdater = () => {
 
 export default ProfilePictureUpdater;
 
-// Utility function to crop the image
 const getCroppedImg = async (imageSrc, cropArea) => {
   const image = await createImage(imageSrc);
   const canvas = document.createElement("canvas");
@@ -123,16 +140,9 @@ const getCroppedImg = async (imageSrc, cropArea) => {
     height
   );
 
-  return new Promise((resolve) => {
-    canvas.toBlob((blob) => {
-      if (blob) {
-        resolve(URL.createObjectURL(blob));
-      }
-    }, "image/png");
-  });
+  return canvas.toDataURL("image/png");
 };
 
-// Create an image element from a URL
 const createImage = (url) =>
   new Promise((resolve, reject) => {
     const img = new Image();

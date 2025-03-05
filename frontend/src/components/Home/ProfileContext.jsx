@@ -1,8 +1,8 @@
-import { createContext, useState, useContext, useEffect } from "react";
+// frontend/src/ProfileContext.jsx
+import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
-// Default Profile Picture URL
-const DEFAULT_PROFILE_IMAGE = "/JPEGME.jpg"; // Ensure this image is in the public folder
+import axios from "axios";
+import { DEFAULT_PROFILE_IMAGE } from "./constants";
 
 // Create Context
 const ProfileContext = createContext();
@@ -10,30 +10,62 @@ const ProfileContext = createContext();
 // Provider Component
 export const ProfileProvider = ({ children }) => {
   const [profileImage, setProfileImage] = useState(DEFAULT_PROFILE_IMAGE);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Load profile picture from local storage when the app starts
+  // Fetch profile image from backend on mount
   useEffect(() => {
-    const savedImage = localStorage.getItem("profileImage");
-    console.log("Loaded image from localStorage:", savedImage);
+    const fetchProfileImage = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          const savedImage = localStorage.getItem("profileImage");
+          if (savedImage) {
+            setProfileImage(savedImage);
+          }
+          return;
+        }
 
-    if (savedImage) {
-      const img = new Image();
-      img.src = savedImage;
-      img.onload = () => setProfileImage(savedImage); // Use the saved image if valid
-      img.onerror = () => setProfileImage(DEFAULT_PROFILE_IMAGE); // Reset on error
-    } else {
-      setProfileImage(DEFAULT_PROFILE_IMAGE);
-    }
+        const response = await axios.get("http://localhost:5000/api/auth/profile", { // Updated endpoint
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const backendImage = response.data.profileImage || localStorage.getItem("profileImage") || DEFAULT_PROFILE_IMAGE;
+        setProfileImage(backendImage);
+        localStorage.setItem("profileImage", backendImage); // Sync localStorage
+      } catch (err) {
+        console.error("Error fetching profile image:", err);
+        setError("Failed to load profile image");
+        const savedImage = localStorage.getItem("profileImage") || DEFAULT_PROFILE_IMAGE;
+        setProfileImage(savedImage);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProfileImage();
   }, []);
 
-  // Update local storage whenever the profile picture changes
-  const updateProfileImage = (image) => {
-    setProfileImage(image);
-    localStorage.setItem("profileImage", image); // Save to Local Storage
+  // Update profile image and sync with backend
+  const updateProfileImage = async (image) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token available");
+
+      setProfileImage(image);
+      localStorage.setItem("profileImage", image);
+
+      await axios.put(
+        "http://localhost:5000/api/auth/profile", // Updated endpoint
+        { profileImage: image },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+    } catch (err) {
+      console.error("Error updating profile image:", err);
+      setError("Failed to update profile image");
+    }
   };
 
   return (
-    <ProfileContext.Provider value={{ profileImage, updateProfileImage }}>
+    <ProfileContext.Provider value={{ profileImage, updateProfileImage, loading, error }}>
       {children}
     </ProfileContext.Provider>
   );
@@ -44,6 +76,5 @@ ProfileProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-// Custom Hook to use Profile Context
-// eslint-disable-next-line react-refresh/only-export-components
-export const useProfile = () => useContext(ProfileContext);
+// Export Context for useProfile hook
+export default ProfileContext;

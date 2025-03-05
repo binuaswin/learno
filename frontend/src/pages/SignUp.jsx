@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
+import axios from 'axios'; // Add axios
 
 const SignUp = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,6 +12,7 @@ const SignUp = () => {
     confirmPassword: "",
   });
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,36 +21,30 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Frontend validation for password match
     if (formData.password !== formData.confirmPassword) {
       setMessage("Passwords do not match.");
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-        }),
+      setLoading(true);
+      const response = await axios.post("http://localhost:5000/api/auth/signup", {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
       });
 
-      const data = await response.json();
-      if (response.ok) {
-        alert("Account created successfully");
-        navigate('/');
-      } else {
-        setMessage(data.error || "Something went wrong.");
-      }
+      // Handle success
+      localStorage.setItem("token", response.data.token); // Store token
+      alert("Account created successfully!");
+      navigate('/dashboard'); // Redirect to dashboard like Login.jsx
     } catch (error) {
-      setMessage("Error: Unable to connect to the server.",error);
+      setMessage(error.response?.data?.message || "Signup failed! Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
+
   return (
     <div className="signup-container">
       <div className="signup-card">
@@ -111,8 +107,8 @@ const SignUp = () => {
               placeholder="Confirm your password"
             />
           </div>
-          <button onSubmit="./"type="submit" className="signup-button">
-          Sign Up
+          <button type="submit" className="signup-button" disabled={loading}>
+            {loading ? "Signing up..." : "Sign Up"}
           </button>
         </form>
         <p className="signup-footer">

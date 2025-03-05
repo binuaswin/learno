@@ -78,6 +78,35 @@
   background-color: #0056b3;
 }
 
+.edit-profile-btn.cancel {
+  background-color: #6c757d;
+  margin-left: 10px;
+}
+
+.edit-profile-btn.cancel:hover {
+  background-color: #5a6268;
+}
+
+/* Edit Form */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.profile-form .input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.profile-form .textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
 /* Achievements Section */
 .achievements-container {
   margin-top: 20px;
@@ -115,40 +144,6 @@
 
 .achievement-label {
   color: #777;
-}
-
-/* Progress Overview */
-.progress-overview {
-  margin-top: 20px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.progress-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.progress-label {
-  color: #555;
-  margin-bottom: 5px;
-}
-
-.progress-bar-container {
-  background-color: #ddd;
-  border-radius: 8px;
-  height: 10px;
-  margin-bottom: 15px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background-color: #007bff;
-  transition: width 0.3s;
 }
 
 /* Settings Section */

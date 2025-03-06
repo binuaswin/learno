@@ -17,10 +17,10 @@ module.exports = [
     },
     rules: {
       'no-unused-vars': ['warn', { varsIgnorePattern: '^unused$|^jwt$|^bcrypt$' }], // Allow specific unused vars with comments
-      'no-console': 'warn', // Warn about all console statements (no allowances)
       'semi': ['error', 'always'], // Require semicolons
       'quotes': ['error', 'single'], // Use single quotes
       'indent': ['error', 2], // 2-space indentation
+      'no-console': ['warn', { allow: ['log', 'error'] }],
     },
   },
   pluginJs.configs.recommended, // Apply recommended JavaScript rules

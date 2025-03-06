@@ -1,56 +1,66 @@
-import { useState, useEffect, useCallback } from "react"; // Remove createContext
-import PropTypes from "prop-types"; // Import PropTypes
+import { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { AuthContext as AuthContextObj } from "./authUtils"; // Import from utility file
+import { AuthContext as AuthContextObj } from "./authUtils";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); // Add error state
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Define logout first to avoid initialization issues
   const logout = useCallback(() => {
-    console.log('Logging out'); // Debug
-    Cookies.remove("token");
-    Cookies.remove("refreshToken");
+    console.log("Logging out, tokens before:", Cookies.get("token"), Cookies.get("refreshToken"));
+    Cookies.remove("token", { path: "/" });
+    Cookies.remove("refreshToken", { path: "/" });
+    console.log("Tokens after removal:", Cookies.get("token"), Cookies.get("refreshToken"));
     setUser(null);
-    setError(null); // Clear errors on logout
+    setError(null);
+    console.log("User and error states cleared, navigating to /");
     navigate("/");
-  }, [navigate]); // Add navigate as a dependency for logout
+  }, [navigate]);
 
-  const login = async (accessToken, refreshToken) => {
-    setLoading(true); // Set loading before API call
-    Cookies.set("token", accessToken, { expires: 1/24 }); // 1 hour expiry
-    Cookies.set("refreshToken", refreshToken, { expires: 7 }); // 7 days expiry
+  const login = async (email, password) => {
+    setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/auth/profile", {
-        headers: { Authorization: `Bearer ${accessToken}` },
-        withCredentials: true, // Enable cookies
+      console.log("Attempting login with:", { email, password });
+      const response = await axios.post("http://localhost:5000/api/auth/login", { email, password }, {
+        withCredentials: true,
       });
-      setUser(response.data);
-      setError(null); // Clear any previous errors
-    } catch (error) {
-      console.log('Login error:', error.response?.data); // Debug
-      if (error.response?.data?.error === "TokenExpired") {
-        await refreshToken();
-      } else {
-        setError(error.response?.data?.message || "Login failed");
-        logout();
+      const { accessToken, refreshToken } = response.data;
+      console.log("Login response received, tokens:", { accessToken, refreshToken });
+      if (!accessToken || typeof accessToken !== "string" || !accessToken.includes(".")) {
+        throw new Error("Invalid access token received");
       }
+      Cookies.set("token", accessToken, { expires: 1 / 24 });
+      Cookies.set("refreshToken", refreshToken, { expires: 7 });
+      const profileResponse = await axios.get("http://localhost:5000/api/auth/profile", {
+        headers: { Authorization: `Bearer ${accessToken}` },
+        withCredentials: true,
+      });
+      console.log("Profile response received:", profileResponse.data);
+      setUser(profileResponse.data);
+      setError(null);
+      navigate("/dashboard");
+      console.log("Navigating to dashboard, user set:", profileResponse.data);
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || "Login failed: " + error.message;
+      console.error("Detailed login error:", error.response?.data || error);
+      setError(errorMessage);
+      logout();
     } finally {
       setLoading(false);
     }
   };
 
   const refreshToken = useCallback(async () => {
-    setLoading(true); // Set loading before refresh
+    setLoading(true);
     const refreshToken = Cookies.get("refreshToken");
-    console.log('Refreshing token with:', { refreshToken }); // Debug
+    console.log("Refreshing token with:", { refreshToken });
     if (!refreshToken) {
-      console.log('No refresh token, logging out'); // Debug
+      console.log("No refresh token, logging out");
       logout();
       return;
     }
@@ -60,32 +70,44 @@ export const AuthProvider = ({ children }) => {
         withCredentials: true,
       });
       const newAccessToken = response.data.accessToken;
-      Cookies.set("token", newAccessToken, { expires: 1/24 });
+      console.log("Storing new accessToken:", newAccessToken);
+      if (!newAccessToken || typeof newAccessToken !== "string" || !newAccessToken.includes(".")) {
+        throw new Error("Invalid new access token received");
+      }
+      Cookies.set("token", newAccessToken, { expires: 1 / 24 });
       const profileResponse = await axios.get("http://localhost:5000/api/auth/profile", {
         headers: { Authorization: `Bearer ${newAccessToken}` },
         withCredentials: true,
       });
       setUser(profileResponse.data);
-      setError(null); // Clear errors on success
+      setError(null);
     } catch (error) {
-      console.log('Refresh token error:', error.response?.data); // Debug
-      setError(error.response?.data?.message || "Failed to refresh token");
-      logout(); // Only log out if refresh fails
+      const errorMessage = error.response?.data?.message || "Failed to refresh token: " + error.message;
+      console.error("Detailed refresh token error:", error.response?.data || error);
+      setError(errorMessage);
+      logout();
     } finally {
       setLoading(false);
     }
-  }, [logout]); // Add logout as a dependency for refreshToken
+  }, [logout]);
 
   const hasRole = (requiredRole) => user?.role === requiredRole;
 
   useEffect(() => {
     const checkAuth = async () => {
-      setLoading(true); // Set loading before checking auth
+      setLoading(true);
       const token = Cookies.get("token");
-      console.log('Checking auth with token:', token); // Debug
+      console.log("Checking auth with token:", token);
       if (!token) {
-        console.log('No token, setting loading to false'); // Debug
+        console.log("No token, setting loading to false");
         setLoading(false);
+        return;
+      }
+
+      if (typeof token !== "string" || !token.includes(".")) {
+        console.log("Invalid token format, logging out");
+        setError("Invalid token format");
+        logout();
         return;
       }
 
@@ -96,19 +118,20 @@ export const AuthProvider = ({ children }) => {
         });
         setUser(response.data);
       } catch (error) {
-        console.log('Token validation error:', error.response?.data); // Debug
+        const errorMessage = error.response?.data?.message || "Authentication failed: " + error.message;
+        console.error("Detailed token validation error:", error.response?.data || error);
         if (error.response?.data?.error === "TokenExpired") {
           await refreshToken();
         } else {
-          setError(error.response?.data?.message || "Authentication failed");
-          logout(); // Only log out if refresh fails or token is invalid
+          setError(errorMessage);
+          logout();
         }
       } finally {
         setLoading(false);
       }
     };
     checkAuth();
-  }, [logout, refreshToken]); // Add dependencies
+  }, [logout, refreshToken]);
 
   return (
     <AuthContextObj.Provider value={{ user, loading, login, logout, hasRole, refreshToken, error }}>
@@ -117,9 +140,8 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Add PropTypes validation
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired, // Validate children prop
+  children: PropTypes.node.isRequired,
 };
 
-export default AuthProvider; // Export only the component
+export default AuthProvider;

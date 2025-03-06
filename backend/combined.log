@@ -1,0 +1,248 @@
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T05:11:24.712Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T05:11:24.715Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T05:11:24.720Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T05:11:24.721Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T05:11:24.725Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T05:11:24.726Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T05:11:24.729Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T05:11:24.730Z"}
+{"level":"info","message":"✅ MongoDB Connected","timestamp":"2025-03-06T05:21:41.788Z"}
+{"level":"info","message":"🚀 Server running on port 5000","timestamp":"2025-03-06T05:21:41.794Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T05:22:51.293Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T05:22:51.294Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T05:22:51.299Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T05:22:51.299Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T05:22:51.302Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T05:22:51.303Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T05:22:51.309Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T05:22:51.310Z"}
+{"JWT_SECRET":"your-secure-secret-key","MONGO_URI":"mongodb://127.0.0.1:27017/learno_db","PORT":"5000","level":"info","message":"Environment variables:","timestamp":"2025-03-06T06:59:06.604Z"}
+{"level":"info","message":"Using MongoDB URI:","timestamp":"2025-03-06T06:59:06.608Z"}
+{"level":"info","message":"✅ MongoDB Connected","timestamp":"2025-03-06T06:59:06.651Z"}
+{"level":"info","message":"🚀 Server running on port 5000","timestamp":"2025-03-06T06:59:06.658Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:12:48.543Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:12:48.558Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:12:48.577Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:12:48.578Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:12:48.582Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:12:48.586Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:12:48.590Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:12:48.591Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:13:00.049Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:13:00.049Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:13:00.060Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:13:00.095Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:13:00.134Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:13:00.135Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:13:00.138Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:13:00.151Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:15:03.306Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:15:03.308Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:15:03.320Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:15:03.321Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:15:03.323Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:15:03.323Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:15:03.325Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:15:03.326Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:15:04.065Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:15:04.066Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:15:04.068Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:15:04.068Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:15:04.075Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:15:04.075Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:15:04.091Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:15:04.091Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin123#","timestamp":"2025-03-06T07:31:16.736Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"d9d51a52-2ae9-4897-8993-95186774cd2a","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T07:31:16.849Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T07:31:16.988Z"}
+{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjgxNWM3YTkyZjI1Y2QxMDYzMTQyMSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQxMjQ2Mjc3LCJleHAiOjE3NDEyNDk4Nzd9.d84TRjfBZkWUb9N3SHs2tiB1Gce1tTHqkvZNO4G9jnI","level":"info","message":"Tokens generated:","refreshToken":"31de6f88-9cb4-464f-ab8a-df273a672c95","timestamp":"2025-03-06T07:31:17.051Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:17.058Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:17.059Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:17.320Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:17.320Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:23.561Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:23.562Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:24.991Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:24.992Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:25.679Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:25.679Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:27.514Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:27.515Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:27.849Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:27.850Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:27.858Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:27.859Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:27.903Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:27.904Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:27.920Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:27.923Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:27.978Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:27.979Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:28.025Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:28.027Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:28.035Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:28.036Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:29.098Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:29.099Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:29.109Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:29.110Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:29.116Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:29.117Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:30.404Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:30.404Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:30.411Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:30.412Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:30.420Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:30.421Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:31.055Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:31.059Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:31.072Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:31.072Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:31.079Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:31.079Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:31.859Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:31.859Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:31.872Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:31.873Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:31.879Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:31.880Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:34.229Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:34.230Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:35.239Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:35.240Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:31:35.956Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:31:35.956Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin123#","timestamp":"2025-03-06T07:48:44.374Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"31de6f88-9cb4-464f-ab8a-df273a672c95","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T07:48:44.429Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T07:48:44.570Z"}
+{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjgxNWM3YTkyZjI1Y2QxMDYzMTQyMSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQxMjQ3MzI0LCJleHAiOjE3NDEyNTA5MjR9.TF_7eEnZnxcJ-NvEFm5rHh5RzsUESzPVlHi-s8HBbtY","level":"info","message":"Tokens generated:","refreshToken":"4c7e384d-387f-462e-977c-6ccbc225228f","timestamp":"2025-03-06T07:48:44.618Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:48:44.626Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:48:44.626Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:48:44.846Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:48:44.848Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin123#","timestamp":"2025-03-06T07:55:25.339Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"4c7e384d-387f-462e-977c-6ccbc225228f","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T07:55:25.378Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T07:55:25.479Z"}
+{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjgxNWM3YTkyZjI1Y2QxMDYzMTQyMSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQxMjQ3NzI1LCJleHAiOjE3NDEyNTEzMjV9.317umXOnw1x4HIxMsDNzhlto63heZsmURVATPBFafIk","level":"info","message":"Tokens generated:","refreshToken":"0175e286-087f-4662-9603-4da080050e78","timestamp":"2025-03-06T07:55:25.517Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:55:25.525Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:55:25.525Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:55:25.761Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:55:25.762Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:55:37.003Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:55:37.005Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:55:38.246Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:55:38.246Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:55:39.449Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:55:39.450Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T07:55:40.592Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T07:55:40.593Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin123#","timestamp":"2025-03-06T08:32:51.207Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"0175e286-087f-4662-9603-4da080050e78","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:32:51.278Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:32:51.371Z"}
+{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjgxNWM3YTkyZjI1Y2QxMDYzMTQyMSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQxMjQ5OTcxLCJleHAiOjE3NDEyNTM1NzF9.AAupPqwVDJsVvQq5VURzHrFBtfITLHQm20cOGL-_Q34","level":"info","message":"Tokens generated:","refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","timestamp":"2025-03-06T08:32:51.417Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:32:51.432Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:32:51.433Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:32:51.763Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:32:51.764Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:11.546Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:11.549Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:11.641Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:12.654Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:12.656Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:12.753Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:13.236Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:13.245Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:13.398Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:13.683Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:13.685Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:13.833Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:14.267Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:14.273Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:14.379Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:14.885Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:14.889Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:14.991Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:15.479Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:15.481Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:15.590Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:15.858Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:15.863Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:15.969Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:21.850Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:21.853Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:21.957Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:22.643Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:22.645Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:22.745Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:23.109Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:23.113Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:23.235Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:23.331Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:23.335Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:23.432Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:28.224Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:28.226Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:28.329Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:28.763Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:28.767Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:28.882Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:29.131Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:29.135Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:29.255Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin@123#","timestamp":"2025-03-06T08:33:29.298Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:33:29.301Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:33:29.408Z"}
+{"JWT_SECRET":"your-secure-secret-key","MONGO_URI":"mongodb://127.0.0.1:27017/learno_db","PORT":"5000","level":"info","message":"Environment variables:","timestamp":"2025-03-06T08:34:12.357Z"}
+{"level":"info","message":"Using MongoDB URI:","timestamp":"2025-03-06T08:34:12.360Z"}
+{"level":"info","message":"✅ MongoDB Connected","timestamp":"2025-03-06T08:34:12.399Z"}
+{"level":"info","message":"🚀 Server running on port 5000","timestamp":"2025-03-06T08:34:12.405Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin123#","timestamp":"2025-03-06T08:34:38.892Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"c91eb699-d85b-424b-9c6c-ff7cfd0b24fb","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:34:38.907Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:34:39.013Z"}
+{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjgxNWM3YTkyZjI1Y2QxMDYzMTQyMSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQxMjUwMDc5LCJleHAiOjE3NDEyNTM2Nzl9.MHBUI6__0oYu-QUgRNtluOg_MEPpBPqT7-HgIp4rJ64","level":"info","message":"Tokens generated:","refreshToken":"103123c5-7965-498d-b37a-4df8e88fac2b","timestamp":"2025-03-06T08:34:39.030Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:34:39.039Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:34:39.040Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:34:39.279Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:34:39.280Z"}
+{"email":"aswinbinu2605@gmail.com","level":"info","message":"Login request:","password":"aswin123#","timestamp":"2025-03-06T08:34:59.852Z"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","activities":"init","bio":"init","email":"init","learning_progress":"init","name":"init","password":"init","preferences.notifications":"init","preferences.theme":"init","refreshToken":"init","role":"init","study_tasks":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"activities":true,"bio":true,"email":true,"learning_progress":true,"name":true,"password":true,"preferences.notifications":true,"preferences.theme":true,"refreshToken":true,"role":true,"study_tasks":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"67b815c7a92f25cd10631421","activities":[],"bio":"Hai Hello","email":"aswinbinu2605@gmail.com","learning_progress":[],"name":"Aswin Binu ","password":"$2a$10$ndi5x77JHCQIwKq7KHpzQuUbtOrA1fPr.hVA8HoU0t71tvekdc8C2","preferences":{"notifications":true,"theme":"dark"},"refreshToken":"103123c5-7965-498d-b37a-4df8e88fac2b","role":"user","study_tasks":[]},"level":"info","message":"User found:","timestamp":"2025-03-06T08:34:59.855Z"}
+{"level":"info","message":"Password match:","timestamp":"2025-03-06T08:34:59.991Z"}
+{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjgxNWM3YTkyZjI1Y2QxMDYzMTQyMSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQxMjUwMDk5LCJleHAiOjE3NDEyNTM2OTl9.JJbkXziRIOMxReNgMWA97eiU8TKw9od29T64SbnzvJ4","level":"info","message":"Tokens generated:","refreshToken":"7d4ab876-f25d-4817-a8d4-e16d3cf95e82","timestamp":"2025-03-06T08:34:59.998Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:35:00.005Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:35:00.006Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:35:00.129Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:35:00.129Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:35:02.037Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:35:02.038Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:35:02.052Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:35:02.052Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:35:02.060Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:35:02.060Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:38:35.555Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:38:35.559Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:38:37.159Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:38:37.160Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:38:40.514Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:38:40.514Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:38:52.654Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:38:52.654Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:39:11.814Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:39:11.817Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:41:43.098Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:41:43.101Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:41:43.139Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:41:43.139Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:41:43.148Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:41:43.149Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:41:44.038Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:41:44.050Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:41:44.059Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:41:44.060Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:41:44.065Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:41:44.066Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:41:44.626Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:41:44.632Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:41:44.649Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:41:44.649Z"}
+{"level":"info","message":"Authorization header:","timestamp":"2025-03-06T08:41:44.655Z"}
+{"level":"info","message":"Extracted token:","timestamp":"2025-03-06T08:41:44.656Z"}

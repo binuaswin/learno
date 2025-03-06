@@ -1,17 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import axios from "axios";
-import Cookies from "js-cookie"; // Install: npm install js-cookie
-import { useAuth } from "../components/authUtils"; // Update import to authUtils.js
+import { useAuth } from "../components/authUtils";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [localError, setLocalError] = useState(""); // Local error for form validation
+  const [localError, setLocalError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { login, error, user } = useAuth();
   const navigate = useNavigate();
-  const { login, error } = useAuth(); // Use error from AuthContext
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,29 +19,28 @@ const Login = () => {
       return;
     }
 
-    setLocalError(""); // Clear local error
+    setLocalError("");
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-      }, {
-        withCredentials: true, // Enable cookies for token storage
-      });
-
-      const { accessToken, refreshToken } = response.data;
-      Cookies.set("token", accessToken, { expires: 1/24 }); // 1 hour expiry
-      Cookies.set("refreshToken", refreshToken, { expires: 7 }); // 7 days expiry
-
-      await login(accessToken, refreshToken);
-      alert("Login successful!");
-      navigate('/dashboard'); // Redirect to dashboard (or role-based route)
-    } catch (err) {
-      setLocalError(err.response?.data?.message || "Login failed! Please try again.");
+      await login(email, password);
+      console.log("Login attempt completed, user state:", user); // Debug
+      // Navigation handled by useEffect; avoid premature check here
+    } catch {
+      setLocalError(error || "Login failed! Please try again.");
     } finally {
       setLoading(false);
     }
   };
+
+  // Navigate when user state is set
+  useEffect(() => {
+    if (user) {
+      console.log("User state updated, navigating to dashboard:", user);
+      navigate("/dashboard");
+    } else if (error) {
+      console.log("Error detected after login attempt:", error);
+    }
+  }, [user, error, navigate]); // Trigger on user or error change
 
   return (
     <div className="login-container">

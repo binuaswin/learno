@@ -11,9 +11,9 @@ import AdaptiveLearningPage from "./pages/AdaptiveLearningPage";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
-import { AuthProvider } from "./components/AuthContext"; // Import AuthProvider
-import PropTypes from "prop-types"; // Import PropTypes
-import { useAuth } from "./components/authUtils"; // Import useAuth
+import PropTypes from "prop-types";
+import { useAuth } from "./components/authUtils";
+import { AuthProvider } from "./components/AuthContext"; // Corrected import path
 
 const App = () => {
   return (
@@ -60,7 +60,6 @@ const App = () => {
   );
 };
 
-// Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
   if (loading) return <div>Loading...</div>;
@@ -68,9 +67,8 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-// Add PropTypes validation for ProtectedRoute
 ProtectedRoute.propTypes = {
-  children: PropTypes.node.isRequired, // Validate children prop
+  children: PropTypes.node.isRequired,
 };
 
 export default App;

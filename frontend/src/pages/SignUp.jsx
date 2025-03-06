@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./SignUp.css";
-import axios from 'axios'; // Add axios
+import axios from 'axios';
+import { useAuth } from "../components/authUtils";
 
 const SignUp = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,7 +12,8 @@ const SignUp = () => {
     confirmPassword: "",
   });
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,18 +29,20 @@ const SignUp = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:5000/api/auth/signup", {
+      await axios.post("http://localhost:5000/signup", {
         name: formData.name,
         email: formData.email,
         password: formData.password,
+      }, {
+        withCredentials: true,
       });
 
-      // Handle success
-      localStorage.setItem("token", response.data.token); // Store token
+      await login(formData.email, formData.password); // Call login with email and password
       alert("Account created successfully!");
-      navigate('/dashboard'); // Redirect to dashboard like Login.jsx
+      // navigate('/dashboard'); // Removed, handled in AuthContext
     } catch (error) {
-      setMessage(error.response?.data?.message || "Signup failed! Please try again.");
+      const errorMessage = error.response?.data?.message || "Signup failed: " + error.message;
+      setMessage(errorMessage);
     } finally {
       setLoading(false);
     }

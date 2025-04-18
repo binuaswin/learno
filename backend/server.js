@@ -1,35 +1,50 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes');
+const profileRoutes = require('./routes/profileRoutes');
+const skillRoutes = require('./routes/skillRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 const logger = require('./logger');
+const path = require('path');
+const fs = require('fs');
 
 dotenv.config();
 const app = express();
 
-// Log environment variables for debugging
-logger.info('Environment variables:', {
-  MONGO_URI: process.env.MONGO_URI,
-  JWT_SECRET: process.env.JWT_SECRET,
-  PORT: process.env.PORT,
-});
+// Create uploads directory
+const uploadDir = path.join(__dirname, 'Uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:3000', 'http://localhost:5173'],
   credentials: true,
 }));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(cookieParser());
+app.use('/Uploads', express.static(uploadDir));
+
+// Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/profile', profileRoutes);
+app.use('/api/skills', skillRoutes);
+app.use('/api/tasks', taskRoutes);
 
-// MongoDB Connection with learno_db
+// Error handling middleware
+app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+  logger.error('Server error:', { error: err.message, stack: err.stack });
+  const message = process.env.NODE_ENV === 'production' ? 'Something went wrong!' : err.message;
+  res.status(500).json({ message });
+});
+
+// MongoDB Connection
 const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/learno_db';
-logger.info('Using MongoDB URI:', mongoUri);
-
 mongoose
   .connect(mongoUri)
   .then(() => {
@@ -40,6 +55,6 @@ mongoose
     });
   })
   .catch((error) => {
-    logger.error('❌ MongoDB Connection Error:', error);
+    logger.error('❌ MongoDB Connection Error:', { error: error.message });
     process.exit(1);
   });

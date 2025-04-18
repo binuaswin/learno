@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import { useAuth } from "../components/authUtils";
+import { useAuth } from "../components/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +10,8 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const { login, error, user } = useAuth();
   const navigate = useNavigate();
+
+  console.log("Login - Rendering with user:", user, "error:", error);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,25 +25,25 @@ const Login = () => {
     setLoading(true);
     try {
       await login(email, password);
-      console.log("Login attempt completed, user state:", user); // Debug
-      // Navigation handled by useEffect; avoid premature check here
-    } catch {
+      console.log("Login attempt completed, user state:", user);
+    } catch (err) {
+      console.error("Login - Error during login:", err);
       setLocalError(error || "Login failed! Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  // Navigate when user state is set
   useEffect(() => {
     if (user) {
-      console.log("User state updated, navigating to dashboard:", user);
-      navigate("/dashboard");
+      console.log("Login - User state updated, navigating to /profile:", user);
+      navigate("/profile"); // Changed to /profile to match ProfilePage.jsx
     } else if (error) {
-      console.log("Error detected after login attempt:", error);
+      console.log("Login - Error detected after login attempt:", error);
     }
-  }, [user, error, navigate]); // Trigger on user or error change
+  }, [user, error, navigate]);
 
+  console.log("Login - Rendering login form");
   return (
     <div className="login-container">
       <div className="login-card">

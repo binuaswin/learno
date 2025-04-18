@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import WelcomeSection from "../components/Home/WelcomeSection";
 import MotivationalElement from "../components/Home/MotivationalElement";
 import QuickActions from "../components/Home/QuickActions";
@@ -19,10 +18,7 @@ const HomePage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 ml-64 p-6 transition-all duration-300">
-        {/* Header Section */}
-        <Header />
-
+      <div className="flex-1 ml-64 p-6 transition-all duration-300 mt-16">
         {/* Main Content Area */}
         <main className="container mx-auto p-4 max-w-[calc(100%-16rem)]">
           <WelcomeSection />

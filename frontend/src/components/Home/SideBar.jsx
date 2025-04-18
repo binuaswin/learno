@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types"; // Import PropTypes
+import PropTypes from "prop-types";
 import { 
   Home, Book, CheckCircle, Users, Calendar, BarChart, 
-  Bell, Settings, HelpCircle, ClipboardList 
+  Bell, Settings, ClipboardList, User // Added User icon
 } from "lucide-react";
-import NotificationDropdown from "./notification/NotificationDropdown"; // Correct path based on folder structure
+import NotificationDropdown from "./notification/NotificationDropdown";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false); // State for toggling notification dropdown
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
   const handleNotificationClick = () => {
-    setIsNotificationOpen(!isNotificationOpen); // Toggle notification dropdown visibility
+    setIsNotificationOpen(!isNotificationOpen);
   };
 
   return (
@@ -30,17 +30,16 @@ const Sidebar = () => {
           <NavItem to="/calendar" icon={<Calendar size={24} />} label="Calendar" isOpen={isOpen} />
           <NavItem to="/analytics" icon={<BarChart size={24} />} label="Analytics" isOpen={isOpen} />
           <NavItem to="/settings" icon={<Settings size={24} />} label="Settings" isOpen={isOpen} />
-          <NavItem to="/help" icon={<HelpCircle size={24} />} label="Help" isOpen={isOpen} />
+          <NavItem to="/profile" icon={<User size={24} />} label="Profile" isOpen={isOpen} /> {/* Replaced Help with Profile */}
           <NavItem to="/progress" icon={<ClipboardList size={24} />} label="Progress" isOpen={isOpen} />
         </nav>
       </div>
 
       {/* Notifications & Logout Section */}
       <div className="flex flex-col space-y-3">
-        {/* Bell Icon to toggle notifications */}
         <div className="relative flex items-center cursor-pointer" onClick={handleNotificationClick}>
-          <Bell size={24} /> {/* Bell icon */}
-          {isNotificationOpen && <NotificationDropdown />} {/* Show the NotificationDropdown when the state is true */}
+          <Bell size={24} />
+          {isNotificationOpen && <NotificationDropdown />}
         </div>
         <button className="p-2 bg-red-600 hover:bg-red-700 rounded">Logout</button>
       </div>
@@ -55,7 +54,6 @@ const NavItem = ({ to, icon, label, isOpen }) => (
   </Link>
 );
 
-// Props validation using PropTypes
 NavItem.propTypes = {
   to: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired,

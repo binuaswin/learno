@@ -1,69 +1,82 @@
-// frontend/src/ProfileContext.jsx
-import { createContext, useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import axios from "axios";
-import { DEFAULT_PROFILE_IMAGE } from "./constants";
+// frontend/src/components/Home/ProfileContext.jsx
+import { createContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import { DEFAULT_PROFILE_IMAGE } from './constants';
 
-// Create Context
 const ProfileContext = createContext();
 
-// Provider Component
-export const ProfileProvider = ({ children }) => {
+export const ProfileProvider = ({ children, user }) => {
   const [profileImage, setProfileImage] = useState(DEFAULT_PROFILE_IMAGE);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch profile image from backend on mount
   useEffect(() => {
     const fetchProfileImage = async () => {
       try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          const savedImage = localStorage.getItem("profileImage");
-          if (savedImage) {
-            setProfileImage(savedImage);
-          }
+        if (!user) {
+          console.log('ProfileProvider - No user, using default image');
+          setProfileImage(DEFAULT_PROFILE_IMAGE);
+          setLoading(false);
           return;
         }
 
-        const response = await axios.get("http://localhost:5000/api/auth/profile", { // Updated endpoint
+        const token = localStorage.getItem('token') || document.cookie.match(/token=([^;]+)/)?.[1];
+        if (!token) {
+          console.log('ProfileProvider - No token, checking localStorage');
+          const savedImage = localStorage.getItem('profileImage');
+          if (savedImage) {
+            setProfileImage(savedImage);
+          } else {
+            setProfileImage(DEFAULT_PROFILE_IMAGE);
+          }
+          setLoading(false);
+          return;
+        }
+
+        console.log('ProfileProvider - Fetching profile with token');
+        const response = await axios.get('http://localhost:5000/api/profile/me', {
           headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true,
         });
-        const backendImage = response.data.profileImage || localStorage.getItem("profileImage") || DEFAULT_PROFILE_IMAGE;
+        console.log('ProfileProvider - Profile fetch response:', response.data);
+        const backendImage = response.data.user.profileImage || localStorage.getItem('profileImage') || DEFAULT_PROFILE_IMAGE;
         setProfileImage(backendImage);
-        localStorage.setItem("profileImage", backendImage); // Sync localStorage
+        localStorage.setItem('profileImage', backendImage);
       } catch (err) {
-        console.error("Error fetching profile image:", err);
-        setError("Failed to load profile image");
-        const savedImage = localStorage.getItem("profileImage") || DEFAULT_PROFILE_IMAGE;
+        console.error('ProfileProvider - Error fetching profile image:', err.response?.data || err.message);
+        setError(err.response?.data?.message || err.message || 'Failed to load profile image');
+        const savedImage = localStorage.getItem('profileImage') || DEFAULT_PROFILE_IMAGE;
         setProfileImage(savedImage);
       } finally {
         setLoading(false);
       }
     };
     fetchProfileImage();
-  }, []);
+  }, [user]);
 
-  // Update profile image and sync with backend
   const updateProfileImage = async (image) => {
     try {
-      const token = localStorage.getItem("token");
-      if (!token) throw new Error("No token available");
+      const token = localStorage.getItem('token') || document.cookie.match(/token=([^;]+)/)?.[1];
+      if (!token) throw new Error('No token available');
 
       setProfileImage(image);
-      localStorage.setItem("profileImage", image);
+      localStorage.setItem('profileImage', image);
 
-      await axios.put(
-        "http://localhost:5000/api/auth/profile", // Updated endpoint
+      console.log('ProfileProvider - Updating profile image with token');
+      const response = await axios.put(
+        'http://localhost:5000/api/profile/me',
         { profileImage: image },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
       );
+      console.log('ProfileProvider - Profile update response:', response.data);
     } catch (err) {
-      console.error("Error updating profile image:", err);
-      setError("Failed to update profile image");
+      console.error('ProfileProvider - Error updating profile image:', err.response?.data || err.message);
+      setError(err.response?.data?.message || err.message || 'Failed to update profile image');
     }
   };
 
+  console.log('ProfileProvider - Rendering with profileImage:', profileImage, 'loading:', loading, 'error:', error);
   return (
     <ProfileContext.Provider value={{ profileImage, updateProfileImage, loading, error }}>
       {children}
@@ -71,10 +84,9 @@ export const ProfileProvider = ({ children }) => {
   );
 };
 
-// Define PropTypes
 ProfileProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  user: PropTypes.object,
 };
 
-// Export Context for useProfile hook
 export default ProfileContext;

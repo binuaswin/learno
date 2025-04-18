@@ -1,21 +1,22 @@
 const jwt = require('jsonwebtoken');
 
 const verifyToken = (req, res, next) => {
-  // Try both cookies and headers for token (flexibility)
-  let token = req.cookies?.token || req.headers.authorization?.split(' ')[1];
+  // Prioritize Authorization header, fallback to cookies
+  let token = req.headers.authorization?.replace('Bearer ', '') || req.cookies?.token;
+
+  console.log('Token received:', token); // Debug
 
   if (!token) {
-    console.log('No token found in cookies or headers'); // Debugging (remove in production)
-    return res.status(401).json({ message: 'Unauthorized' });
+    return res.status(401).json({ message: 'Unauthorized: No token provided' });
   }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log('Decoded token:', decoded); // Debugging (remove in production)
+    console.log('Decoded user:', decoded); // Debug
     req.user = decoded;
     next();
   } catch (error) {
-    console.log('Token verification error:', error.message); // Debugging (remove in production)
+    console.error('Token verification error:', error.message);
     if (error.name === 'TokenExpiredError') {
       return res.status(401).json({ message: 'Token expired', error: 'TokenExpired' });
     }
@@ -25,14 +26,12 @@ const verifyToken = (req, res, next) => {
 
 const verifyRole = (roles = []) => {
   return (req, res, next) => {
-    if (!req.user || !req.user.role) {
-      console.log('No user or role in request'); // Debugging (remove in production)
-      return res.status(401).json({ message: 'Unauthorized' });
+    const userRole = req.user?.role;
+    if (!userRole) {
+      return res.status(401).json({ message: 'Unauthorized: No user role found' });
     }
-
-    if (roles.length && !roles.includes(req.user.role)) {
-      console.log('Forbidden: Role mismatch for', req.user.role, 'required:', roles); // Debugging (remove in production)
-      return res.status(403).json({ message: 'Forbidden' });
+    if (roles.length > 0 && !roles.includes(userRole)) {
+      return res.status(403).json({ message: 'Forbidden: Access denied' });
     }
     next();
   };

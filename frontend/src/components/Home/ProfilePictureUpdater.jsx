@@ -7,6 +7,7 @@ import axios from "axios";
 const ProfilePictureUpdater = () => {
   const { profileImage, updateProfileImage } = useProfile();
   const [imageSrc, setImageSrc] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
@@ -16,6 +17,15 @@ const ProfilePictureUpdater = () => {
   const handleFileChange = (event) => {
     const file = event.target.files?.[0];
     if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        setError("Image must be under 5MB.");
+        return;
+      }
+      if (!file.type.match(/^image\/(jpeg|png|gif)$/)) {
+        setError("Only JPEG, PNG, or GIF images are allowed.");
+        return;
+      }
+      setSelectedFile(file);
       const reader = new FileReader();
       reader.onload = () => {
         setImageSrc(reader.result);
@@ -31,25 +41,33 @@ const ProfilePictureUpdater = () => {
   }, []);
 
   const handleCropImage = async () => {
-    if (!imageSrc || !croppedAreaPixels) return;
+    if (!imageSrc || !croppedAreaPixels || !selectedFile) return;
 
     try {
-      const croppedImage = await getCroppedImg(imageSrc, croppedAreaPixels);
+      const croppedImageBlob = await getCroppedImg(imageSrc, croppedAreaPixels);
       const token = localStorage.getItem("token");
       if (!token) throw new Error("No token available");
 
-      updateProfileImage(croppedImage);
+      const formData = new FormData();
+      formData.append("profileImage", croppedImageBlob, `cropped-${Date.now()}.png`);
 
-      await axios.put(
-        "http://localhost:5000/api/auth/profile",
-        { profileImage: croppedImage },
-        { headers: { Authorization: `Bearer ${token}` } }
+      const res = await axios.put(
+        "http://localhost:5000/api/profile/me",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
 
+      updateProfileImage(res.data.user.profileImage);
       setShowCropper(false);
+      setError(null);
     } catch (err) {
       console.error("Error updating profile image:", err);
-      setError("Failed to update profile image");
+      setError(err.response?.data?.message || "Failed to update profile image");
     }
   };
 
@@ -94,7 +112,10 @@ const ProfilePictureUpdater = () => {
             </div>
             <div className="flex justify-between mt-4">
               <button
-                onClick={() => setShowCropper(false)}
+                onClick={() => {
+                  setShowCropper(false);
+                  setSelectedFile(null);
+                }}
                 className="flex items-center gap-1 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
               >
                 <X size={18} />
@@ -122,7 +143,7 @@ const getCroppedImg = async (imageSrc, cropArea) => {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
-  if (!ctx) return "";
+  if (!ctx) throw new Error("Canvas context not available");
 
   const { width, height } = cropArea;
   canvas.width = width;
@@ -140,7 +161,11 @@ const getCroppedImg = async (imageSrc, cropArea) => {
     height
   );
 
-  return canvas.toDataURL("image/png");
+  return new Promise((resolve) => {
+    canvas.toBlob((blob) => {
+      resolve(blob);
+    }, "image/png");
+  });
 };
 
 const createImage = (url) =>

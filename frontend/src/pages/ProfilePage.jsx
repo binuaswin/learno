@@ -1,166 +1,254 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Profile.css";
-import ProgressOverview from "../components/ProgressOverview";
-import ActivityLogSection from "../components/ActivityLogSection";
-import ProfilePictureUpdater from "../components/Home/ProfilePictureUpdater";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./ProfilePage.css";
+
+import SkillDevelopmentTracker from "../components/SkillDevelopmentTracker";
+import StudyPlannerOverview from "../components/StudyPlannerOverview";
+import SettingsAndPreferences from "../components/SettingAndPreferences";
+import UserActivityLog from "../components/UserActivityLog";
 
 const ProfilePage = () => {
-  const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const [profileData, setProfileData] = useState({ name: "", username: "", email: "", phone: "", bio: "", location: "", profileImage: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    username: "",
+    email: "",
+    phone: "",
+    bio: "",
+    location: "",
+    profileImage: "",
+  });
+  const [selectedFile, setSelectedFile] = useState(null);
   const [editMode, setEditMode] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", bio: "" });
-  const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProfile = async () => {
       try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          navigate("/");
-          return;
-        }
-
-        const profileResponse = await axios.get("http://localhost:5000/api/auth/profile", { // Fixed endpoint
-          headers: { Authorization: `Bearer ${token}` },
+        const res = await axios.get("http://localhost:5000/api/profile/me", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          withCredentials: true,
         });
-        setUser(profileResponse.data);
-        setFormData({
-          name: profileResponse.data.name,
-          email: profileResponse.data.email,
-          bio: profileResponse.data.bio || "",
-        });
-
-        const activitiesResponse = await axios.get("http://localhost:5000/api/auth/activities", { // Fixed endpoint
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setActivities(activitiesResponse.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        localStorage.removeItem("token");
-        navigate("/");
+        setProfileData(res.data.user);
+        setFormData(res.data.user);
+      } catch (err) {
+        console.error("Error fetching profile:", err.response?.data || err.message);
+        toast.error("Failed to load profile data.");
       } finally {
         setLoading(false);
       }
     };
-    fetchData();
-  }, [navigate]);
+
+    fetchProfile();
+  }, []);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.put(
-        "http://localhost:5000/api/auth/profile", // Fixed endpoint
-        formData,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      setUser(response.data);
-      setEditMode(false);
-      alert("Profile updated successfully!");
-    } catch (error) {
-      console.error("Error updating profile:", error);
-      alert("Failed to update profile.");
+    const { name, value, files } = e.target;
+    if (name === "profileImage" && files[0]) {
+      const file = files[0];
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error("Image must be under 5MB.");
+        return;
+      }
+      if (!file.type.match(/^image\/(jpeg|png|gif)$/)) {
+        toast.error("Only JPEG, PNG, or GIF images are allowed.");
+        return;
+      }
+      setSelectedFile(file);
+      // Show preview
+      const reader = new FileReader();
+      reader.onloadend = () =>
+        setFormData((prev) => ({ ...prev, profileImage: reader.result }));
+      reader.readAsDataURL(file);
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
+  const handleSave = async () => {
+    try {
+      const formDataToSend = new FormData();
+      const fields = ['name', 'username', 'email', 'phone', 'bio', 'location'];
+      fields.forEach((key) => {
+        if (formData[key]) {
+          formDataToSend.append(key, formData[key]);
+        }
+      });
+      if (selectedFile) {
+        formDataToSend.append("profileImage", selectedFile);
+      }
+
+      const formDataEntries = {};
+      for (let [key, value] of formDataToSend.entries()) {
+        formDataEntries[key] = value instanceof File ? value.name : value;
+      }
+      console.log("Sending profile data:", formDataEntries);
+
+      const res = await axios.put("http://localhost:5000/api/profile/me", formDataToSend, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      });
+
+      setProfileData(res.data.user);
+      setFormData(res.data.user); // Sync formData with server response
+      setSelectedFile(null);
+      setEditMode(false);
+      toast.success("Profile updated successfully!");
+    } catch (err) {
+      console.error("Update error:", err.response?.data || err.message);
+      toast.error(err.response?.data?.message || "Error updating profile. Check file type or size.");
+    }
   };
 
-  if (loading) return <div className="profile-loading">Loading...</div>;
+  const toggleTheme = () =>
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+
+  const containerClass = theme === "light" ? "light-theme" : "dark-theme";
+
+  if (loading) return <div className="loading-message">Loading profile...</div>;
 
   return (
-    <div className="profile-page-container">
-      <div className="profile-header">
-        <div className="flex items-center space-x-4 border-b pb-4">
-          <ProfilePictureUpdater />
-          <div>
-            <h2 className="text-xl font-semibold text-black">User Profile</h2>
-            <p className="text-sm text-black">Manage your account settings</p>
+    <div className={`profile-container ${containerClass}`}>
+      <ToastContainer position="top-right" />
+      <div className="profile-content">
+        <div className="profile-card">
+          <div className="profile-header">
+            <h2>User Profile</h2>
+            <button onClick={toggleTheme} className="toggle-btn">
+              Toggle {theme === "light" ? "Dark" : "Light"} Mode
+            </button>
+          </div>
+
+          <div className="profile-picture-section">
+            <img
+              src={
+                profileData.profileImage
+                  ? `http://localhost:5000${profileData.profileImage}?t=${Date.now()}`
+                  : "https://via.placeholder.com/120"
+              }
+              alt="Profile"
+              className="profile-picture"
+              onError={() => toast.error("Failed to load profile image")}
+            />
+            {editMode && (
+              <input
+                type="file"
+                name="profileImage"
+                accept="image/jpeg,image/png,image/gif"
+                onChange={handleChange}
+                className="file-input"
+              />
+            )}
+          </div>
+
+          <div className="form-section">
+            {editMode && (
+              <div className="edit-hint">
+                ✏️ You are in edit mode. Don’t forget to save your changes!
+              </div>
+            )}
+
+            {[
+              { label: "Full Name", name: "name" },
+              { label: "Username", name: "username" },
+              { label: "Email", name: "email", type: "email" },
+              { label: "Phone Number", name: "phone", type: "tel" },
+              { label: "Location", name: "location" },
+            ].map(({ label, name, type = "text" }) => (
+              <div key={name} className="form-group">
+                <label>{label}</label>
+                {editMode ? (
+                  <input
+                    type={type}
+                    name={name}
+                    value={formData[name] || ""}
+                    onChange={handleChange}
+                    className="input-field"
+                  />
+                ) : (
+                  <p className="text-content">{profileData[name]}</p>
+                )}
+              </div>
+            ))}
+
+            <div className="form-group">
+              <label>Bio</label>
+              {editMode ? (
+                <textarea
+                  name="bio"
+                  value={formData.bio || ""}
+                  onChange={handleChange}
+                  className="input-field"
+                />
+              ) : (
+                <p className="text-content">{profileData.bio}</p>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label>Account Status</label>
+              <p className="status-text">
+                {profileData.status || "Active"}
+              </p>
+            </div>
+
+            <div className="button-group">
+              {editMode ? (
+                <>
+                  <button onClick={handleSave} className="save-btn">
+                    Save
+                  </button>
+                  <button
+                    onClick={() => {
+                      setFormData(profileData);
+                      setSelectedFile(null);
+                      setEditMode(false);
+                    }}
+                    className="cancel-btn"
+                  >
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={() => setEditMode(true)}
+                  className="edit-btn"
+                >
+                  Edit Profile
+                </button>
+              )}
+            </div>
           </div>
         </div>
-        {editMode ? (
-          <form onSubmit={handleUpdate} className="profile-form">
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="input"
-              placeholder="Enter your name"
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="input"
-              placeholder="Enter your email"
-            />
-            <textarea
-              name="bio"
-              value={formData.bio}
-              onChange={handleChange}
-              className="input textarea"
-              placeholder="Enter your bio"
-            />
-            <button type="submit" className="edit-profile-btn">Save</button>
-            <button type="button" className="edit-profile-btn cancel" onClick={() => setEditMode(false)}>
-              Cancel
-            </button>
-          </form>
-        ) : (
-          <>
-            <h2 className="profile-name">{user?.name}</h2>
-            <p className="profile-email">{user?.email}</p>
-            <p className="profile-description">{user?.bio || "No bio set"}</p>
-            <button className="edit-profile-btn" onClick={() => setEditMode(true)}>
-              Edit Profile
-            </button>
-          </>
-        )}
-      </div>
 
-      <div className="achievements-container">
-        <h3 className="achievements-title">Achievements</h3>
-        <div className="achievements-grid">
-          <div className="achievement-item">
-            <p className="achievement-value">{user?.learning_progress?.length || 0}</p>
-            <p className="achievement-label">Modules Completed</p>
-          </div>
-          <div className="achievement-item">
-            <p className="achievement-value">3</p>
-            <p className="achievement-label">Skills Mastered</p>
-          </div>
-          <div className="achievement-item">
-            <p className="achievement-value">10</p>
-            <p className="achievement-label">Projects Completed</p>
-          </div>
-          <div className="achievement-item">
-            <p className="achievement-value">15</p>
-            <p className="achievement-label">Certificates Earned</p>
-          </div>
+        <div className="profile-section">
+          <h3>🎯 Skill Development</h3>
+          <SkillDevelopmentTracker />
+        </div>
+
+        <div className="profile-section">
+          <h3>🧠 Study Planner Overview</h3>
+          <StudyPlannerOverview />
+        </div>
+
+        <div className="profile-section">
+          <h3>⚙️ Settings & Preferences</h3>
+          <SettingsAndPreferences />
+        </div>
+
+        <div className="profile-section">
+          <h3>📊 User Activity Log</h3>
+          <UserActivityLog />
         </div>
       </div>
-
-      <ProgressOverview />
-
-      <div className="settings-container">
-        <h3 className="settings-title">Settings</h3>
-        <button className="settings-btn">Change Password</button>
-        <button className="settings-btn">Update Preferences</button>
-        <button className="settings-btn" onClick={handleLogout}>Logout</button>
-      </div>
-
-      <ActivityLogSection activities={activities} />
     </div>
   );
 };

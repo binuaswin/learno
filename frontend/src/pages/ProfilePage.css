@@ -1,0 +1,145 @@
+/* Theme Styles */
+.light-theme {
+    background-color: #f3f4f6;
+    color: #1f2937;
+  }
+  
+  .dark-theme {
+    background-color: #111827;
+    color: #f9fafb;
+  }
+  
+  /* Base Container */
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Content */
+  .profile-content {
+    padding: 2rem;
+    flex: 1;
+  }
+  
+  /* Card */
+  .profile-card {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: inherit;
+  }
+  
+  /* Header */
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .toggle-btn {
+    padding: 0.5rem 1rem;
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  /* Profile Picture */
+  .profile-picture-section {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+  }
+  
+  .file-input {
+    margin-top: 0.5rem;
+  }
+  
+  /* Form */
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+  }
+  
+  .text-content {
+    font-size: 1rem;
+    margin-top: 0.25rem;
+  }
+  
+  .status-text {
+    font-weight: bold;
+    color: #10b981;
+  }
+  
+  /* Buttons */
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .save-btn {
+    background-color: #2563eb;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    border: none;
+  }
+  
+  .cancel-btn {
+    background-color: #9ca3af;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    border: none;
+  }
+  .edit-hint {
+    font-size: 0.95rem;
+    color: #f39c12;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .edit-btn {
+    background-color: #22c55e;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    border: none;
+  }
+  
+  
+  /* Loading */
+  .loading-message {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+  }
+  

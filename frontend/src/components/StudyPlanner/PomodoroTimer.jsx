@@ -1,6 +1,7 @@
+//frontend/src/components/StudyPlanner/PomodoroTimer.jsx
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
+// Add your CSS styles here
 const PomodoroTimer = ({
   tasks = [],
   onTimeTracked = () => {},

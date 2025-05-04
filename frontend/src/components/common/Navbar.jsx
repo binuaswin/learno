@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "../components/authUtils";
+import { useAuth } from "../auth/Authcontext"; // Adjust the import path as necessary
 
 const Navbar = () => {
   const { logout, user } = useAuth();
@@ -21,7 +21,7 @@ const Navbar = () => {
         {user && (
           <div className="space-x-4">
             <Link to="/dashboard" className="text-white">
-              Dashboard
+              Da
             </Link>
             <Link to="/learning-modules" className="text-white">
               Learning Modules

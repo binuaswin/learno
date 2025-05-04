@@ -1,4 +1,4 @@
-//backend/models/User.js 
+//backend/models/User.js
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
@@ -34,6 +34,13 @@ const UserSchema = new mongoose.Schema({
   preferences: {
     theme: { type: String, default: 'dark' },
     notifications: { type: Boolean, default: true },
+    timeZone: { type: String, default: 'UTC' },
+    notificationSettings: {
+      upcomingTasks: { type: Boolean, default: true },
+      deadlines: { type: Boolean, default: true },
+      reminders: { type: Boolean, default: true },
+      method: { type: String, default: 'in-app' },
+    },
   },
   learning_progress: [{
     skill_id: { type: String, required: true },
@@ -43,11 +50,22 @@ const UserSchema = new mongoose.Schema({
     progress: { type: Number, min: 0, max: 100, default: 0 },
   }],
   study_tasks: [{
-    task_id: { type: String, required: true },
+    _id: { type: String, required: true },
     title: { type: String, required: true },
-    deadline: { type: String },
+    dueDate: { type: Date },
     priority: { type: String, enum: ['Low', 'Medium', 'High'], default: 'Medium' },
+    subject: { type: String, default: '' },
     status: { type: String, enum: ['Pending', 'Completed', 'Overdue'], default: 'Pending' },
+    timeSpent: { type: Number, default: 0 },
+    completion: { type: Number, min: 0, max: 100, default: 0 },
+    timeEstimate: { type: Number, default: 0 },
+  }],
+  reminders: [{
+    _id: { type: String, required: true },
+    taskId: { type: String, required: true },
+    message: { type: String, required: true },
+    time: { type: Date, required: true },
+    type: { type: String, default: 'custom' },
   }],
   activities: [{
     action: { type: String, required: true },

@@ -1,0 +1,183 @@
+/* frontend/src/components/CalendarIntegration.css */
+
+/* Root container */
+.calendar {
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    max-width: 48rem; /* Matches StudyPlannerOverview, TaskList, StudyTaskList */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .dark-theme .calendar {
+    background: #2d3748;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Header */
+  .calendar h3 {
+    font-size: 1.5rem; /* Matches StudyPlannerOverview .overview-title */
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 24px;
+  }
+  
+  .dark-theme .calendar h3 {
+    color: #e2e8f0; /* Light text for dark theme */
+  }
+  
+  /* View toggle */
+  .view-toggle {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  
+  .toggle-button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    color: #4a5568;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  
+  .toggle-button:hover {
+    background: #e5e7eb;
+    border-color: #9ca3af;
+  }
+  
+  .toggle-button.active {
+    background: #3b82f6; /* Blue for active state */
+    color: #ffffff;
+    border-color: #3b82f6;
+  }
+  
+  .toggle-button.active:hover {
+    background: #2563eb;
+  }
+  
+  .dark-theme .toggle-button {
+    background: #4a5568;
+    border-color: #718096;
+    color: #e2e8f0;
+  }
+  
+  .dark-theme .toggle-button:hover {
+    background: #6b7280;
+  }
+  
+  .dark-theme .toggle-button.active {
+    background: #60a5fa;
+    border-color: #60a5fa;
+  }
+  
+  .dark-theme .toggle-button.active:hover {
+    background: #3b82f6;
+  }
+  
+  /* Month view - days grid */
+  .days {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Single column on mobile */
+    gap: 12px;
+  }
+  
+  @media (min-width: 768px) {
+    .days {
+      grid-template-columns: repeat(7, 1fr); /* 7-column calendar on desktop */
+    }
+  }
+  
+  /* Day container */
+  .day {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 12px;
+    min-height: 120px;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .dark-theme .day {
+    background: #4a5568;
+    border-color: #718096;
+  }
+  
+  /* Day number */
+  .day span {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 8px;
+  }
+  
+  .dark-theme .day span {
+    color: #e2e8f0;
+  }
+  
+  /* Day view */
+  .day-view .day {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Task card */
+  .task-card {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    color: #1a202c;
+    border-left: 4px solid transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: move; /* Indicate draggable */
+  }
+  
+  .dark-theme .task-card {
+    background: #6b7280;
+    color: #e2e8f0;
+  }
+  
+  /* Task states */
+  .task-card.completed {
+    border-left-color: #16a34a; /* Matches TaskList, StudyTaskList completed */
+    text-decoration: line-through;
+    color: #6b7280;
+  }
+  
+  .dark-theme .task-card.completed {
+    color: #9ca3af;
+  }
+  
+  .task-card.overdue {
+    border-left-color: #ef4444; /* Red for overdue */
+  }
+  
+  .task-card.upcoming {
+    border-left-color: #3b82f6; /* Matches TaskList, StudyTaskList pending */
+  }
+  
+  /* Dragging styles */
+  .task-card[aria-grabbed="true"] {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+  
+  /* Placeholder for drag-and-drop */
+  [aria-dropeffect="move"] {
+    background: #e5e7eb;
+    border: 2px dashed #9ca3af;
+    border-radius: 6px;
+  }
+  
+  .dark-theme [aria-dropeffect="move"] {
+    background: #4a5568;
+    border-color: #cbd5e0;
+  }

@@ -1,4 +1,4 @@
-// src/components/AuthContext.jsx
+// src/components/auth/Authcontext.jsx
 import { createContext, useContext } from "react";
 
 // Context

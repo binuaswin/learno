@@ -1,0 +1,278 @@
+{"error":"jwt expired","level":"error","message":"Token verification failed","timestamp":"2025-04-30T06:56:53.579Z"}
+{"error":"Unauthorized: Token expired","level":"error","message":"Server error:","stack":"Error: Unauthorized: Token expired\n    at C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\middleware\\authMiddleware.js:39:13\n    at asyncUtilWrap (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express-async-handler\\index.js:3:20)\n    at Layer.handle [as handle_request] (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2025-04-30T06:56:53.609Z"}
+{"error":"jwt expired","level":"error","message":"Token verification failed","timestamp":"2025-04-30T06:56:53.723Z"}
+{"error":"Unauthorized: Token expired","level":"error","message":"Server error:","stack":"Error: Unauthorized: Token expired\n    at C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\middleware\\authMiddleware.js:39:13\n    at asyncUtilWrap (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express-async-handler\\index.js:3:20)\n    at Layer.handle [as handle_request] (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2025-04-30T06:56:53.729Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:09:27.519Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:09:27.531Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:10:12.213Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:10:33.096Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:10:33.120Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:11:30.595Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:11:30.604Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:11:38.155Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:11:38.177Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:15:27.824Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:15:27.844Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:15:30.253Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:15:30.286Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:15:43.929Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:15:43.942Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:15:58.954Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:15:58.972Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:16:03.176Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:16:03.231Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:16:14.242Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:16:14.252Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:16:19.041Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:16:19.071Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:16:25.550Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:16:25.566Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:19:52.240Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:19:52.255Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:20:15.092Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:20:15.159Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:25:58.995Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:25:59.043Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:32:00.290Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:32:00.337Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:38:32.166Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:38:32.182Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:39:53.151Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:39:53.232Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:41:39.102Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-04-30T11:41:39.875Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T04:12:09.792Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T04:12:09.821Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T04:12:19.811Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T04:12:19.848Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:38:20.057Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:38:20.127Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:38:38.268Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:38:38.313Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:38:38.314Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:38:38.326Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:38:47.941Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:38:47.953Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:38:47.955Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:38:47.965Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:39:06.047Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:39:06.071Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:39:06.073Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:39:06.085Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:39:16.771Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:39:16.801Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:39:16.803Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:39:16.819Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:40:07.966Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:40:44.378Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:40:44.395Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:41:41.873Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:41:41.907Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:41:41.910Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:41:41.924Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:42:02.678Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:42:02.708Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:42:02.710Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:42:02.725Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:26.604Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:26.629Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:26.640Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:26.648Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:29.431Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:29.450Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:29.452Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:29.478Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:30.813Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:30.830Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:32.796Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:32.816Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:32.820Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T07:55:32.829Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:05:24.324Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:05:24.402Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:05:47.370Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:05:47.585Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:05:47.592Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:05:47.724Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:06:10.076Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:06:11.929Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:08:25.573Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:08:38.898Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:08:39.826Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:11:31.600Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:11:31.613Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:11:31.616Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:11:31.641Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:11:44.917Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:11:44.937Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:11:44.948Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:11:44.955Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:11:51.714Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:11:51.735Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:20:45.929Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:20:45.940Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:20:45.942Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:20:45.954Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:25:20.069Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:25:20.079Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:25:20.083Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:25:20.090Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:25:24.914Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:25:24.931Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:25:24.937Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:25:24.945Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:27:40.459Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:27:40.474Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:27:51.281Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:27:51.302Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:27:51.307Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:27:51.316Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:27:52.854Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:27:52.867Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:27:52.870Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:27:52.878Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:28:00.000Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:28:00.033Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:30:55.146Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:30:55.393Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:36:49.981Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:36:49.986Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:37:09.066Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:37:09.093Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:38:18.702Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-01T08:38:18.763Z"}
+{"error":"Invalid router for /api/tasks","level":"error","message":"❌ Failed to attach route /api/tasks:","timestamp":"2025-05-02T04:07:52.667Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:08:41.321Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:08:41.408Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:08:49.498Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:08:49.531Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:08:51.793Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:08:51.839Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:11:11.979Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:11:11.993Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:15:44.913Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:02.333Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:03.058Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:03.499Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:03.658Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:03.898Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:13.750Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:13.752Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:13.772Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:13.775Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:37.207Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:37.210Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:37.221Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:33:37.223Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:34:17.202Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:42:12.443Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:43:33.321Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:43:35.251Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:51:30.461Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:51:30.465Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:51:34.790Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:51:34.793Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:51:34.846Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:51:34.849Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:51:36.260Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:51:36.262Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:52:06.257Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:52:06.258Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:52:07.245Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T04:52:07.265Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T05:31:58.034Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T05:35:55.212Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T05:38:08.847Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T05:38:08.848Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T05:38:09.972Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T05:38:09.973Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T05:38:16.079Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T05:38:16.088Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T05:38:20.622Z"}
+{"level":"error","message":"Server error:","timestamp":"2025-05-02T05:38:20.623Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T05:39:48.912Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T05:40:59.403Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T05:42:30.745Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T05:48:04.162Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T06:10:01.916Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T06:35:37.150Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T06:42:10.055Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T06:42:39.046Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T06:51:09.500Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T06:57:24.790Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T06:57:38.570Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T06:57:44.436Z"}
+{"error":"Unauthorized: User not found","level":"error","message":"Token verification failed","timestamp":"2025-05-02T06:58:28.812Z"}
+{"error":"Unauthorized: User not found","level":"error","message":"Token verification failed","timestamp":"2025-05-02T06:58:28.914Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T07:09:33.242Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T07:09:53.247Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T07:09:56.771Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T07:09:56.802Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T07:10:11.050Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T07:10:11.063Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T07:57:46.024Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T07:58:06.021Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T07:58:43.439Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-02T07:58:43.445Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-03T03:51:42.886Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-03T03:52:02.907Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-03T04:25:49.409Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-03T04:26:09.432Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-03T04:26:25.497Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-03T04:26:25.514Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-03T04:28:47.256Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-03T04:28:47.269Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T04:16:35.779Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T04:16:55.796Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T04:17:16.322Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T04:17:16.325Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T05:47:10.090Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T05:47:30.119Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T05:54:59.259Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T05:55:02.434Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T05:57:51.202Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T05:58:11.224Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:19:14.373Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:23:21.344Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:23:21.756Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:23:23.677Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:35:57.972Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:36:17.977Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:36:20.925Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:36:20.940Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:36:30.390Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:36:30.394Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:45:09.589Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:45:29.597Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:48:12.821Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:48:12.834Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:55:01.630Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T06:55:01.631Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:25:38.071Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:25:58.115Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:26:59.379Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:26:59.384Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:30:30.625Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:30:50.639Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:33:58.481Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:34:18.500Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:35:06.700Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:35:06.702Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:35:12.881Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:35:12.896Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:51:50.873Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T09:52:10.902Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:22:51.031Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:23:11.050Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:26:29.609Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:26:32.016Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:26:32.777Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:26:33.466Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:39:55.260Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:40:57.751Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:41:17.785Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:44:58.677Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:46:06.970Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:46:26.996Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:47:22.161Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-04T10:47:22.176Z"}

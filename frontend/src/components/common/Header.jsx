@@ -1,9 +1,9 @@
 import { Bell, Search, BookOpen, ClipboardList, Calendar, TrendingUp, LogOut } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useProfile } from './Home/useProfile';
+import { useProfile } from '../Home/useProfile';
 import { useState, useEffect } from 'react';
-import NotificationDropdown from './Home/notification/NotificationDropdown';
-import { useAuth } from "../components/AuthContext";
+import NotificationDropdown from '../Home/notification/NotificationDropdown';
+import { useAuth } from "../auth/Authcontext";
 
 const Header = () => {
   const navigate = useNavigate();

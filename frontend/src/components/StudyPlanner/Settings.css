@@ -1,0 +1,160 @@
+/* frontend/src/components/StudyPlanner/Settings.css */
+
+/* CSS Variables for Theming */
+:root {
+    --bg-light: #ffffff;
+    --bg-dark: #1f2937;
+    --text-light: #1f2937;
+    --text-dark: #e5e7eb;
+    --border-light: #d1d5db;
+    --border-dark: #4b5563;
+    --error: #ef4444;
+    --input-bg-light: #ffffff;
+    --input-bg-dark: #374151;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Base Container */
+  .settings {
+    padding: 1.5rem;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Section Styling */
+  .settings-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Headings */
+  .settings h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+  
+  .settings-section h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Select Inputs */
+  .timezone-select,
+  .method-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    background-color: var(--input-bg-light);
+    color: var(--text-light);
+    font-size: 0.875rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .timezone-select:focus,
+  .method-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  }
+  
+  /* Notification Options Container */
+  .notification-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Individual Notification Option */
+  .notification-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .notification-option input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    accent-color: #3b82f6;
+    cursor: pointer;
+  }
+  
+  .notification-option input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  }
+  
+  .notification-option label {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    cursor: pointer;
+  }
+  
+  /* Paragraph Text */
+  .settings p {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+  }
+  
+  /* Error Message */
+  .error {
+    color: var(--error);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  /* Dark Mode */
+  [data-theme="dark"] .settings {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+  
+  [data-theme="dark"] .settings h3,
+  [data-theme="dark"] .settings-section h4,
+  [data-theme="dark"] .settings p,
+  [data-theme="dark"] .notification-option label {
+    color: var(--text-dark);
+  }
+  
+  [data-theme="dark"] .timezone-select,
+  [data-theme="dark"] .method-select {
+    background-color: var(--input-bg-dark);
+    border-color: var(--border-dark);
+    color: var(--text-dark);
+  }
+  
+  [data-theme="dark"] .notification-option input[type="checkbox"] {
+    border-color: var(--border-dark);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 640px) {
+    .settings {
+      padding: 1rem;
+    }
+  
+    .settings h3 {
+      font-size: 1.125rem;
+    }
+  
+    .settings-section h4 {
+      font-size: 0.875rem;
+    }
+  
+    .timezone-select,
+    .method-select,
+    .notification-option label,
+    .settings p {
+      font-size: 0.75rem;
+    }
+  }

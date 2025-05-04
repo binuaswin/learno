@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css'; // Assuming a CSS file
-import { useAuth } from "../components/AuthContext"; // Correct import
+import { useAuth } from "../components/auth/Authcontext"; // Correct import
 
 const SignUp = () => {
   const [name, setName] = useState('');

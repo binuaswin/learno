@@ -1,0 +1,105 @@
+/* frontend/src/components/StudyPlanner/MotivationalSection.css */
+
+/* Root container */
+.motivational-section {
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    max-width: 48rem; /* Matches StudyPlannerOverview, TaskList, StudyTaskList, CalendarIntegration */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .dark-theme .motivational-section {
+    background: #2d3748;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Header */
+  .motivational-section h3 {
+    font-size: 1.5rem; /* Matches StudyPlannerOverview .overview-title */
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 24px;
+  }
+  
+  .dark-theme .motivational-section h3 {
+    color: #e2e8f0; /* Light text for dark theme */
+  }
+  
+  /* Motivational content */
+  .motivational-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  /* Blockquote (quote or tip) */
+  .motivational-content blockquote {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: #4a5568;
+    border-left: 4px solid #3b82f6; /* Blue accent, matches upcoming/pending */
+    padding: 12px 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .dark-theme .motivational-content blockquote {
+    color: #cbd5e0;
+    background: #4a5568;
+    border-left-color: #60a5fa;
+  }
+  
+  /* Next tip button */
+  .next-tip-button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background: #16a34a; /* Matches StudyTaskList, TaskList complete button */
+    color: #ffffff;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .next-tip-button:hover {
+    background: #15803d;
+  }
+  
+  .dark-theme .next-tip-button {
+    background: #22c55e;
+  }
+  
+  .dark-theme .next-tip-button:hover {
+    background: #16a34a;
+  }
+  
+  /* Encouragement message */
+  .encouragement {
+    background: #ecfdf5; /* Light green for positive feedback */
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .dark-theme .encouragement {
+    background: #064e3b; /* Darker green for dark theme */
+  }
+  
+  .encouragement p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1a202c;
+    margin: 0;
+  }
+  
+  .dark-theme .encouragement p {
+    color: #d1fae5; /* Light green text for contrast */
+  }

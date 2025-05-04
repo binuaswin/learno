@@ -1,0 +1,247 @@
+/* frontend/src/components/StudyPlanner/PomodoroTimer.css */
+
+/* Root container */
+.pomodoro-timer {
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    max-width: 48rem; /* Matches StudyPlannerOverview, TaskList, StudyTaskList, CalendarIntegration, MotivationalSection */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .dark-theme .pomodoro-timer {
+    background: #2d3748;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Header */
+  .pomodoro-timer h3 {
+    font-size: 1.5rem; /* Matches StudyPlannerOverview .overview-title */
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 24px;
+  }
+  
+  .dark-theme .pomodoro-timer h3 {
+    color: #e2e8f0; /* Light text for dark theme */
+  }
+  
+  /* Timer container */
+  .timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  
+  .dark-theme .timer-container {
+    background: #4a5568;
+  }
+  
+  /* Timer details */
+  .timer-details {
+    text-align: center;
+  }
+  
+  .timer-details p {
+    font-size: 1rem;
+    color: #4a5568;
+    margin: 8px 0;
+  }
+  
+  .dark-theme .timer-details p {
+    color: #cbd5e0;
+  }
+  
+  /* Focus/break time */
+  .focus-time {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #16a34a; /* Green for focus time */
+  }
+  
+  .focus-time.break {
+    color: #3b82f6; /* Blue for break time */
+  }
+  
+  .dark-theme .focus-time {
+    color: #22c55e;
+  }
+  
+  .dark-theme .focus-time.break {
+    color: #60a5fa;
+  }
+  
+  /* Timer controls */
+  .timer-controls {
+    display: flex;
+    gap: 12px;
+  }
+  
+  /* Start/Pause button */
+  .start-button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background: #16a34a; /* Matches StudyTaskList, TaskList complete button */
+    color: #ffffff;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .start-button:hover:not(:disabled) {
+    background: #15803d;
+  }
+  
+  .start-button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+  }
+  
+  .dark-theme .start-button {
+    background: #22c55e;
+  }
+  
+  .dark-theme .start-button:hover:not(:disabled) {
+    background: #16a34a;
+  }
+  
+  /* Reset button */
+  .reset-button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    color: #4a5568;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  
+  .reset-button:hover {
+    background: #e5e7eb;
+    border-color: #9ca3af;
+  }
+  
+  .dark-theme .reset-button {
+    background: #4a5568;
+    border-color: #718096;
+    color: #e2e8f0;
+  }
+  
+  .dark-theme .reset-button:hover {
+    background: #6b7280;
+  }
+  
+  /* Task selection */
+  .task-selection {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Task select dropdown */
+  .task-select {
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    color: #4a5568;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+    background: #ffffff;
+  }
+  
+  .task-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  }
+  
+  .dark-theme .task-select {
+    background: #4a5568;
+    border-color: #718096;
+    color: #e2e8f0;
+  }
+  
+  /* Customization form */
+  .customize-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  @media (min-width: 768px) {
+    .customize-form {
+      grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+    }
+    .customize-form button {
+      grid-column: span 1; /* Button in third column */
+    }
+  }
+  
+  /* Form labels */
+  .customize-form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+    color: #4a5568;
+  }
+  
+  .dark-theme .customize-form label {
+    color: #cbd5e0;
+  }
+  
+  /* Custom inputs */
+  .custom-input {
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    color: #4a5568;
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+  
+  .custom-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  }
+  
+  .dark-theme .custom-input {
+    background: #4a5568;
+    border-color: #718096;
+    color: #e2e8f0;
+  }
+  
+  /* Customize apply button */
+  .customize-button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #3b82f6; /* Blue for apply, matches CalendarIntegration toggle */
+    color: #ffffff;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .customize-button:hover {
+    background: #2563eb;
+  }
+  
+  .dark-theme .customize-button {
+    background: #60a5fa;
+  }
+  
+  .dark-theme .customize-button:hover {
+    background: #3b82f6;
+  }

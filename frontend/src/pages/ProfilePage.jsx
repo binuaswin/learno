@@ -1,12 +1,13 @@
+//frontend/src/pages/ProfilePage.jsx
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ProfilePage.css";
 
-import SkillDevelopmentTracker from "../components/SkillDevelopmentTracker";
-import StudyPlannerOverview from "../components/StudyPlannerOverview";
-import SettingsAndPreferences from "../components/SettingAndPreferences";
+import SkillDevelopmentTracker from "../components/skill development/SkillDevelopmentTracker";
+import StudyPlannerOverview from "../components/StudyPlanner/StudyPlannerOverview";
+import SettingsAndPreferences from "../components/settings/SettingAndPreferences";
 import UserActivityLog from "../components/UserActivityLog";
 
 const ProfilePage = () => {

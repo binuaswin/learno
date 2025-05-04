@@ -1,5 +1,5 @@
 import './AdaptiveLearningPage.css'; // Import the new CSS file
-import Header from "../components/Header";
+import Header from "../components/common/Header";
 import Sidebar from "../components/Home/SideBar";
 import OverviewSection from "../components/AdaptiveLearning/Overviewsection";
 import PersonalizedLearningPath from "../components/AdaptiveLearning/PersonalizedLearningPath";

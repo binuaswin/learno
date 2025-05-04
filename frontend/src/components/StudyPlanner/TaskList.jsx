@@ -1,4 +1,4 @@
-// TaskList.jsx
+// frontend/src/components/StudyPlanner/TaskList.jsx
 import  { useState } from 'react';
 import './TaskList.css';
 

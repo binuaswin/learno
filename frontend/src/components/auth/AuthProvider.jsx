@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from "./Authcontext";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

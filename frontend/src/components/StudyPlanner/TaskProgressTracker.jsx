@@ -1,22 +1,14 @@
+// frontend/src/components/StudyPlanner/TaskProgressTracker.jsx
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const TaskProgressTracker = ({
-  tasks = [
-    {
-      id: '1',
-      name: 'Study for History Exam',
-      dueDate: '2025-02-15',
-      completion: 75, // Percentage
-      timeSpent: 60,  // Minutes
-      timeEstimate: 120, // Minutes
-    },
-  ],
-  onProgressUpdate = () => {},
-}) => {
-  const [taskProgress, setTaskProgress] = useState(tasks);
+const TaskProgressTracker = ({ tasks = [], onProgressUpdate }) => {
+  const [, setTaskProgress] = useState(tasks);
 
-  // Calculate time left based on current date and due date
+  if (!Array.isArray(tasks)) {
+    return <div className="task-progress-tracker"><p className="error">Unable to load tasks. Please try again.</p></div>;
+  }
+
   const calculateTimeLeft = (dueDate) => {
     const now = new Date();
     const due = new Date(dueDate);
@@ -25,35 +17,29 @@ const TaskProgressTracker = ({
     return diffDays >= 0 ? `${diffDays} days` : 'Overdue';
   };
 
-  // Update completion percentage
   const handleCompletionChange = (taskId, newCompletion) => {
-    const updatedTasks = taskProgress.map((task) =>
-      task.id === taskId ? { ...task, completion: Math.max(0, Math.min(100, newCompletion)) } : task
-    );
-    setTaskProgress(updatedTasks);
-    onProgressUpdate(updatedTasks);
+    const completion = Math.max(0, Math.min(100, newCompletion));
+    setTaskProgress(tasks.map((task) => task.id === taskId ? { ...task, completion } : task));
+    onProgressUpdate(taskId, completion);
   };
 
   return (
     <div className="task-progress-tracker">
       <h3>Task Progress</h3>
       <div className="progress-list">
-        {taskProgress.map((task) => (
+        {tasks.map((task) => (
           <div key={task.id} className="progress-item">
             <div className="task-info">
               <p className="task-name">{task.name}</p>
               <p className="task-details">
                 Completion: {task.completion}% | Time Spent: {task.timeSpent} min | 
                 Time Left: {calculateTimeLeft(task.dueDate)}
-                {task.timeEstimate && ` | Estimated: ${task.timeEstimate} min`}
+                {task.timeEstimate ? ` | Estimated: ${task.timeEstimate} min` : ''}
               </p>
             </div>
             <div className="progress-container">
               <div className="progress-bar">
-                <div
-                  className="progress"
-                  style={{ width: `${task.completion}%` }}
-                ></div>
+                <div className="progress" style={{ width: `${task.completion}%` }}></div>
               </div>
               <input
                 type="number"
@@ -81,8 +67,8 @@ TaskProgressTracker.propTypes = {
       timeSpent: PropTypes.number.isRequired,
       timeEstimate: PropTypes.number,
     })
-  ),
-  onProgressUpdate: PropTypes.func,
+  ).isRequired,
+  onProgressUpdate: PropTypes.func.isRequired,
 };
 
 export default TaskProgressTracker;

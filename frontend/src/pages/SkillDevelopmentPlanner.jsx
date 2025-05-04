@@ -1,5 +1,5 @@
 import './SkillDevelopmentPlanner.css';
-import Header from "../components/Header";
+import Header from "../components/common/Header";
 import Sidebar from "../components/Home/SideBar";
 import AnalyticsAndInsights from "../components/skill development/AnalyticsAndInsights";
 import LearningResources from "../components/skill development/LearningResourse"; // Note: "Resourse" might be a typo, should be "Resource"?

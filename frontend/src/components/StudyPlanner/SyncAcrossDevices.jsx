@@ -1,3 +1,4 @@
+//frontend/src/components/StudyPlanner/SyncAcrossDevices.jsx
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 

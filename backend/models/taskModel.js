@@ -1,36 +1,40 @@
-//backend/models/taskModels.js
+//backend/models/taskModel.js
 const mongoose = require('mongoose');
 
-// Define Task Schema
-const taskSchema = new mongoose.Schema({
-  userId: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'User', 
-    required: true 
+const skillSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
   },
-  title: { 
-    type: String, 
-    required: true 
+  skillName: {
+    type: String,
+    required: true,
+    trim: true,
+    maxlength: 100,
   },
-  description: { 
-    type: String, 
-    required: true 
+  category: {
+    type: String,
+    enum: ['Technical', 'Creative', 'Soft Skills', ''],
+    default: 'Technical',
   },
-  dueDate: { 
-    type: Date, 
-    required: true 
+  description: {
+    type: String,
+    trim: true,
+    maxlength: 500,
   },
-  priority: { 
-    type: String, 
-    required: true, 
-    enum: ['Low', 'Medium', 'High'] 
+  targetLevel: {
+    type: String,
+    enum: ['Beginner', 'Intermediate', 'Advanced', ''],
+    default: 'Beginner',
   },
-  status: { 
-    type: String, 
-    default: 'Pending', 
-    enum: ['Pending', 'Completed', 'Overdue'] 
+  deadline: {
+    type: Date,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 
-// Create and export the Task model
-module.exports = mongoose.model('Task', taskSchema);
+module.exports = mongoose.model('Skill', skillSchema);

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-
+import './Settings.css';
 const Settings = ({
   onTimeZoneChange = () => {},
   onNotificationSettingsChange = () => {},
@@ -9,13 +9,18 @@ const Settings = ({
     upcomingTasks: true,
     deadlines: true,
     reminders: true,
-    method: 'in-app', // 'in-app', 'email', 'push'
+    method: 'in-app',
   },
 }) => {
   const [timeZone, setTimeZone] = useState(initialTimeZone);
   const [notificationSettings, setNotificationSettings] = useState(initialNotificationSettings);
 
-  // Sample time zones (simplified list; use a library like `moment-timezone` for a full list)
+  // Guard for invalid props
+  if (typeof initialNotificationSettings !== 'object' || !initialNotificationSettings) {
+    return <div className="settings"><p className="error">Unable to load settings.</p></div>;
+  }
+
+  // Sample time zones (simplified; consider using a library like moment-timezone for production)
   const timeZones = [
     'UTC',
     'America/New_York',
@@ -109,10 +114,13 @@ const Settings = ({
           </select>
         </div>
         <p>
-          Notifications: {Object.entries(notificationSettings)
+          Notifications:{' '}
+          {Object.entries(notificationSettings)
             .filter(([key]) => key !== 'method')
-            .map(([key, value]) => (value ? key : '')).filter(Boolean).join(', ') || 'None'} 
-          {' '}via {notificationSettings.method}
+            .map(([key, value]) => (value ? key : ''))
+            .filter(Boolean)
+            .join(', ') || 'None'}{' '}
+          via {notificationSettings.method}
         </p>
       </div>
     </div>

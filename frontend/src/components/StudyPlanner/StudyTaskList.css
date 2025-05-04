@@ -1,0 +1,220 @@
+/* frontend/src/components/StudyPlanner/StudyTaskList.css */
+
+/* Root container */
+.study-task-list {
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    max-width: 48rem; /* Matches StudyPlannerOverview, TaskList */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .dark-theme .study-task-list {
+    background: #2d3748;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Header */
+  .study-task-list h3 {
+    font-size: 1.5rem; /* Matches StudyPlannerOverview .overview-title */
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 24px;
+  }
+  
+  .dark-theme .study-task-list h3 {
+    color: #e2e8f0; /* Light text for dark theme */
+  }
+  
+  /* Add task form */
+  .add-task-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  
+  @media (min-width: 768px) {
+    .add-task-form {
+      grid-template-columns: repeat(2, 1fr); /* Two columns on desktop */
+    }
+    .add-task-form button {
+      grid-column: span 2; /* Button spans both columns */
+    }
+  }
+  
+  /* Form inputs */
+  .add-task-form input,
+  .add-task-form select {
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    color: #4a5568;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+  }
+  
+  .add-task-form input:focus,
+  .add-task-form select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  }
+  
+  .dark-theme .add-task-form input,
+  .dark-theme .add-task-form select {
+    background: #4a5568;
+    border-color: #718096;
+    color: #e2e8f0;
+  }
+  
+  .add-task-form input::placeholder {
+    color: #9ca3af;
+  }
+  
+  .dark-theme .add-task-form input::placeholder {
+    color: #cbd5e0;
+  }
+  
+  /* Form submit button */
+  .add-task-form button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #16a34a; /* Matches TaskList complete button */
+    color: #ffffff;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .add-task-form button:hover {
+    background: #15803d;
+  }
+  
+  .dark-theme .add-task-form button {
+    background: #22c55e;
+  }
+  
+  .dark-theme .add-task-form button:hover {
+    background: #16a34a;
+  }
+  
+  /* Task list */
+  .study-task-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Task item */
+  .study-task-list li {
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    background: #f9fafb; /* Matches TaskList .task-item */
+  }
+  
+  .dark-theme .study-task-list li {
+    background: #4a5568;
+  }
+  
+  /* Pending task */
+  .study-task-list .pending {
+    border-left: 4px solid #3b82f6; /* Matches TaskList .pending */
+  }
+  
+  /* Completed task */
+  .study-task-list .completed {
+    border-left: 4px solid #16a34a; /* Matches TaskList .completed */
+  }
+  
+  .study-task-list .completed span {
+    text-decoration: line-through;
+    color: #6b7280;
+  }
+  
+  .dark-theme .study-task-list .completed span {
+    color: #9ca3af;
+  }
+  
+  /* Task details */
+  .study-task-list span {
+    color: #1a202c;
+    font-size: 1rem;
+  }
+  
+  .dark-theme .study-task-list span {
+    color: #e2e8f0;
+  }
+  
+  /* Task action buttons */
+  .study-task-list button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+    margin-left: 8px;
+  }
+  
+  /* Complete/Undo button */
+  .study-task-list .pending button:first-of-type {
+    background: #16a34a; /* Matches TaskList complete button */
+    color: #ffffff;
+  }
+  
+  .study-task-list .pending button:first-of-type:hover {
+    background: #15803d;
+  }
+  
+  .study-task-list .completed button:first-of-type {
+    background: #6b7280; /* Matches TaskList undo button */
+    color: #ffffff;
+  }
+  
+  .study-task-list .completed button:first-of-type:hover {
+    background: #4b5563;
+  }
+  
+  .dark-theme .study-task-list .pending button:first-of-type {
+    background: #22c55e;
+  }
+  
+  .dark-theme .study-task-list .pending button:first-of-type:hover {
+    background: #16a34a;
+  }
+  
+  .dark-theme .study-task-list .completed button:first-of-type {
+    background: #9ca3af;
+  }
+  
+  .dark-theme .study-task-list .completed button:first-of-type:hover {
+    background: #6b7280;
+  }
+  
+  /* Delete button */
+  .study-task-list button:last-of-type {
+    background: #ef4444; /* Matches TaskList delete button */
+    color: #ffffff;
+  }
+  
+  .study-task-list button:last-of-type:hover {
+    background: #dc2626;
+  }
+  
+  .dark-theme .study-task-list button:last-of-type {
+    background: #f87171;
+  }
+  
+  .dark-theme .study-task-list button:last-of-type:hover {
+    background: #ef4444;
+  }

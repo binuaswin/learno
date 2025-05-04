@@ -1,58 +1,73 @@
+// frontend/src/components/StudyPlanner/TaskFiltersAndSorting.jsx
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import taskServices from '../../services/taskServices.js';
+import { toast } from 'react-toastify';
 
 const TaskFiltersAndSorting = ({ tasks = [], onFilterAndSort }) => {
-  // Filter states
   const [filterSubject, setFilterSubject] = useState('');
   const [filterPriority, setFilterPriority] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
-
-  // Sort state
   const [sortBy, setSortBy] = useState('');
-  const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
+  const [sortOrder, setSortOrder] = useState('asc');
 
-  // Unique options for filters
-  const subjects = [...new Set(tasks.map((task) => task.subject))];
+  if (!Array.isArray(tasks)) {
+    return <div className="filters"><p className="error">Unable to load filters. Please try again.</p></div>;
+  }
+
+  const subjects = [...new Set(tasks.map((task) => task.subject))].filter(Boolean);
   const priorities = ['High', 'Medium', 'Low'];
-  const statuses = ['Pending', 'In Progress', 'Completed'];
+  const statuses = ['In Progress', 'Completed', 'Overdue'];
 
-  // Handle filtering and sorting
-  const applyFiltersAndSort = () => {
-    let filteredTasks = [...tasks];
+  const applyFiltersAndSort = async () => {
+    try {
+      let filteredTasks = [...tasks];
 
-    // Apply filters
-    if (filterSubject) {
-      filteredTasks = filteredTasks.filter((task) => task.subject === filterSubject);
-    }
-    if (filterPriority) {
-      filteredTasks = filteredTasks.filter((task) => task.priority === filterPriority);
-    }
-    if (filterStatus) {
-      filteredTasks = filteredTasks.filter((task) => task.status === filterStatus);
-    }
-
-    // Apply sorting
-    if (sortBy) {
-      filteredTasks.sort((a, b) => {
-        let comparison = 0;
-        if (sortBy === 'dueDate') {
-          comparison = new Date(a.dueDate) - new Date(b.dueDate);
-        } else if (sortBy === 'priority') {
-          const priorityOrder = { High: 3, Medium: 2, Low: 1 };
-          comparison = priorityOrder[a.priority] - priorityOrder[b.priority];
-        } else if (sortBy === 'timeEstimate') {
-          const timeA = a.timeEstimate ? parseInt(a.timeEstimate) : 0;
-          const timeB = b.timeEstimate ? parseInt(b.timeEstimate) : 0;
-          comparison = timeA - timeB;
+      // Apply backend filtering for large datasets
+      if (tasks.length > 100) { // Threshold for backend filtering
+        const filters = {};
+        if (filterSubject) filters.subject = filterSubject;
+        if (filterPriority) filters.priority = filterPriority;
+        if (filterStatus) filters.status = filterStatus;
+        filteredTasks = await taskServices.filterTasks(filters);
+      } else {
+        // Client-side filtering
+        if (filterSubject) {
+          filteredTasks = filteredTasks.filter((task) => task.subject === filterSubject);
         }
-        return sortOrder === 'asc' ? comparison : -comparison;
-      });
-    }
+        if (filterPriority) {
+          filteredTasks = filteredTasks.filter((task) => task.priority === filterPriority);
+        }
+        if (filterStatus) {
+          filteredTasks = filteredTasks.filter((task) => task.status === filterStatus);
+        }
+      }
 
-    onFilterAndSort(filteredTasks);
+      // Apply sorting
+      if (sortBy) {
+        filteredTasks.sort((a, b) => {
+          let comparison = 0;
+          if (sortBy === 'dueDate') {
+            comparison = new Date(a.dueDate) - new Date(b.dueDate);
+          } else if (sortBy === 'priority') {
+            const priorityOrder = { High: 3, Medium: 2, Low: 1 };
+            comparison = priorityOrder[a.priority] - priorityOrder[b.priority];
+          } else if (sortBy === 'timeEstimate') {
+            const timeA = a.timeEstimate ? parseInt(a.timeEstimate) : 0;
+            const timeB = b.timeEstimate ? parseInt(b.timeEstimate) : 0;
+            comparison = timeA - timeB;
+          }
+          return sortOrder === 'asc' ? comparison : -comparison;
+        });
+      }
+
+      onFilterAndSort(filteredTasks);
+    } catch (error) {
+      console.error('Filter and sort error:', error.message);
+      toast.error(error.message || 'Failed to apply filters');
+    }
   };
 
-  // Trigger filtering and sorting on change
   const handleFilterChange = (filterType, value) => {
     if (filterType === 'subject') setFilterSubject(value);
     if (filterType === 'priority') setFilterPriority(value);
@@ -73,7 +88,6 @@ const TaskFiltersAndSorting = ({ tasks = [], onFilterAndSort }) => {
   return (
     <div className="filters">
       <div className="filter-buttons">
-        {/* Filter Dropdowns */}
         <select
           value={filterSubject}
           onChange={(e) => handleFilterChange('subject', e.target.value)}
@@ -86,7 +100,6 @@ const TaskFiltersAndSorting = ({ tasks = [], onFilterAndSort }) => {
             </option>
           ))}
         </select>
-
         <select
           value={filterPriority}
           onChange={(e) => handleFilterChange('priority', e.target.value)}
@@ -99,7 +112,6 @@ const TaskFiltersAndSorting = ({ tasks = [], onFilterAndSort }) => {
             </option>
           ))}
         </select>
-
         <select
           value={filterStatus}
           onChange={(e) => handleFilterChange('status', e.target.value)}
@@ -113,8 +125,6 @@ const TaskFiltersAndSorting = ({ tasks = [], onFilterAndSort }) => {
           ))}
         </select>
       </div>
-
-      {/* Sort Dropdown */}
       <select
         value={sortBy}
         onChange={(e) => handleSortChange(e.target.value)}
@@ -132,11 +142,13 @@ const TaskFiltersAndSorting = ({ tasks = [], onFilterAndSort }) => {
 TaskFiltersAndSorting.propTypes = {
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       subject: PropTypes.string.isRequired,
       priority: PropTypes.oneOf(['High', 'Medium', 'Low']).isRequired,
-      status: PropTypes.oneOf(['Pending', 'In Progress', 'Completed']).isRequired,
+      status: PropTypes.oneOf(['In Progress', 'Completed', 'Overdue']).isRequired,
       dueDate: PropTypes.string.isRequired,
-      timeEstimate: PropTypes.string,
+      timeEstimate: PropTypes.number,
     })
   ).isRequired,
   onFilterAndSort: PropTypes.func.isRequired,

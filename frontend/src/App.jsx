@@ -15,15 +15,15 @@ import StudyPlanner from "./pages/StudyPlanner";
 import SkillDevelopmentPlanner from "./pages/SkillDevelopmentPlanner";
 import ProgressDashboard from "./pages/ProgressDashboard";
 import LogoutPage from "./pages/LogoutPage";
-import { ThemeProvider } from "./components/ThemeContext";
+import { ThemeProvider } from "./components/settings/ThemeContext";
 import { ProfileProvider } from "./components/Home/ProfileContext";
 import AdaptiveLearningPage from "./pages/AdaptiveLearningPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
-import Header from "./components/Header";
-import { useAuth } from "./components/AuthContext";
-import AuthProvider from "./components/AuthProvider"; // ✅ Updated import
-import ErrorBoundary from "./components/ErrorBoundary";
+import Header from "./components/common/Header";
+import { useAuth } from "./components/auth/Authcontext"; // ✅ Updated import
+import AuthProvider from "./components/auth/AuthProvider"; // ✅ Updated import
+import ErrorBoundary from "./components/auth/ErrorBoundary";
 import "./App.css";
 
 const RouteTracker = () => {

@@ -1,6 +1,7 @@
+//frontend/src/components/StudyPlanner/MotivationalSection.jsx
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-
+import './MotivationalSection.css'; // Add your CSS styles here
 const MotivationalSection = ({
   tasks = [],
   completedThreshold = 5, // Number of tasks to trigger encouragement

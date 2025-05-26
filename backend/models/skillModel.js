@@ -1,3 +1,4 @@
+//backend/model/skillModel.js
 const mongoose = require('mongoose');
 
 const skillSchema = new mongoose.Schema({

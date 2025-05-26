@@ -1,75 +1,112 @@
+//backend/controllers/skillController.js
 const asyncHandler = require('express-async-handler');
-const Skill = require('../models/skillModel');
+const User = require('../models/User');
+const logger = require('../logger');
 
-exports.getSkills = asyncHandler(async (req, res) => {
-  const skills = await Skill.find({ user: req.user.id });
-  res.status(200).json({ skills });
+const getSkills = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user.id).select('learning_progress');
+  if (!user) {
+    logger.error(`User not found: ${req.user.id}`);
+    res.status(404);
+    throw new Error('User not found');
+  }
+  res.status(200).json({ skills: user.learning_progress });
 });
 
-exports.addSkill = asyncHandler(async (req, res) => {
-  const { skillName, category, description, targetLevel, deadline } = req.body;
+const addSkill = asyncHandler(async (req, res) => {
+  const { skillName, category, skill_id, level, progress } = req.body;
+
+  if (!skillName || !skill_id) {
+    logger.error(`Invalid skill input for user ${req.user.id}: ${JSON.stringify(req.body)}`);
+    res.status(400);
+    throw new Error('Skill name and ID are required');
+  }
+
+  const user = await User.findById(req.user.id);
+  if (!user) {
+    logger.error(`User not found: ${req.user.id}`);
+    res.status(404);
+    throw new Error('User not found');
+  }
+
+  const skillExists = user.learning_progress.some((s) => s.name === skillName);
+  if (skillExists) {
+    logger.error(`Skill already exists: ${skillName} for user ${req.user.id}`);
+    res.status(400);
+    throw new Error('Skill already added');
+  }
+
+  const newSkill = {
+    skill_id,
+    name: skillName.trim(),
+    category: category || 'Technical',
+    level: level || 'Beginner',
+    progress: Number(progress) || 0,
+  };
+
+  user.learning_progress.push(newSkill);
+  await user.save();
+
+  logger.info(`Skill added: ${skillName} for user ${req.user.id}`);
+  res.status(201).json({ skill: newSkill });
+});
+
+const updateSkill = asyncHandler(async (req, res) => {
+  const { id } = req.params; // skill_id
+  const { skillName, category, level, progress } = req.body;
 
   if (!skillName) {
+    logger.error(`Invalid skill update input for user ${req.user.id}: ${JSON.stringify(req.body)}`);
     res.status(400);
     throw new Error('Skill name is required');
   }
 
-  const skill = await Skill.create({
-    user: req.user.id,
-    skillName,
-    category,
-    description,
-    targetLevel,
-    deadline,
-  });
-
-  res.status(201).json({ success: true, skill });
-});
-
-exports.updateSkill = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  const { skillName, category, description, targetLevel, deadline } = req.body;
-
-  if (!skillName) {
-    res.status(400);
-    throw new Error('Skill name is required');
+  const user = await User.findById(req.user.id);
+  if (!user) {
+    logger.error(`User not found: ${req.user.id}`);
+    res.status(404);
+    throw new Error('User not found');
   }
 
-  const skill = await Skill.findById(id);
+  const skill = user.learning_progress.find((s) => s.skill_id === id);
   if (!skill) {
+    logger.error(`Skill not found: ${id} for user ${req.user.id}`);
     res.status(404);
     throw new Error('Skill not found');
   }
 
-  if (skill.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error('Not authorized to update this skill');
-  }
+  skill.name = skillName.trim();
+  skill.category = category || skill.category;
+  skill.level = level || skill.level;
+  skill.progress = progress !== undefined ? Number(progress) : skill.progress;
 
-  skill.skillName = skillName;
-  skill.category = category;
-  skill.description = description;
-  skill.targetLevel = targetLevel;
-  skill.deadline = deadline;
-
-  await skill.save();
+  await user.save();
+  logger.info(`Skill updated: ${skillName} for user ${req.user.id}`);
   res.status(200).json({ skill });
 });
 
-exports.deleteSkill = asyncHandler(async (req, res) => {
-  const { id } = req.params;
+const deleteSkill = asyncHandler(async (req, res) => {
+  const { id } = req.params; // skill_id
 
-  const skill = await Skill.findById(id);
-  if (!skill) {
+  const user = await User.findById(req.user.id);
+  if (!user) {
+    logger.error(`User not found: ${req.user.id}`);
+    res.status(404);
+    throw new Error('User not found');
+  }
+
+  const skillIndex = user.learning_progress.findIndex((s) => s.skill_id === id);
+  if (skillIndex === -1) {
+    logger.error(`Skill not found: ${id} for user ${req.user.id}`);
     res.status(404);
     throw new Error('Skill not found');
   }
 
-  if (skill.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error('Not authorized to delete this skill');
-  }
+  user.learning_progress.splice(skillIndex, 1);
+  await user.save();
 
-  await skill.remove();
+  logger.info(`Skill deleted: ${id} for user ${req.user.id}`);
   res.status(200).json({ message: 'Skill deleted' });
 });
+
+module.exports = { getSkills, addSkill, updateSkill, deleteSkill };

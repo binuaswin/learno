@@ -1,4 +1,4 @@
-import { Bell, Search, BookOpen, ClipboardList, Calendar, TrendingUp, LogOut } from 'lucide-react';
+import { Bell, Search, BookOpen, ClipboardList, Calendar, LogOut } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useProfile } from '../Home/useProfile';
 import { useState, useEffect } from 'react';
@@ -80,16 +80,11 @@ const Header = () => {
         />
         <Calendar
           className="text-gray-600 cursor-pointer"
-          onClick={() => navigate('/studyplanner')}
+          onClick={() => navigate('/skilldev')}
           title="Calendar"
           size={18}
         />
-        <TrendingUp
-          className="text-gray-600 cursor-pointer"
-          onClick={() => navigate('/skilldev')}
-          title="Skill Development"
-          size={18}
-        />
+        
         <div className="relative">
           <Bell
             className="text-gray-600 cursor-pointer"

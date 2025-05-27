@@ -1,3 +1,4 @@
+//frontend/src/components/skill development/skillchallenges.jsx
 import  { useState } from 'react';
 
 // Sample exercises data

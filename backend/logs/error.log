@@ -321,3 +321,9 @@
 {"level":"error","message":"Invalid res object:","timestamp":"2025-05-26T10:41:03.640Z"}
 {"level":"error","message":"Invalid res object:","timestamp":"2025-05-26T11:40:00.034Z"}
 {"level":"error","message":"Invalid res object:","timestamp":"2025-05-26T11:40:00.037Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-27T10:33:15.059Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-27T10:33:35.062Z"}
+{"level":"error","message":"Skill already exists: English for user 68247b4b84c891cdbdbf15ac","timestamp":"2025-05-27T10:33:37.120Z"}
+{"error":"jwt malformed","level":"error","message":"Token verification failed","timestamp":"2025-05-27T10:38:35.356Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-27T10:43:56.864Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-27T10:45:59.094Z"}

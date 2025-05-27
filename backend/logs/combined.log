@@ -791,3 +791,33 @@
 {"level":"error","message":"Invalid res object:","timestamp":"2025-05-26T10:41:03.640Z"}
 {"level":"info","message":"Token decoded successfully","timestamp":"2025-05-26T11:28:24.648Z","userId":"68247b4b84c891cdbdbf15ac"}
 {"level":"info","message":"Token decoded successfully","timestamp":"2025-05-26T11:28:24.678Z","userId":"68247b4b84c891cdbdbf15ac"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-26T11:40:00.034Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-26T11:40:00.037Z"}
+{"level":"info","message":"✅ Route /api/auth attached successfully","timestamp":"2025-05-27T10:32:26.595Z"}
+{"level":"info","message":"✅ Route /api/profile attached successfully","timestamp":"2025-05-27T10:32:26.609Z"}
+{"level":"info","message":"✅ Route /api/skills attached successfully","timestamp":"2025-05-27T10:32:26.647Z"}
+{"level":"info","message":"✅ Route /api/tasks attached successfully","timestamp":"2025-05-27T10:32:26.711Z"}
+{"level":"info","message":"✅ MongoDB Connected","timestamp":"2025-05-27T10:32:27.197Z"}
+{"level":"info","message":"🚀 Server running on port 5000","timestamp":"2025-05-27T10:32:27.222Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:33:05.326Z","userId":"68247b4b84c891cdbdbf15ac"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:33:05.377Z","userId":"68247b4b84c891cdbdbf15ac"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-27T10:33:15.059Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:33:26.574Z","userId":"68247b4b84c891cdbdbf15ac"}
+{"level":"info","message":"Skill added: English for user 68247b4b84c891cdbdbf15ac","timestamp":"2025-05-27T10:33:26.626Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-27T10:33:35.062Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:33:37.112Z","userId":"68247b4b84c891cdbdbf15ac"}
+{"level":"error","message":"Skill already exists: English for user 68247b4b84c891cdbdbf15ac","timestamp":"2025-05-27T10:33:37.120Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:33:50.646Z","userId":"68247b4b84c891cdbdbf15ac"}
+{"level":"info","message":"Skill added: Maths for user 68247b4b84c891cdbdbf15ac","timestamp":"2025-05-27T10:33:50.666Z"}
+{"error":"jwt malformed","level":"error","message":"Token verification failed","timestamp":"2025-05-27T10:38:35.356Z"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-27T10:43:56.864Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:44:51.945Z","userId":"683596ee7aabbd85eb83d404"}
+{"level":"info","message":"Skill added: JavaScript for user 683596ee7aabbd85eb83d404","timestamp":"2025-05-27T10:44:51.968Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:45:24.892Z","userId":"683596ee7aabbd85eb83d404"}
+{"level":"error","message":"Invalid res object:","timestamp":"2025-05-27T10:45:59.094Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:46:35.240Z","userId":"683596ee7aabbd85eb83d404"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:46:37.575Z","userId":"683596ee7aabbd85eb83d404"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:47:11.315Z","userId":"683596ee7aabbd85eb83d404"}
+{"level":"info","message":"Skill updated: Advanced JavaScript for user 683596ee7aabbd85eb83d404","timestamp":"2025-05-27T10:47:11.334Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-05-27T10:47:35.101Z","userId":"683596ee7aabbd85eb83d404"}
+{"level":"info","message":"Skill deleted: test-uuid-123 for user 683596ee7aabbd85eb83d404","timestamp":"2025-05-27T10:47:35.109Z"}

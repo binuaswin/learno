@@ -1,4 +1,4 @@
-//fronend/src/pages/SkillDevelopmentPlanner.jsx
+import { useState } from 'react';
 import './SkillDevelopmentPlanner.css';
 import Header from '../components/common/Header';
 import Sidebar from '../components/Home/SideBar';
@@ -17,9 +17,11 @@ import SyncAcrossDevices from '../components/skill development/SyncAcrossDevices
 import AddNewSkill from '../components/skill development/AddNewSkill';
 
 const SkillDevelopmentPlanner = () => {
+  const [newSkillAdded, setNewSkillAdded] = useState(0);
+
   const handleSkillAdded = (newSkill) => {
-    console.log(`New skill added: ${newSkill}`);
-    // Update SkillListTracker1 state or context if needed
+    console.log('SkillDevelopmentPlanner: New skill added', newSkill);
+    setNewSkillAdded((prev) => prev + 1);
   };
 
   return (
@@ -35,7 +37,7 @@ const SkillDevelopmentPlanner = () => {
           <SkillDevelopmentOverview />
         </div>
         <div className="skill-list-tracker">
-          <SkillListTracker1 />
+          <SkillListTracker1 newSkillAdded={newSkillAdded} />
         </div>
         <div className="add-new-skill">
           <AddNewSkill onSkillAdded={handleSkillAdded} />

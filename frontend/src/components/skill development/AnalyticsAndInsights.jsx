@@ -1,3 +1,4 @@
+//frontend/src/components/skill development/AnalyticsAndInsights.jsx
 import { useState } from 'react';
 import { Line } from 'react-chartjs-2'; // Chart.js for comparative analysis
 

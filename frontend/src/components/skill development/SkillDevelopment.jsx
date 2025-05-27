@@ -1,3 +1,4 @@
+//frontend/src/components/skill development/skillDevelopment.jsx
 import { useState, useEffect } from 'react';
 import './SkillDevelopment.css';
 

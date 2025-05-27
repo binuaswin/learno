@@ -1,3 +1,4 @@
+//frontend/src/components/skill development/LearningResources.jsx
 import { useState } from 'react';
 
 const PersonalizedSkillDevelopmentPlan = () => {

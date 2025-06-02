@@ -1,0 +1,26 @@
+.skill-list-tracker {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+}
+
+.skill-item {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.skill-item h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  color: #1a202c;
+}
+
+.skill-item p {
+  margin: 0.25rem 0;
+  color: #4a5568;
+}

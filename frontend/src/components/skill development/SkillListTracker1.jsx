@@ -1,90 +1,82 @@
 //frontend/src/components/skill development/skillListTracker1.jsx
-import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-//import './SkillListTracker1.css';
+import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
 
 const SkillListTracker1 = ({ newSkillAdded }) => {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchSkills = async () => {
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+
+  const fetchSkills = useCallback(async () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
       if (!token) {
-        throw new Error('No authentication token found.');
+        throw new Error('Please log in to view skills.');
       }
-
-      const res = await axios.get('http://localhost:5000/api/skills', {
+      console.debug(`[${new Date().toISOString()}] SkillListTracker1 - Fetching skills with GET ${API_URL}/api/skills`);
+      const res = await axios.get(`${API_URL}/api/skills`, {
         headers: { Authorization: `Bearer ${token}` },
+        withCredentials: true,
       });
 
-      setSkills(res.data.skills);
-      console.log('SkillListTracker1: Fetched skills', res.data.skills);
-    } catch (err) {
-      console.error('SkillListTracker1: Error fetching skills', err.message);
+      const fetchedSkills = Array.isArray(res.data.skills) ? res.data.skills : [];
+      setSkills(fetchedSkills);
+    } catch (error) {
+      console.error(`[${new Date().toISOString()}] SkillListTracker1 - Fetch error:`, error);
+      const errorMsg = error.response?.data?.message || 'Failed to load skills.';
+      toast.error(errorMsg);
+      if (error.response?.status === 401) {
+        localStorage.removeItem('token');
+        setTimeout(() => window.location.href = '/login', 1000);
+      } else if (error.response?.status === 404) {
+        toast.error(`Skills endpoint not found at ${API_URL}/api/skills. Ensure backend is running.`);
+      }
     } finally {
       setLoading(false);
     }
-  };
-
+  }, [API_URL]);
+  
   useEffect(() => {
     fetchSkills();
-  }, []);
+  }, [fetchSkills]);
 
   useEffect(() => {
     if (newSkillAdded) {
-      fetchSkills();
-      console.log('SkillListTracker1: Refreshing skills due to newSkillAdded');
+      const timer = setTimeout(() => {
+        fetchSkills();
+      }, 100);
+      return () => clearTimeout(timer);
     }
-  }, [newSkillAdded]);
-
-  const removeSkill = async (skillId) => {
-    try {
-      const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/skills/${skillId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setSkills(skills.filter((skill) => skill.skill_id !== skillId));
-      console.log('SkillListTracker1: Skill deleted', skillId);
-    } catch (err) {
-      console.error('SkillListTracker1: Error deleting skill', err.message);
-    }
-  };
-
-  if (loading) return <div>Loading skills...</div>;
+  }, [newSkillAdded, fetchSkills]);
 
   return (
-    <div className="mt-6">
-      <h2 className="text-2xl font-semibold text-blue-600">Skill List Tracker</h2>
-      <ul className="mt-4">
-        {skills.map((skill) => (
-          <li key={skill.skill_id} className="bg-white p-4 rounded-lg shadow-md mb-4">
-            <h3 className="text-xl font-bold">{skill.name}</h3>
-            <p className="text-gray-600">Category: {skill.category}</p>
-            <p className="text-gray-600">Level: {skill.level}</p>
-            <p className="text-gray-600">Progress: {skill.progress}%</p>
-            <div className="bg-gray-200 w-full rounded-full h-3 mt-2">
-              <div
-                className="bg-blue-500 h-3 rounded-full"
-                style={{ width: `${skill.progress}%` }}
-              ></div>
-            </div>
-            <button
-              className="bg-red-500 text-white px-4 py-1 rounded mt-2"
-              onClick={() => removeSkill(skill.skill_id)}
-            >
-              Remove Skill
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div className="skill-list-tracker">
+      <ToastContainer position="top-right" autoClose={3000} />
+      <h3>Your Skills</h3>
+      {loading ? (
+        <p>Loading skills...</p>
+      ) : skills.length === 0 ? (
+        <p>No skills added yet.</p>
+      ) : (
+        <ul>
+          {skills.map((skill) => (
+            <li key={skill.skill_id}>
+              {skill.name} ({skill.category}) - {skill.level} - Progress: {skill.progress}%
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
+
 SkillListTracker1.propTypes = {
-  newSkillAdded: PropTypes.bool,
+  newSkillAdded: PropTypes.bool.isRequired,
 };
 
 export default SkillListTracker1;

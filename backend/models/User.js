@@ -44,10 +44,11 @@ const UserSchema = new mongoose.Schema({
   },
   learning_progress: [{
     skill_id: { type: String, required: true },
-    name: { type: String, required: true },
+    name: { type: String, required: true, maxlength: 100 },
     category: { type: String, enum: ['Technical', 'Soft Skills', 'Creative', 'Other'], default: 'Technical' },
     level: { type: String, enum: ['Beginner', 'Intermediate', 'Advanced'], default: 'Beginner' },
     progress: { type: Number, min: 0, max: 100, default: 0 },
+    createdAt: { type: Date, default: Date.now },
   }],
   study_tasks: [{
     _id: { type: String, required: true },
@@ -74,5 +75,8 @@ const UserSchema = new mongoose.Schema({
   role: { type: String, enum: ['user', 'admin'], default: 'user' },
   refreshToken: { type: String, default: null },
 });
+
+// Add unique index on skill_id within learning_progress
+UserSchema.index({ 'learning_progress.skill_id': 1 }, { unique: true });
 
 module.exports = mongoose.model('User', UserSchema);

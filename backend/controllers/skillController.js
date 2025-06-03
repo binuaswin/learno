@@ -70,11 +70,7 @@ const updateSkill = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { name, category, level, progress } = req.body;
 
-  if (!name) {
-    logger.error(`[${new Date().toISOString()}] Invalid skill update input for user ${req.user._id}: ${JSON.stringify(req.body)}`);
-    res.status(400);
-    throw new Error('Skill name is required');
-  }
+  logger.debug(`[${new Date().toISOString()}] Updating skill ${id} for user ${req.user._id}: ${JSON.stringify(req.body)}`);
 
   const validCategories = ['Technical', 'Soft Skills', 'Creative', 'Other'];
   if (category && !validCategories.includes(category)) {
@@ -100,17 +96,23 @@ const updateSkill = asyncHandler(async (req, res) => {
   if (!skill) {
     logger.error(`[${new Date().toISOString()}] Skill not found: ${id} for user ${req.user._id}`);
     res.status(404);
-    throw new Error('Skill not found');
+    throw new Error(`Skill with ID ${id} not found`);
   }
 
-  skill.name = name.trim();
+  skill.name = name ? name.trim() : skill.name;
   skill.category = category || skill.category;
   skill.level = level || skill.level;
   skill.progress = progress !== undefined ? Number(progress) : skill.progress;
 
-  await user.save();
-  logger.info(`[${new Date().toISOString()}] Skill updated: ${name} (ID: ${id}) for user ${req.user._id}`);
-  res.status(200).json({ skill });
+  try {
+    await user.save();
+    logger.info(`[${new Date().toISOString()}] Skill updated: ${skill.name} (ID: ${id}) for user ${req.user._id}`);
+    res.status(200).json({ skill });
+  } catch (err) {
+    logger.error(`[${new Date().toISOString()}] Database error updating skill ${id} for user ${req.user._id}: ${err.message}`);
+    res.status(500);
+    throw new Error(`Database error: ${err.message}`);
+  }
 });
 
 const deleteSkill = asyncHandler(async (req, res) => {
@@ -183,7 +185,6 @@ const getChartData = asyncHandler(async (req, res) => {
   const skills = user.learning_progress || [];
   logger.debug(`[${new Date().toISOString()}] Chart data for user ${req.user._id}: ${skills.length} skills found`);
 
-  // Category Distribution (Pie Chart)
   const categories = ['Technical', 'Soft Skills', 'Creative', 'Other'];
   const categoryCounts = categories.map((cat) => 
     skills.filter((skill) => skill.category === cat).length
@@ -197,7 +198,6 @@ const getChartData = asyncHandler(async (req, res) => {
     }],
   };
 
-  // Progress Over Time (Line Chart)
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
   const progressData = {
     labels: months,
@@ -214,7 +214,6 @@ const getChartData = asyncHandler(async (req, res) => {
     })),
   };
 
-  // Mastery Levels (Bar Chart)
   const levelMap = { Beginner: 1, Intermediate: 2, Advanced: 3 };
   const masteryData = {
     labels: skills.map((skill) => skill.name),
@@ -229,4 +228,76 @@ const getChartData = asyncHandler(async (req, res) => {
   res.status(200).json({ categoryData, progressData, masteryData });
 });
 
-module.exports = { getSkills, addSkill, updateSkill, deleteSkill, getAnalytics, getChartData };
+const getSkillPlan = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id).select('learning_progress');
+  if (!user) {
+    logger.error(`[${new Date().toISOString()}] User not found: ${req.user._id}`);
+    res.status(404);
+    throw new Error('User not found');
+  }
+
+  const skills = user.learning_progress || [];
+  logger.debug(`[${new Date().toISOString()}] Skill plan for user ${req.user._id}: ${skills.length} skills found`);
+
+  const learningPath = skills.map((skill) => {
+    const progress = skill.progress;
+    const nextSteps = [];
+    if (progress < 50) {
+      nextSteps.push(`Complete ${skill.level} ${skill.name} Course`);
+      nextSteps.push(`Practice ${skill.name} Challenges`);
+      nextSteps.push(`Work on Basic ${skill.name} Projects`);
+      nextSteps.push('Achieve Milestone: 50% Progress');
+    } else if (progress < 80) {
+      nextSteps.push(`Complete Intermediate ${skill.name} Course`);
+      nextSteps.push(`Solve ${skill.name} Algorithms`);
+      nextSteps.push(`Work on ${skill.name} Projects`);
+      nextSteps.push('Achieve Milestone: 80% Progress');
+    } else {
+      nextSteps.push(`Complete Advanced ${skill.name} Course`);
+      nextSteps.push(`Contribute to Open-Source ${skill.name} Projects`);
+      nextSteps.push(`Mentor Others in ${skill.name}`);
+      nextSteps.push('Achieve Milestone: 100% Progress');
+    }
+    return { skill: skill.name, skill_id: skill.skill_id, category: skill.category, level: skill.level, nextSteps };
+  });
+
+  const skillRecommendations = [];
+  skills.forEach((skill) => {
+    if (skill.category === 'Technical') {
+      skillRecommendations.push({
+        skill: 'Data Structures',
+        reason: `Enhances your ${skill.name} skills with foundational knowledge.`,
+      });
+      skillRecommendations.push({
+        skill: skill.name === 'JavaScript' ? 'React' : 'Django',
+        reason: `Complements ${skill.name} for advanced ${skill.name === 'JavaScript' ? 'frontend' : 'backend'} development.`,
+      });
+    } else if (skill.category === 'Soft Skills') {
+      skillRecommendations.push({
+        skill: 'Leadership',
+        reason: `Builds on ${skill.name} for team collaboration.`,
+      });
+    } else if (skill.category === 'Creative') {
+      skillRecommendations.push({
+        skill: 'UI/UX Design',
+        reason: `Enhances ${skill.name} with user-centric design skills.`,
+      });
+    }
+  });
+
+  const adaptivePath = skills.map((skill) => {
+    const progress = skill.progress;
+    if (progress < 50) {
+      return `${skill.name} - Recommended: Focus on basic courses and tutorials.`;
+    } else if (progress < 80) {
+      return `${skill.name} - Recommended: Intermediate-level courses and real-world practice.`;
+    } else {
+      return `${skill.name} - Recommended: Advanced topics and challenging projects.`;
+    }
+  });
+
+  logger.info(`[${new Date().toISOString()}] Fetched skill plan for user ${req.user._id}`);
+  res.status(200).json({ learningPath, skillRecommendations, adaptivePath });
+});
+
+module.exports = { getSkills, addSkill, updateSkill, deleteSkill, getAnalytics, getChartData, getSkillPlan };

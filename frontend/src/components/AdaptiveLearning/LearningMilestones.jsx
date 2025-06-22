@@ -1,109 +1,96 @@
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import taskServices from '../../services/taskServices';
 
-const LearningMilestones = ({
-  achievements = [],
-  streak = 0,
-  completionBadges = [],
-}) => {
+const LearningMilestones = ({ achievements, streak, completionBadges }) => {
+  const handleIncrementStreak = async () => {
+    try {
+      await taskServices.incrementStreak();
+      toast.success(`Streak incremented to ${streak + 1} days!`);
+    } catch (err) {
+      console.error('Failed to increment streak:', err);
+      toast.error(err.message || 'Failed to increment streak.');
+    }
+  };
+
   return (
-    <section className="mb-8">
-      {/* Section Title */}
-      <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-        Learning Milestones
-      </h2>
+    <div className="space-y-6">
+      <ToastContainer position="top-right" />
+      <h2 className="text-xl font-semibold text-gray-800">Learning Milestones</h2>
 
-      {/* Achievements and Badges */}
-      <div className="mt-4">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Achievements and Badges
-        </h3>
-        {achievements.length > 0 ? (
-          <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {achievements.map((achievement, index) => (
-              <div
-                key={index}
-                className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow flex items-center gap-3"
-              >
-                <span className="text-2xl">🏆</span>
+      {/* Achievements */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Achievements</h3>
+        {achievements.length ? (
+          <ul className="space-y-2">
+            {achievements.map((achievement) => (
+              <li key={achievement.title} className="p-4 bg-gray-50 rounded-md shadow-sm">
+                <p className="font-medium text-gray-800">{achievement.title}</p>
+                <p className="text-gray-600">{achievement.description}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-500">No achievements earned yet.</p>
+        )}
+      </div>
+
+      {/* Streak */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Learning Streak</h3>
+        <div className="flex items-center space-x-2">
+          <span className="text-2xl text-orange-500">🔥</span>
+          <p className="text-gray-600">
+            {streak} {streak === 1 ? 'day' : 'days'} of continuous learning
+          </p>
+        </div>
+        {/* Optional: Button to simulate streak increment */}
+        <button
+          onClick={handleIncrementStreak}
+          className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+        >
+          Log Today’s Learning
+        </button>
+      </div>
+
+      {/* Badges */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Completion Badges</h3>
+        {completionBadges.length ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {completionBadges.map((badge) => (
+              <div key={badge.name} className="p-4 bg-gray-50 rounded-md shadow-sm flex items-center space-x-4">
+                <span className="text-2xl">🏅</span>
                 <div>
-                  <p className="font-medium text-gray-800 dark:text-white">
-                    {achievement.title}
-                  </p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {achievement.description}
-                  </p>
+                  <p className="font-medium text-gray-800">{badge.name}</p>
+                  <p className="text-gray-600">{badge.reason}</p>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            No achievements earned yet.
-          </p>
+          <p className="text-gray-500">No badges earned yet.</p>
         )}
       </div>
-
-      {/* Learning Streaks */}
-      <div className="mt-6">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Learning Streaks
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300 mt-2">
-          {streak > 0
-            ? `🔥 You’ve maintained a ${streak}-day learning streak! Keep it up!`
-            : 'Start learning consistently to build a streak!'}
-        </p>
-      </div>
-
-      {/* Completion Badges */}
-      <div className="mt-6">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Completion Badges
-        </h3>
-        {completionBadges.length > 0 ? (
-          <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {completionBadges.map((badge, index) => (
-              <div
-                key={index}
-                className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow flex items-center gap-3"
-              >
-                <span className="text-2xl">🎖️</span>
-                <div>
-                  <p className="font-medium text-gray-800 dark:text-white">
-                    {badge.name}
-                  </p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Earned for {badge.reason}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            No completion badges earned yet.
-          </p>
-        )}
-      </div>
-    </section>
+    </div>
   );
 };
 
-// PropTypes validation
 LearningMilestones.propTypes = {
   achievements: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
     })
-  ),
-  streak: PropTypes.number,
+  ).isRequired,
+  streak: PropTypes.number.isRequired,
   completionBadges: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       reason: PropTypes.string.isRequired,
     })
-  ),
+  ).isRequired,
 };
 
 export default LearningMilestones;

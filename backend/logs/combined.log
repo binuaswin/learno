@@ -548,3 +548,402 @@
 {"level":"info","message":"[2025-06-03T03:03:21.246Z] Skill updated: JavaScript (ID: test-uuid-1234) for user 683ddaec0d889a4585b9567e","timestamp":"2025-06-03T03:03:21.246Z"}
 {"level":"info","message":"Token decoded successfully","timestamp":"2025-06-03T03:03:21.254Z","userId":"683ddaec0d889a4585b9567e"}
 {"level":"info","message":"[2025-06-03T03:03:21.259Z] Fetched skill plan for user 683ddaec0d889a4585b9567e","timestamp":"2025-06-03T03:03:21.259Z"}
+{"level":"info","message":"[2025-06-21T06:28:05.033Z] ✅ Route /api/auth attached successfully","timestamp":"2025-06-21T06:28:05.040Z"}
+{"level":"info","message":"[2025-06-21T06:28:05.087Z] ✅ Route /api/profile attached successfully","timestamp":"2025-06-21T06:28:05.088Z"}
+{"level":"info","message":"[2025-06-21T06:28:05.100Z] ✅ Route /api/skills attached successfully","timestamp":"2025-06-21T06:28:05.100Z"}
+{"level":"info","message":"[2025-06-21T06:28:05.139Z] ✅ Route /api/tasks attached successfully","timestamp":"2025-06-21T06:28:05.139Z"}
+{"level":"info","message":"[2025-06-21T06:28:07.198Z] ✅ MongoDB Connected","timestamp":"2025-06-21T06:28:07.198Z"}
+{"level":"info","message":"[2025-06-21T06:28:10.163Z] 🚀 Server running on port 5000","timestamp":"2025-06-21T06:28:10.163Z"}
+{"level":"info","message":"[2025-06-21T06:35:49.592Z] ✅ Route /api/auth attached successfully","timestamp":"2025-06-21T06:35:49.594Z"}
+{"level":"info","message":"[2025-06-21T06:35:49.611Z] ✅ Route /api/profile attached successfully","timestamp":"2025-06-21T06:35:49.611Z"}
+{"level":"info","message":"[2025-06-21T06:35:49.629Z] ✅ Route /api/skills attached successfully","timestamp":"2025-06-21T06:35:49.630Z"}
+{"level":"info","message":"[2025-06-21T06:35:49.633Z] ✅ Route /api/tasks attached successfully","timestamp":"2025-06-21T06:35:49.633Z"}
+{"level":"info","message":"[2025-06-21T06:35:49.834Z] ✅ MongoDB Connected","timestamp":"2025-06-21T06:35:49.834Z"}
+{"level":"info","message":"[2025-06-21T06:35:49.849Z] 🚀 Server running on port 5000","timestamp":"2025-06-21T06:35:49.849Z"}
+{"level":"info","message":"[2025-06-21T06:36:34.196Z] ✅ Route /api/auth attached successfully","timestamp":"2025-06-21T06:36:34.197Z"}
+{"level":"info","message":"[2025-06-21T06:36:34.200Z] ✅ Route /api/profile attached successfully","timestamp":"2025-06-21T06:36:34.200Z"}
+{"level":"info","message":"[2025-06-21T06:36:34.201Z] ✅ Route /api/skills attached successfully","timestamp":"2025-06-21T06:36:34.201Z"}
+{"level":"info","message":"[2025-06-21T06:36:34.202Z] ✅ Route /api/tasks attached successfully","timestamp":"2025-06-21T06:36:34.202Z"}
+{"level":"info","message":"[2025-06-21T06:36:34.249Z] ✅ MongoDB Connected","timestamp":"2025-06-21T06:36:34.249Z"}
+{"level":"info","message":"[2025-06-21T06:36:34.255Z] 🚀 Server running on port 5000","timestamp":"2025-06-21T06:36:34.255Z"}
+{"error":"invalid signature","level":"error","message":"Token verification failed","timestamp":"2025-06-21T06:40:04.865Z"}
+{"error":"Unauthorized: Invalid token","level":"error","message":"[2025-06-21T06:40:04.870Z] Server error:","stack":"Error: Unauthorized: Invalid token\n    at C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\middleware\\authMiddleware.js:39:13\n    at asyncUtilWrap (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express-async-handler\\index.js:3:20)\n    at Layer.handle [as handle_request] (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2025-06-21T06:40:04.870Z"}
+{"error":"invalid signature","level":"error","message":"Token verification failed","timestamp":"2025-06-21T06:40:04.888Z"}
+{"error":"Unauthorized: Invalid token","level":"error","message":"[2025-06-21T06:40:04.892Z] Server error:","stack":"Error: Unauthorized: Invalid token\n    at C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\middleware\\authMiddleware.js:39:13\n    at asyncUtilWrap (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express-async-handler\\index.js:3:20)\n    at Layer.handle [as handle_request] (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\aswin\\OneDrive\\Desktop\\ai_project\\backend\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2025-06-21T06:40:04.892Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T06:42:17.421Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T06:42:17.444Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T06:42:17.445Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T06:42:17.453Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T06:42:17.464Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T06:42:17.464Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T06:44:15.684Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T06:44:15.691Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T06:44:15.691Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T06:44:15.709Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T06:44:15.720Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T06:44:15.721Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:04:27.553Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:04:27.566Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:04:27.567Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:04:27.573Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:04:27.589Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:04:27.590Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:04:58.909Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:04:58.920Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:04:58.928Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:04:58.935Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:04:58.970Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:04:58.970Z"}
+{"level":"info","message":"[2025-06-21T07:04:58.994Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:04:58.994Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:04:59.034Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:04:59.043Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:04:59.053Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:04:59.053Z"}
+{"level":"info","message":"[2025-06-21T07:04:59.073Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:04:59.073Z"}
+{"level":"info","message":"[2025-06-21T07:04:59.077Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:04:59.077Z"}
+{"level":"info","message":"[2025-06-21T07:04:59.085Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:04:59.085Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:04:59.103Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:04:59.107Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:04:59.117Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:04:59.117Z"}
+{"level":"info","message":"[2025-06-21T07:04:59.133Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:04:59.133Z"}
+{"level":"info","message":"[2025-06-21T07:13:31.473Z] ✅ Route /api/auth attached successfully","timestamp":"2025-06-21T07:13:31.477Z"}
+{"level":"info","message":"[2025-06-21T07:13:31.496Z] ✅ Route /api/profile attached successfully","timestamp":"2025-06-21T07:13:31.496Z"}
+{"level":"info","message":"[2025-06-21T07:13:31.502Z] ✅ Route /api/skills attached successfully","timestamp":"2025-06-21T07:13:31.502Z"}
+{"level":"info","message":"[2025-06-21T07:13:31.578Z] ✅ Route /api/tasks attached successfully","timestamp":"2025-06-21T07:13:31.579Z"}
+{"level":"info","message":"[2025-06-21T07:13:31.719Z] ✅ MongoDB Connected","timestamp":"2025-06-21T07:13:31.719Z"}
+{"level":"info","message":"[2025-06-21T07:13:31.742Z] 🚀 Server running on port 5000","timestamp":"2025-06-21T07:13:31.742Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:15:35.835Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:15:35.840Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:15:35.845Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:15:35.850Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:15:35.865Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:15:35.865Z"}
+{"level":"info","message":"[2025-06-21T07:15:35.868Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:15:35.868Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:15:35.874Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:15:35.882Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:15:35.898Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:15:35.898Z"}
+{"level":"info","message":"[2025-06-21T07:15:35.900Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:15:35.901Z"}
+{"level":"info","message":"[2025-06-21T07:15:35.904Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:15:35.904Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:15:35.914Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:15:35.920Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:15:35.923Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:15:35.923Z"}
+{"level":"info","message":"[2025-06-21T07:15:35.933Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:15:35.933Z"}
+{"level":"info","message":"[2025-06-21T07:15:35.936Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:15:35.936Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:16:18.139Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:16:18.152Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:16:18.152Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:16:18.159Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:16:18.167Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:16:18.168Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:16:21.208Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:16:21.212Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:16:21.223Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:16:21.229Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:16:21.235Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:16:21.235Z"}
+{"level":"info","message":"[2025-06-21T07:16:21.239Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:16:21.239Z"}
+{"level":"info","message":"[2025-06-21T07:16:21.250Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:16:21.250Z"}
+{"level":"info","message":"[2025-06-21T07:16:21.255Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:16:21.255Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:16:21.259Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:16:21.265Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:16:21.272Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:16:21.278Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:16:21.299Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:16:21.299Z"}
+{"level":"info","message":"[2025-06-21T07:16:21.326Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:16:21.326Z"}
+{"level":"info","message":"[2025-06-21T07:16:21.328Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:16:21.328Z"}
+{"level":"info","message":"[2025-06-21T07:16:21.334Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:16:21.334Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:17:17.408Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:17:17.454Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:17:17.454Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:17:17.504Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:17:17.524Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:17:17.538Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:17:17.554Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:17:17.567Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:17:17.567Z"}
+{"level":"info","message":"[2025-06-21T07:17:17.608Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:17:17.608Z"}
+{"level":"info","message":"[2025-06-21T07:17:17.648Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:17:17.648Z"}
+{"level":"info","message":"[2025-06-21T07:17:17.656Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:17:17.656Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:17:17.693Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:17:17.736Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-21T07:17:17.742Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-21T07:17:17.755Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:17:17.755Z"}
+{"level":"info","message":"[2025-06-21T07:17:17.763Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:17:17.763Z"}
+{"level":"info","message":"[2025-06-21T07:17:17.768Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-21T07:17:17.768Z"}
+{"level":"info","message":"[2025-06-22T07:44:40.220Z] ✅ Route /api/auth attached successfully","timestamp":"2025-06-22T07:44:40.221Z"}
+{"level":"info","message":"[2025-06-22T07:44:40.225Z] ✅ Route /api/profile attached successfully","timestamp":"2025-06-22T07:44:40.225Z"}
+{"level":"info","message":"[2025-06-22T07:44:40.226Z] ✅ Route /api/skills attached successfully","timestamp":"2025-06-22T07:44:40.226Z"}
+{"level":"info","message":"[2025-06-22T07:44:40.226Z] ✅ Route /api/tasks attached successfully","timestamp":"2025-06-22T07:44:40.226Z"}
+{"level":"info","message":"[2025-06-22T07:44:40.315Z] ✅ MongoDB Connected","timestamp":"2025-06-22T07:44:40.315Z"}
+{"level":"info","message":"[2025-06-22T07:44:40.323Z] 🚀 Server running on port 5000","timestamp":"2025-06-22T07:44:40.323Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:04.568Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T07:45:04.582Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:04.583Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:04.589Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T07:45:04.601Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:04.601Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:10.330Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:10.339Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:10.344Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:10.355Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T07:45:10.358Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:10.358Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:10.371Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T07:45:10.375Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:10.375Z"}
+{"level":"info","message":"[2025-06-22T07:45:10.379Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:10.379Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:10.390Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:10.394Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T07:45:10.397Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:10.397Z"}
+{"level":"info","message":"[2025-06-22T07:45:10.405Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:10.405Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:10.413Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T07:45:10.417Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:10.417Z"}
+{"level":"info","message":"[2025-06-22T07:45:10.420Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:10.420Z"}
+{"level":"info","message":"[2025-06-22T07:45:10.425Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:10.425Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:19.495Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T07:45:19.501Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:19.501Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:45:19.505Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T07:45:19.512Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T07:45:19.512Z"}
+{"level":"info","message":"[2025-06-22T07:51:05.626Z] ✅ Route /api/auth attached successfully","timestamp":"2025-06-22T07:51:05.627Z"}
+{"level":"info","message":"[2025-06-22T07:51:05.629Z] ✅ Route /api/profile attached successfully","timestamp":"2025-06-22T07:51:05.629Z"}
+{"level":"info","message":"[2025-06-22T07:51:05.630Z] ✅ Route /api/skills attached successfully","timestamp":"2025-06-22T07:51:05.630Z"}
+{"level":"info","message":"[2025-06-22T07:51:05.630Z] ✅ Route /api/tasks attached successfully","timestamp":"2025-06-22T07:51:05.630Z"}
+{"level":"info","message":"[2025-06-22T07:51:05.631Z] ✅ Route /api/users attached successfully","timestamp":"2025-06-22T07:51:05.631Z"}
+{"level":"info","message":"[2025-06-22T07:51:05.631Z] ✅ Route /api/analytics attached successfully","timestamp":"2025-06-22T07:51:05.631Z"}
+{"level":"info","message":"[2025-06-22T07:51:05.631Z] MongoDB URI: mongodb://127.0.0.1:27017/learno_db","timestamp":"2025-06-22T07:51:05.631Z"}
+{"level":"info","message":"[2025-06-22T07:51:05.667Z] ✅ MongoDB Connected","timestamp":"2025-06-22T07:51:05.667Z"}
+{"level":"info","message":"[2025-06-22T07:51:05.671Z] 🚀 Server running on port 5000","timestamp":"2025-06-22T07:51:05.671Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:51:31.943Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:52:12.431Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T07:59:26.476Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T08:01:17.453Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T08:01:17.459Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T08:01:17.469Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T08:01:17.473Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T08:01:17.516Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T08:01:17.516Z"}
+{"level":"info","message":"[2025-06-22T08:01:17.550Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T08:01:17.550Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T08:01:17.559Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T08:01:17.567Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T08:01:17.580Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T08:01:17.580Z"}
+{"level":"info","message":"[2025-06-22T08:01:17.586Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T08:01:17.586Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T08:01:17.599Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T08:01:17.604Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T08:01:17.609Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T08:01:17.609Z"}
+{"level":"info","message":"[2025-06-22T08:01:17.659Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T08:01:17.659Z"}
+{"level":"info","message":"[2025-06-22T08:01:17.663Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T08:01:17.663Z"}
+{"level":"info","message":"[2025-06-22T08:01:17.667Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T08:01:17.667Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T08:23:45.179Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T08:23:45.206Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T08:23:45.207Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T08:23:45.220Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T08:23:45.232Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T08:23:45.232Z"}
+{"level":"info","message":"[2025-06-22T09:41:34.716Z] ✅ Route /api/auth attached successfully","timestamp":"2025-06-22T09:41:34.717Z"}
+{"level":"info","message":"[2025-06-22T09:41:34.720Z] ✅ Route /api/profile attached successfully","timestamp":"2025-06-22T09:41:34.720Z"}
+{"level":"info","message":"[2025-06-22T09:41:34.720Z] ✅ Route /api/skills attached successfully","timestamp":"2025-06-22T09:41:34.720Z"}
+{"level":"info","message":"[2025-06-22T09:41:34.721Z] ✅ Route /api/tasks attached successfully","timestamp":"2025-06-22T09:41:34.721Z"}
+{"level":"info","message":"[2025-06-22T09:41:34.721Z] ✅ Route /api/users attached successfully","timestamp":"2025-06-22T09:41:34.721Z"}
+{"level":"info","message":"[2025-06-22T09:41:34.721Z] ✅ Route /api/analytics attached successfully","timestamp":"2025-06-22T09:41:34.721Z"}
+{"level":"info","message":"[2025-06-22T09:41:34.722Z] MongoDB URI: mongodb://127.0.0.1:27017/learno_db","timestamp":"2025-06-22T09:41:34.722Z"}
+{"level":"info","message":"[2025-06-22T09:41:34.772Z] ✅ MongoDB Connected","timestamp":"2025-06-22T09:41:34.772Z"}
+{"level":"info","message":"[2025-06-22T09:41:34.779Z] 🚀 Server running on port 5000","timestamp":"2025-06-22T09:41:34.779Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:08.223Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:42:08.232Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:42:08.232Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:08.238Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:42:08.249Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:42:08.249Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.168Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.203Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.208Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.212Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.250Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.282Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.330Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.336Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.339Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.349Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:11.439Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:42:39.341Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:53:07.697Z] ✅ Route /api/auth attached successfully","timestamp":"2025-06-22T09:53:07.698Z"}
+{"level":"info","message":"[2025-06-22T09:53:07.700Z] ✅ Route /api/profile attached successfully","timestamp":"2025-06-22T09:53:07.700Z"}
+{"level":"info","message":"[2025-06-22T09:53:07.701Z] ✅ Route /api/skills attached successfully","timestamp":"2025-06-22T09:53:07.701Z"}
+{"level":"info","message":"[2025-06-22T09:53:07.701Z] ✅ Route /api/tasks attached successfully","timestamp":"2025-06-22T09:53:07.701Z"}
+{"level":"info","message":"[2025-06-22T09:53:07.701Z] ✅ Route /api/users attached successfully","timestamp":"2025-06-22T09:53:07.701Z"}
+{"level":"info","message":"[2025-06-22T09:53:07.702Z] ✅ Route /api/analytics attached successfully","timestamp":"2025-06-22T09:53:07.702Z"}
+{"level":"info","message":"[2025-06-22T09:53:07.702Z] ✅ Route /api/adaptiveLearning attached successfully","timestamp":"2025-06-22T09:53:07.702Z"}
+{"level":"info","message":"[2025-06-22T09:53:07.703Z] MongoDB URI: mongodb://127.0.0.1:27017/learno_db","timestamp":"2025-06-22T09:53:07.703Z"}
+{"level":"info","message":"[2025-06-22T09:53:07.744Z] ✅ MongoDB Connected","timestamp":"2025-06-22T09:53:07.744Z"}
+{"level":"info","message":"[2025-06-22T09:53:07.748Z] 🚀 Server running on port 5000","timestamp":"2025-06-22T09:53:07.748Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:12.505Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:53:12.513Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:53:12.513Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:12.516Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:53:12.524Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:53:12.524Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:13.769Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:13.774Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:13.778Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:13.782Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:53:13.788Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:53:13.788Z"}
+{"level":"info","message":"[2025-06-22T09:53:13.790Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:53:13.790Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:13.796Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:13.799Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:53:13.807Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:53:13.807Z"}
+{"level":"info","message":"[2025-06-22T09:53:13.810Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:53:13.810Z"}
+{"level":"info","message":"[2025-06-22T09:53:13.811Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:53:13.811Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:13.816Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:13.818Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:53:13.825Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:53:13.825Z"}
+{"level":"info","message":"[2025-06-22T09:53:13.827Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:53:13.827Z"}
+{"level":"info","message":"[2025-06-22T09:53:13.829Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:53:13.829Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.485Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.523Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.526Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.536Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.567Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.586Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.651Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.664Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.682Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.710Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:53:33.755Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:55:30.022Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:55:30.032Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:55:30.032Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:55:30.042Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:55:30.048Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:55:30.048Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:57:02.428Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:57:02.434Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:57:02.434Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:57:02.442Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:57:02.448Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:57:02.448Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:59:04.096Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:59:04.101Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:59:04.101Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T09:59:04.108Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T09:59:04.113Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T09:59:04.113Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T10:04:12.342Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T10:04:12.354Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T10:04:12.354Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T10:04:12.357Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T10:04:12.363Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T10:04:12.363Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T10:09:17.167Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T10:09:17.175Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T10:09:17.175Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T10:09:17.180Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T10:09:17.188Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T10:09:17.188Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.336Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.358Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.364Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.451Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.455Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.459Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.514Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.517Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.529Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.537Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:02:59.560Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:00.609Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:00.614Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:00.618Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:00.623Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T11:03:00.632Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:00.632Z"}
+{"level":"info","message":"[2025-06-22T11:03:00.634Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:00.634Z"}
+{"level":"info","message":"[2025-06-22T11:03:00.636Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:00.636Z"}
+{"level":"info","message":"[2025-06-22T11:03:00.638Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:00.638Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:00.643Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:00.648Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:00.652Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:00.655Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T11:03:00.670Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:00.670Z"}
+{"level":"info","message":"[2025-06-22T11:03:00.673Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:00.673Z"}
+{"level":"info","message":"[2025-06-22T11:03:00.674Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:00.674Z"}
+{"level":"info","message":"[2025-06-22T11:03:00.676Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:00.676Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:03.977Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:03.987Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:04.005Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:04.032Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:04.173Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:04.221Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:04.242Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:04.276Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:04.282Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:04.301Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:04.305Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:05.236Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:05.241Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:05.245Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:05.251Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T11:03:05.266Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:05.266Z"}
+{"level":"info","message":"[2025-06-22T11:03:05.267Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:05.267Z"}
+{"level":"info","message":"[2025-06-22T11:03:05.271Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:05.271Z"}
+{"level":"info","message":"[2025-06-22T11:03:05.273Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:05.273Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:05.277Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:05.282Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:05.288Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:05.293Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T11:03:05.310Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:05.310Z"}
+{"level":"info","message":"[2025-06-22T11:03:05.315Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:05.315Z"}
+{"level":"info","message":"[2025-06-22T11:03:05.319Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:05.319Z"}
+{"level":"info","message":"[2025-06-22T11:03:05.324Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:05.324Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:07.938Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:07.947Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:07.952Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:07.956Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T11:03:07.963Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:07.963Z"}
+{"level":"info","message":"[2025-06-22T11:03:07.967Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:07.967Z"}
+{"level":"info","message":"[2025-06-22T11:03:07.969Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:07.969Z"}
+{"level":"info","message":"[2025-06-22T11:03:07.972Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:07.972Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:07.978Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:07.987Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:07.992Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:07.995Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T11:03:08.005Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:08.005Z"}
+{"level":"info","message":"[2025-06-22T11:03:08.008Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:08.008Z"}
+{"level":"info","message":"[2025-06-22T11:03:08.015Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:08.015Z"}
+{"level":"info","message":"[2025-06-22T11:03:08.017Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:08.017Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:08.490Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:08.507Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:08.514Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:08.523Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:08.540Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:08.550Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:08.624Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:08.688Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:11.211Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:11.225Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:11.237Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:11.240Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:11.256Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:11.267Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:11.351Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:11.419Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:12.369Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:12.373Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:12.376Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:12.379Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T11:03:12.388Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:12.388Z"}
+{"level":"info","message":"[2025-06-22T11:03:12.390Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:12.390Z"}
+{"level":"info","message":"[2025-06-22T11:03:12.392Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:12.392Z"}
+{"level":"info","message":"[2025-06-22T11:03:12.394Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:12.394Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:12.397Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:12.401Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:12.404Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:12.407Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T11:03:12.415Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:12.415Z"}
+{"level":"info","message":"[2025-06-22T11:03:12.420Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:12.420Z"}
+{"level":"info","message":"[2025-06-22T11:03:12.422Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:12.422Z"}
+{"level":"info","message":"[2025-06-22T11:03:12.424Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:12.424Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:19.861Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:19.884Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:19.895Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:19.999Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:20.008Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:20.025Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:20.071Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:20.090Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:20.109Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:20.115Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:20.139Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:21.043Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:21.047Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:21.051Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:21.054Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T11:03:21.064Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:21.064Z"}
+{"level":"info","message":"[2025-06-22T11:03:21.065Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:21.065Z"}
+{"level":"info","message":"[2025-06-22T11:03:21.068Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:21.068Z"}
+{"level":"info","message":"[2025-06-22T11:03:21.071Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:21.071Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:21.073Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:21.078Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:21.083Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T11:03:21.088Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T11:03:21.097Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:21.097Z"}
+{"level":"info","message":"[2025-06-22T11:03:21.101Z] Fetched chart data for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:21.101Z"}
+{"level":"info","message":"[2025-06-22T11:03:21.102Z] Fetched skill plan for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:21.102Z"}
+{"level":"info","message":"[2025-06-22T11:03:21.105Z] Fetched analytics for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T11:03:21.105Z"}
+{"level":"info","message":"[2025-06-22T13:32:20.600Z] ✅ Route /api/auth attached successfully","timestamp":"2025-06-22T13:32:20.601Z"}
+{"level":"info","message":"[2025-06-22T13:32:20.603Z] ✅ Route /api/profile attached successfully","timestamp":"2025-06-22T13:32:20.603Z"}
+{"level":"info","message":"[2025-06-22T13:32:20.604Z] ✅ Route /api/skills attached successfully","timestamp":"2025-06-22T13:32:20.604Z"}
+{"level":"info","message":"[2025-06-22T13:32:20.605Z] ✅ Route /api/tasks attached successfully","timestamp":"2025-06-22T13:32:20.605Z"}
+{"level":"info","message":"[2025-06-22T13:32:20.605Z] ✅ Route /api/users attached successfully","timestamp":"2025-06-22T13:32:20.605Z"}
+{"level":"info","message":"[2025-06-22T13:32:20.605Z] ✅ Route /api/analytics attached successfully","timestamp":"2025-06-22T13:32:20.605Z"}
+{"level":"info","message":"[2025-06-22T13:32:20.606Z] ✅ Route /api/adaptiveLearning attached successfully","timestamp":"2025-06-22T13:32:20.606Z"}
+{"level":"info","message":"[2025-06-22T13:32:20.606Z] MongoDB URI: mongodb://127.0.0.1:27017/learno_db","timestamp":"2025-06-22T13:32:20.606Z"}
+{"level":"info","message":"[2025-06-22T13:32:20.700Z] ✅ MongoDB Connected","timestamp":"2025-06-22T13:32:20.700Z"}
+{"level":"info","message":"[2025-06-22T13:32:20.705Z] 🚀 Server running on port 5000","timestamp":"2025-06-22T13:32:20.705Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T13:32:31.929Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T13:32:31.934Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T13:32:31.934Z"}
+{"level":"info","message":"Token decoded successfully","timestamp":"2025-06-22T13:32:31.940Z","userId":"685646e5cc0deff29d3c83ea"}
+{"level":"info","message":"[2025-06-22T13:32:31.949Z] Fetched skills for user 685646e5cc0deff29d3c83ea","timestamp":"2025-06-22T13:32:31.949Z"}

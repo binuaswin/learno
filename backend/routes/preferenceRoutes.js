@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getPreferences, updatePreferences } = require('../controllers/preferenceController');
-const { verifyToken } = require('../middleware/auth');
+const { getSettings, updateSettings } = require('../controllers/preferenceController');
+const { verifyToken } = require('../middleware/authMiddleware');
 
-router.get('/preferences', verifyToken, getPreferences);
-router.put('/preferences', verifyToken, updatePreferences);
+router.get('/:id/settings', verifyToken, getSettings);
+router.put('/:id/settings', verifyToken, updateSettings);
 
 module.exports = router;

@@ -16,16 +16,19 @@ const allowedOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(',')
   : ['http://localhost:3000', 'http://localhost:5173'];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        logger.warn(`[${new Date().toISOString()}] CORS blocked for origin: ${origin}`);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+  })
+);
 
 // Middleware setup
 app.use((req, res, next) => {
@@ -52,19 +55,26 @@ const routes = {
   profile: require('./routes/profileRoutes'),
   skills: require('./routes/skillRoutes'),
   tasks: require('./routes/taskRoutes'),
+  users: require('./routes/preferenceRoutes'),
+  analytics: require('./routes/analyticsRoutes'),
+  adaptiveLearning: require('./routes/adaptiveLearningRoutes'), // Added for adaptive learning
 };
 
 // Attach routes
 Object.entries(routes).forEach(([name, router]) => {
+  const routePath = name === 'users' ? `/api/${name}` : `/api/${name}`;
   try {
     if (router && typeof router === 'function' && router.stack) {
-      app.use(`/api/${name}`, router);
-      logger.info(`[${new Date().toISOString()}] ✅ Route /api/${name} attached successfully`);
+      app.use(routePath, router);
+      logger.info(`[${new Date().toISOString()}] ✅ Route ${routePath} attached successfully`);
     } else {
-      throw new Error(`Invalid router for /api/${name}`);
+      throw new Error(`Invalid router for ${routePath}`);
     }
   } catch (error) {
-    logger.error(`[${new Date().toISOString()}] ❌ Failed to attach route /api/${name}:`, { error: error.message });
+    logger.error(`[${new Date().toISOString()}] ❌ Failed to attach route ${routePath}:`, {
+      error: error.message,
+      stack: error.stack,
+    });
   }
 });
 
@@ -75,25 +85,35 @@ app.use((err, req, res, next) => {
     return next();
   }
 
-  logger.error(`[${new Date().toISOString()}] Server error:`, { error: err.message, stack: err.stack });
+  const status = err.status || (err.message === 'TokenExpired' ? 401 : 500);
+  const message =
+    process.env.NODE_ENV === 'production'
+      ? 'Something went wrong!'
+      : err.message || 'Internal Server Error';
 
-  const message = process.env.NODE_ENV === 'production'
-    ? 'Something went wrong!'
-    : err.message;
+  logger.error(`[${new Date().toISOString()}] Server error:`, {
+    error: err.message,
+    stack: err.stack,
+    status,
+    path: req.url,
+  });
 
-  res.status(err.status || 500).json({
-    message,
+  res.status(status).json({
+    error: message,
     timestamp: new Date().toISOString(),
   });
 });
 
 // MongoDB Connection with retry
 const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/db';
+logger.info(`[${new Date().toISOString()}] MongoDB URI: ${mongoUri.replace(/:.*@/, ':****@')}`);
+
 const connectWithRetry = () => {
-  mongoose.connect(mongoUri, {
-    serverSelectionTimeoutMS: 5000,
-    maxPoolSize: 10,
-  })
+  mongoose
+    .connect(mongoUri, {
+      serverSelectionTimeoutMS: 5000,
+      maxPoolSize: 10,
+    })
     .then(() => {
       logger.info(`[${new Date().toISOString()}] ✅ MongoDB Connected`);
       const PORT = process.env.PORT || 5000;
@@ -105,10 +125,12 @@ const connectWithRetry = () => {
       logger.error(`[${new Date().toISOString()}] ❌ MongoDB Connection Error:`, {
         error: error.message,
         code: error.code,
-        uri: mongoUri,
+        uri: mongoUri.replace(/:.*@/, ':****@'),
       });
       setTimeout(connectWithRetry, 5000);
     });
 };
 
 connectWithRetry();
+
+module.exports = app;

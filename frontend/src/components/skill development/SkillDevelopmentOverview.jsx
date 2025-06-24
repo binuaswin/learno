@@ -1,5 +1,5 @@
 
-
+//frontend/src/components/skill development/SkillDevelopmentOverview.jsx
 const SkillDevelopmentOverview = () => {
   return (
     <section className="mt-10  bg-gray-100 p-8 rounded-2xl shadow-lg min-w-full ">

@@ -1,3 +1,4 @@
+//frontend/src/pages/AdaptiveLearningPage.jsx
 import './AdaptiveLearningPage.css'; // Import the new CSS file
 import Header from "../components/common/Header";
 import Sidebar from "../components/Home/SideBar";

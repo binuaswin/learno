@@ -7,11 +7,7 @@ import {
   Book,
   CheckCircle,
   Users,
-  Calendar,
-  BarChart,
   Bell,
-  Settings,
-  ClipboardList,
   User,
   ChevronLeft,
   ChevronRight,
@@ -50,15 +46,12 @@ const SideBar = ({ notifications = [] }) => {
         </button>
         <nav className="space-y-4">
           <NavItem to="/dashboard" icon={<Home size={24} />} label="Dashboard" isOpen={isOpen} />
+          <NavItem to="/homepage" icon={<Home size={26} />} label="Home" isOpen={isOpen} />
           <NavItem to="/studyplanner" icon={<Book size={24} />} label="Study Planner" isOpen={isOpen} />
           <NavItem to="/skilldev" icon={<CheckCircle size={24} />} label="Skill Development" isOpen={isOpen} />
           <NavItem to="/adaptivelearn" icon={<Users size={24} />} label="Adaptive Learning" isOpen={isOpen} />
-          <NavItem to="/calendar" icon={<Calendar size={24} />} label="Calendar" isOpen={isOpen} />
-          <NavItem to="/analytics" icon={<BarChart size={24} />} label="Analytics" isOpen={isOpen} />
           <NavItem to="/profile" icon={<User size={24} />} label="Profile" isOpen={isOpen} />
-          <NavItem to="/progress" icon={<ClipboardList size={24} />} label="Progress" isOpen={isOpen} />
-          <NavItem to="/settings" icon={<Settings size={24} />} label="Settings" isOpen={isOpen} />
-        </nav>
+          </nav>
       </div>
       <div className="flex flex-col space-y-4">
         <div className="relative cursor-pointer" onClick={handleNotificationClick}>
@@ -99,7 +92,7 @@ const NotificationDropdown = ({ notifications }) => (
         ))}
       </ul>
     ) : (
-      <p>No notifications</p>
+      <p>notifications</p>
     )}
   </div>
 );

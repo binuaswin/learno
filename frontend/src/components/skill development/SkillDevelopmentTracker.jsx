@@ -1,3 +1,4 @@
+//frontend/src/components/skill development/LearningResources.jsx
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Plus, Edit2, Trash2 } from "lucide-react";

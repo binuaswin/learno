@@ -7,24 +7,20 @@ const logger = require('../logger');
 const verifyToken = asyncHandler(async (req, res, next) => {
   let token;
 
-  // Check cookies or Authorization header
-  if (req.cookies?.token) {
-    token = req.cookies.token;
-  } else if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
     token = req.headers.authorization.split(' ')[1];
   }
 
   if (!token) {
     logger.warn('No token provided in request');
     res.status(401);
-    throw new Error('Unauthorized: No token provided');
+    throw new Error('Unauthorized: Please log in to access this resource');
   }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     logger.info('Token decoded successfully', { userId: decoded.id });
 
-    // Fetch user from database
     req.user = await User.findById(decoded.id).select('-password');
     if (!req.user) {
       logger.warn('User not found for token', { userId: decoded.id });
@@ -37,7 +33,7 @@ const verifyToken = asyncHandler(async (req, res, next) => {
     logger.error('Token verification failed', { error: error.message });
     if (error.name === 'TokenExpiredError') {
       res.status(401);
-      throw new Error('Unauthorized: Token expired');
+      throw new Error('Unauthorized: Session expired, please log in again');
     } else if (error.name === 'JsonWebTokenError') {
       res.status(401);
       throw new Error('Unauthorized: Invalid token');

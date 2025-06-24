@@ -1,0 +1,17 @@
+# Code Citations
+
+## License: unknown
+https://github.com/cutioluis/nextjs-crud-app-tasks/tree/2287a3d0d9c19494a0c405b9d97c8cc44d91310c/src/pages/new.js
+
+```
+});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setTask({ ...task, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+```
+

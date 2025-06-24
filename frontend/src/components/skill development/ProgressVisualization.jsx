@@ -1,71 +1,158 @@
+//frontend/src/components/skill development/ProgressVisualization.jsx
+import { useState, useEffect } from 'react';
+import { Pie, Line, Bar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+  LineElement,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from 'chart.js';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '@/components/auth/Authcontext';
 
-import { Pie } from 'react-chartjs-2';
-import { Line } from 'react-chartjs-2';
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, LineElement, BarElement, CategoryScale, LinearScale } from 'chart.js';
-
-// Register the necessary chart.js components
+// Register Chart.js components
 ChartJS.register(Title, Tooltip, Legend, ArcElement, LineElement, BarElement, CategoryScale, LinearScale);
 
 const ProgressVisualization = () => {
-  // Skill Categories Distribution Data (Pie Chart)
-  const categoryData = {
-    labels: ['Technical', 'Soft Skills', 'Creative'], // Skill categories
-    datasets: [
-      {
-        data: [40, 30, 30], // Example data (percentages for each category)
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'], // Colors for each category
-        borderWidth: 1,
-      },
-    ],
-  };
+  const { user } = useAuth();
+  const [categoryData, setCategoryData] = useState({ labels: [], datasets: [] });
+  const [progressData, setProgressData] = useState({ labels: [], datasets: [] });
+  const [masteryData, setMasteryData] = useState({ labels: [], datasets: [] });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Progress Over Time Data (Line Chart)
-  const progressData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], // Time (months)
-    datasets: [
-      {
-        label: 'Skill Progress Over Time',
-        data: [10, 20, 30, 40, 50, 60], // User skill progress (in percentage)
-        fill: false,
-        borderColor: '#36A2EB',
-        tension: 0.1,
-      },
-    ],
-  };
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
-  // Skills Mastery Levels Data (Bar Chart)
-  const masteryData = {
-    labels: ['JavaScript', 'Communication', 'Graphic Design'], // Example skills
-    datasets: [
-      {
-        label: 'Skills Mastery Levels',
-        data: [2, 3, 1], // Mastery level (1=Beginner, 2=Intermediate, 3=Advanced)
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'], // Colors for each skill
-      },
-    ],
-  };
+  useEffect(() => {
+    const fetchChartData = async () => {
+      setLoading(true);
+      try {
+        const token = localStorage.getItem('token');
+        if (!token || !user) {
+          throw new Error('Please log in to view progress.');
+        }
+        console.debug(`[${new Date().toISOString()}] ProgressVisualization - Fetching data with GET ${API_URL}/api/skills/charts`);
+
+        const res = await axios.get(`${API_URL}/api/skills/charts`, {
+          headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true,
+        });
+
+        console.debug(`[${new Date().toISOString()}] ProgressVisualization - Response:`, res.data);
+
+        setCategoryData(res.data.categoryData || { labels: [], datasets: [] });
+        setProgressData(res.data.progressData || { labels: [], datasets: [] });
+        setMasteryData(res.data.masteryData || { labels: [], datasets: [] });
+      } catch (err) {
+        console.error(`[${new Date().toISOString()}] ProgressVisualization - Fetch error:`, {
+          message: err.message,
+          response: err.response?.data,
+          status: err.response?.status,
+          url: `${API_URL}/api/skills/charts`,
+        });
+        const errorMsg = err.response?.data?.message || 'Failed to load chart data.';
+        setError(errorMsg);
+        toast.error(errorMsg);
+        if (err.response?.status === 401) {
+          localStorage.removeItem('token');
+          setTimeout(() => window.location.href = '/login', 1000);
+        } else if (err.response?.status === 404) {
+          toast.error(`Charts endpoint not found at ${API_URL}/api/skills/charts. Ensure backend is running.`);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (user) {
+      fetchChartData();
+    }
+  }, [user, API_URL]);
+
+  if (loading) {
+    return (
+      <div className="m-10 flex justify-center">
+        <p className="text-gray-600">Loading charts...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="m-10 flex justify-center">
+        <p className="text-red-600">{error}</p>
+      </div>
+    );
+  }
 
   return (
-    <div className='flex flex-row gap-20'>
-      <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Progress Visualization</h2>
-      
+    <div className="m-6 flex flex-col gap-10">
+      <ToastContainer position="top-right" autoClose={3000} />
+      <h2 className="text-2xl font-bold text-center text-gray-800">Analytics Dashboard</h2>
+
       {/* Skill Categories Distribution */}
-      <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ textAlign: 'center' }}>Skill Categories Distribution</h3>
-        <Pie data={categoryData} />
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">Skill Categories</h3>
+        {categoryData.labels.length === 0 ? (
+          <p className="text-gray-500 text-center">No category data available.</p>
+        ) : (
+          <Pie
+            data={categoryData}
+            options={{
+              responsive: true,
+              plugins: { legend: { position: 'top' } },
+            }}
+          />
+        )}
       </div>
-      
+
       {/* Progress Over Time */}
-      <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ textAlign: 'center' }}>Progress Over Time</h3>
-        <Line data={progressData} />
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">Progress Over Time</h3>
+        {progressData.labels.length === 0 ? (
+          <p className="text-gray-500 text-center">No progress data available.</p>
+        ) : (
+          <Line
+            data={progressData}
+            options={{
+              responsive: true,
+              plugins: { legend: { position: 'top' } },
+            }}
+          />
+        )}
       </div>
-      
+
       {/* Skills Mastery Levels */}
-      <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ textAlign: 'center' }}>Skills Mastery Levels</h3>
-        <Bar data={masteryData} />
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">Skill Levels</h3>
+        {masteryData.labels.length === 0 ? (
+          <p className="text-gray-500 text-center">No mastery data available.</p>
+        ) : (
+          <Bar
+            data={masteryData}
+            options={{
+              responsive: true,
+              plugins: { legend: { position: 'top' } },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 3,
+                  ticks: {
+                    callback: (value) => ['Beginner', 'Intermediate', 'Advanced'][value - 1] || value,
+                    stepSize: 1,
+                  },
+                },
+              },
+            }}
+          />
+        )}
       </div>
     </div>
   );

@@ -1,117 +1,105 @@
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import taskServices from '../../services/taskServices';
 
-const GamifiedElements = ({
-  milestones = [],
-  leaderboard = [],
-  rewards = [],
-}) => {
+const GamifiedElements = ({ milestones, leaderboard, rewards }) => {
+  const handleUpdateMilestone = async (title, achieved) => {
+    try {
+      await taskServices.updateMilestone(title, achieved);
+      toast.success(`Milestone "${title}" updated to ${achieved ? 'achieved' : 'unachieved'}`);
+    } catch (err) {
+      console.error('Failed to update milestone:', err);
+      toast.error(err.message || 'Failed to update milestone.');
+    }
+  };
+
   return (
-    <section className="mb-8">
-      {/* Section Title */}
-      <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-        Gamified Elements
-      </h2>
+    <div className="space-y-6">
+      <ToastContainer position="top-right" />
+      <h2 className="text-xl font-semibold text-gray-800">Gamified Elements</h2>
 
-      {/* Progress Milestones */}
-      <div className="mt-4">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Progress Milestones
-        </h3>
-        {milestones.length > 0 ? (
-          <div className="mt-2 space-y-3">
-            {milestones.map((milestone, index) => (
-              <div
-                key={index}
-                className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow flex items-center gap-3"
+      {/* Milestones */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Milestones</h3>
+        {milestones.length ? (
+          <ul className="space-y-2">
+            {milestones.map((milestone) => (
+              <li
+                key={milestone.title}
+                className="p-4 bg-gray-50 rounded-md shadow-sm flex justify-between items-center"
               >
-                <span className="text-2xl">🌟</span>
                 <div>
-                  <p className="font-medium text-gray-800 dark:text-white">
-                    {milestone.title}
-                  </p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {milestone.description}{' '}
-                    {milestone.achieved ? '(Achieved)' : '(In Progress)'}
+                  <p className="font-medium text-gray-800">{milestone.title}</p>
+                  <p className="text-gray-600">{milestone.description}</p>
+                  <p className="text-sm text-gray-500">
+                    Status: {milestone.achieved ? 'Achieved' : 'Not Achieved'}
                   </p>
                 </div>
+                <button
+                  onClick={() => handleUpdateMilestone(milestone.title, !milestone.achieved)}
+                  className={`px-3 py-1 rounded-md text-white ${
+                    milestone.achieved ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'
+                  }`}
+                >
+                  {milestone.achieved ? 'Mark Unachieved' : 'Mark Achieved'}
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-500">No milestones available.</p>
+        )}
+      </div>
+
+      {/* Leaderboard */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Leaderboard</h3>
+        {leaderboard.length ? (
+          <div className="bg-gray-50 rounded-md shadow-sm">
+            {leaderboard.map((entry, index) => (
+              <div
+                key={entry.user}
+                className={`p-4 flex justify-between items-center ${
+                  index % 2 === 0 ? 'bg-white' : 'bg-gray-100'
+                } ${index === 0 ? 'rounded-t-md' : ''} ${index === leaderboard.length - 1 ? 'rounded-b-md' : ''}`}
+              >
+                <div className="flex items-center space-x-2">
+                  <span className="text-lg font-semibold text-gray-800">{index + 1}.</span>
+                  <p className="text-gray-800">{entry.user}</p>
+                </div>
+                <p className="text-gray-600">{entry.points} points</p>
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            No milestones set yet.
-          </p>
-        )}
-      </div>
-
-      {/* Leaderboards/Challenges */}
-      <div className="mt-6">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Leaderboard
-        </h3>
-        {leaderboard.length > 0 ? (
-          <div className="mt-2">
-            <table className="w-full bg-white dark:bg-gray-800 rounded-lg shadow">
-              <thead>
-                <tr className="bg-gray-100 dark:bg-gray-700">
-                  <th className="p-3 text-left text-gray-700 dark:text-gray-200">Rank</th>
-                  <th className="p-3 text-left text-gray-700 dark:text-gray-200">User</th>
-                  <th className="p-3 text-left text-gray-700 dark:text-gray-200">Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                {leaderboard.map((entry, index) => (
-                  <tr key={index} className="border-t dark:border-gray-700">
-                    <td className="p-3 text-gray-600 dark:text-gray-300">{index + 1}</td>
-                    <td className="p-3 text-gray-600 dark:text-gray-300">{entry.user}</td>
-                    <td className="p-3 text-gray-600 dark:text-gray-300">{entry.points}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            No leaderboard data available yet.
-          </p>
+          <p className="text-gray-500">No leaderboard data available.</p>
         )}
       </div>
 
       {/* Rewards */}
-      <div className="mt-6">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Rewards
-        </h3>
-        {rewards.length > 0 ? (
-          <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {rewards.map((reward, index) => (
-              <div
-                key={index}
-                className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow flex items-center gap-3"
-              >
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Rewards</h3>
+        {rewards.length ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {rewards.map((reward) => (
+              <div key={reward.name} className="p-4 bg-gray-50 rounded-md shadow-sm flex items-center space-x-4">
                 <span className="text-2xl">🎁</span>
                 <div>
-                  <p className="font-medium text-gray-800 dark:text-white">
-                    {reward.name}
-                  </p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {reward.description}
-                  </p>
+                  <p className="font-medium text-gray-800">{reward.name}</p>
+                  <p className="text-gray-600">{reward.description}</p>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            No rewards earned yet.
-          </p>
+          <p className="text-gray-500">No rewards available.</p>
         )}
       </div>
-    </section>
+    </div>
   );
 };
 
-// PropTypes validation
 GamifiedElements.propTypes = {
   milestones: PropTypes.arrayOf(
     PropTypes.shape({
@@ -119,19 +107,19 @@ GamifiedElements.propTypes = {
       description: PropTypes.string.isRequired,
       achieved: PropTypes.bool.isRequired,
     })
-  ),
+  ).isRequired,
   leaderboard: PropTypes.arrayOf(
     PropTypes.shape({
       user: PropTypes.string.isRequired,
       points: PropTypes.number.isRequired,
     })
-  ),
+  ).isRequired,
   rewards: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
     })
-  ),
+  ).isRequired,
 };
 
 export default GamifiedElements;

@@ -1,149 +1,131 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import taskServices from '../../services/taskServices';
 
-const SkillMasteryLevel = ({ skills = [], initialGoals = [] }) => {
-  // State for managing mastery goals
-  const [goals, setGoals] = useState(initialGoals);
+const SkillMasteryLevel = ({ skills, initialGoals }) => {
   const [newGoalSkill, setNewGoalSkill] = useState('');
-  const [newGoalTarget, setNewGoalTarget] = useState('');
+  const [newGoalTarget, setNewGoalTarget] = useState('Intermediate');
 
-  // Handle adding a new goal
-  const handleAddGoal = (e) => {
-    e.preventDefault();
-    if (!newGoalSkill || !newGoalTarget) return;
-    setGoals([...goals, { skill: newGoalSkill, target: newGoalTarget, progress: 0 }]);
-    setNewGoalSkill('');
-    setNewGoalTarget('');
+  const handleAddGoal = async () => {
+    if (!newGoalSkill.trim()) {
+      toast.error('Skill name is required.');
+      return;
+    }
+    try {
+      await taskServices.addGoal(newGoalSkill, newGoalTarget);
+      toast.success(`Added goal: ${newGoalSkill} - ${newGoalTarget}`);
+      setNewGoalSkill('');
+      setNewGoalTarget('Intermediate');
+    } catch (err) {
+      console.error('Failed to add goal:', err);
+      toast.error(err.message || 'Failed to add goal.');
+    }
   };
 
   return (
-    <section className="mb-8">
-      {/* Section Title */}
-      <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-        Skill Mastery Level
-      </h2>
+    <div className="space-y-6">
+      <ToastContainer position="top-right" />
+      <h2 className="text-xl font-semibold text-gray-800">Skill Mastery Level</h2>
 
-      {/* Current Skill Level */}
-      <div className="mt-4">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Current Skill Levels
-        </h3>
-        {skills.length > 0 ? (
-          <ul className="mt-2 space-y-2">
-            {skills.map((skill, index) => (
-              <li key={index} className="text-gray-600 dark:text-gray-300">
-                {skill.name}: {skill.level}
+      {/* Current Skills */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Current Skills</h3>
+        {skills.length ? (
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {skills.map((skill) => (
+              <li key={skill.name} className="p-4 bg-gray-50 rounded-md shadow-sm">
+                <p className="font-medium text-gray-800">{skill.name}</p>
+                <p className="text-gray-600">Level: {skill.level}</p>
+                <p className="text-gray-600">Progress: {skill.progress}%</p>
+                <div className="w-full bg-gray-200 rounded-full h-3 mt-2">
+                  <div
+                    className="bg-blue-500 h-3 rounded-full"
+                    style={{ width: `${skill.progress}%` }}
+                    title={`${skill.progress}%`}
+                  />
+                </div>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            No skills tracked yet.
-          </p>
+          <p className="text-gray-500">No skills added yet.</p>
         )}
       </div>
 
-      {/* Skill Development Tracker */}
-      <div className="mt-6">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Skill Development Tracker
-        </h3>
-        {skills.length > 0 ? (
-          <div className="mt-2 space-y-4">
-            {skills.map((skill, index) => (
-              <div key={index} className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-                <p className="text-gray-600 dark:text-gray-300">{skill.name}</p>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mt-1">
+      {/* Learning Goals */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Learning Goals</h3>
+        {initialGoals.length ? (
+          <ul className="space-y-2">
+            {initialGoals.map((goal) => (
+              <li key={goal.skill} className="p-4 bg-gray-50 rounded-md shadow-sm">
+                <p className="font-medium text-gray-800">{goal.skill}</p>
+                <p className="text-gray-600">Target Level: {goal.target}</p>
+                <p className="text-gray-600">Progress: {goal.progress}%</p>
+                <div className="w-full bg-gray-200 rounded-full h-3 mt-2">
                   <div
-                    className="bg-blue-600 h-2.5 rounded-full"
-                    style={{ width: `${skill.progress}%` }}
-                  ></div>
+                    className="bg-green-500 h-3 rounded-full"
+                    style={{ width: `${goal.progress}%` }}
+                    title={`${goal.progress}% toward ${goal.target}`}
+                  />
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                  {skill.progress}% Mastered
-                </p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            No progress data available yet.
-          </p>
+          <p className="text-gray-500">No goals set yet.</p>
         )}
       </div>
 
-      {/* Mastery Goals */}
-      <div className="mt-6">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Mastery Goals
-        </h3>
-        <form onSubmit={handleAddGoal} className="mt-2 flex gap-4">
+      {/* Add New Goal */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Set a New Goal</h3>
+        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
           <input
             type="text"
             value={newGoalSkill}
             onChange={(e) => setNewGoalSkill(e.target.value)}
-            placeholder="Skill (e.g., Python)"
-            className="p-2 border rounded dark:bg-gray-800 dark:text-white dark:border-gray-700"
+            placeholder="Enter skill name"
+            className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <input
-            type="text"
+          <select
             value={newGoalTarget}
             onChange={(e) => setNewGoalTarget(e.target.value)}
-            placeholder="Target (e.g., Advanced)"
-            className="p-2 border rounded dark:bg-gray-800 dark:text-white dark:border-gray-700"
-          />
+            className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
           <button
-            type="submit"
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+            onClick={handleAddGoal}
+            className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
           >
             Add Goal
           </button>
-        </form>
-        {goals.length > 0 ? (
-          <ul className="mt-4 space-y-2">
-            {goals.map((goal, index) => (
-              <li key={index} className="p-3 bg-white dark:bg-gray-800 rounded-lg shadow">
-                <p className="text-gray-600 dark:text-gray-300">
-                  Goal: Reach {goal.target} in {goal.skill}
-                </p>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mt-1">
-                  <div
-                    className="bg-green-600 h-2.5 rounded-full"
-                    style={{ width: `${goal.progress}%` }}
-                  ></div>
-                </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                  Progress: {goal.progress}%
-                </p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            No mastery goals set yet.
-          </p>
-        )}
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-// PropTypes validation
 SkillMasteryLevel.propTypes = {
   skills: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      level: PropTypes.string.isRequired,
+      level: PropTypes.oneOf(['Beginner', 'Intermediate', 'Advanced']).isRequired,
       progress: PropTypes.number.isRequired,
     })
-  ),
+  ).isRequired,
   initialGoals: PropTypes.arrayOf(
     PropTypes.shape({
       skill: PropTypes.string.isRequired,
-      target: PropTypes.string.isRequired,
+      target: PropTypes.oneOf(['Beginner', 'Intermediate', 'Advanced']).isRequired,
       progress: PropTypes.number.isRequired,
     })
-  ),
+  ).isRequired,
 };
 
 export default SkillMasteryLevel;

@@ -1,124 +1,167 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import taskServices from '../../services/taskServices';
 
-const LearningRecommendations = ({
-  suggestedModules = [],
-  skillImprovements = [],
-  difficultyLevel = 'Medium',
-  quizPerformance = null,
-}) => {
-  // Adjust recommendations based on quiz performance (mock real-time adaptation)
-  const adjustedModules = quizPerformance
-    ? quizPerformance >= 70
-      ? [...suggestedModules, { title: 'Advanced Challenge', difficulty: 'Hard' }]
-      : [...suggestedModules, { title: 'Review Basics', difficulty: 'Easy' }]
-    : suggestedModules;
+const LearningRecommendations = ({ suggestedModules, skillImprovements, difficultyLevel, quizPerformance }) => {
+  const [newModuleTitle, setNewModuleTitle] = useState('');
+  const [newDifficulty, setNewDifficulty] = useState('Medium');
+
+  const handleStartModule = async (moduleTitle) => {
+    try {
+      await taskServices.startModule(moduleTitle);
+      toast.success(`Started module: ${moduleTitle}`);
+    } catch (err) {
+      console.error('Failed to start module:', err);
+      toast.error(err.message || 'Failed to start module.');
+    }
+  };
+
+  const handleRemoveRecommendation = async (moduleTitle) => {
+    try {
+      await taskServices.updateRecommendation(moduleTitle, 'remove');
+      toast.success(`Removed recommendation: ${moduleTitle}`);
+    } catch (err) {
+      console.error('Failed to remove recommendation:', err);
+      toast.error(err.message || 'Failed to remove recommendation.');
+    }
+  };
+
+  const handleAddRecommendation = async () => {
+    if (!newModuleTitle.trim()) {
+      toast.error('Module title cannot be empty.');
+      return;
+    }
+    try {
+      await taskServices.updateRecommendation(newModuleTitle, 'add', newDifficulty);
+      toast.success(`Added recommendation: ${newModuleTitle}`);
+      setNewModuleTitle('');
+      setNewDifficulty('Medium');
+    } catch (err) {
+      console.error('Failed to add recommendation:', err);
+      toast.error(err.message || 'Failed to add recommendation.');
+    }
+  };
 
   return (
-    <section className="mb-8">
-      {/* Section Title */}
-      <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-        Learning Recommendations
-      </h2>
+    <div className="space-y-6">
+      <ToastContainer position="top-right" />
+      <h2 className="text-xl font-semibold text-gray-800">Learning Recommendations</h2>
 
       {/* Suggested Modules */}
-      <div className="mt-4">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Suggested Modules
-        </h3>
-        {adjustedModules.length > 0 ? (
-          <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-            {adjustedModules.map((module, index) => (
-              <div
-                key={index}
-                className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow"
-              >
-                <h4 className="font-medium text-gray-800 dark:text-white">
-                  {module.title}
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Difficulty: {module.difficulty}
-                </p>
-                <button className="mt-2 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
-                  Start Now
-                </button>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            No modules suggested yet.
-          </p>
-        )}
-      </div>
-
-      {/* Skill Improvement Suggestions */}
-      <div className="mt-6">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Skill Improvement Suggestions
-        </h3>
-        {skillImprovements.length > 0 ? (
-          <ul className="mt-2 space-y-2">
-            {skillImprovements.map((skill, index) => (
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Suggested Modules</h3>
+        {suggestedModules.length ? (
+          <ul className="space-y-4">
+            {suggestedModules.map((module) => (
               <li
-                key={index}
-                className="text-gray-600 dark:text-gray-300"
+                key={module.moduleTitle}
+                className="p-4 bg-gray-50 rounded-md shadow-sm flex justify-between items-center"
               >
-                {skill}
+                <div>
+                  <p className="font-medium text-gray-800">{module.moduleTitle}</p>
+                  <p className="text-gray-600">Difficulty: {module.difficulty}</p>
+                </div>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => handleStartModule(module.moduleTitle)}
+                    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                  >
+                    Start
+                  </button>
+                  <button
+                    onClick={() => handleRemoveRecommendation(module.moduleTitle)}
+                    className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                  >
+                    Remove
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            No skill improvements suggested yet.
-          </p>
+          <p className="text-gray-500">No modules recommended at this time.</p>
+        )}
+        {/* Add New Recommendation */}
+        <div className="mt-4 space-y-2">
+          <h4 className="text-md font-medium text-gray-700">Add a New Recommendation</h4>
+          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+            <input
+              type="text"
+              value={newModuleTitle}
+              onChange={(e) => setNewModuleTitle(e.target.value)}
+              placeholder="Enter module title"
+              className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <select
+              value={newDifficulty}
+              onChange={(e) => setNewDifficulty(e.target.value)}
+              className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+            <button
+              onClick={handleAddRecommendation}
+              className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Skill Improvements */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Areas for Improvement</h3>
+        {skillImprovements.length ? (
+          <ul className="space-y-2">
+            {skillImprovements.map((improvement, index) => (
+              <li key={index} className="p-2 bg-gray-50 rounded-md shadow-sm">
+                <p className="text-gray-600">{improvement}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-500">No skill improvements identified.</p>
         )}
       </div>
 
-      {/* Difficulty Adjustment */}
-      <div className="mt-6">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-          Difficulty Adjustment
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300 mt-2">
-          Based on your performance, we recommend{' '}
-          <span className="font-medium">
-            {difficultyLevel === 'Easy'
-              ? 'beginner-level content'
-              : difficultyLevel === 'Hard'
-              ? 'more challenging tasks'
-              : 'intermediate content'}
-          </span>{' '}
-          to suit your current level.
-        </p>
+      {/* Difficulty Level */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Recommended Difficulty Level</h3>
+        <p className="text-gray-600 capitalize">{difficultyLevel || 'Not specified'}</p>
       </div>
 
-      {/* Real-time Adaptation */}
-      {quizPerformance !== null && (
-        <div className="mt-6">
-          <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">
-            Real-time Adaptation
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 mt-2">
-            Based on your recent quiz score of {quizPerformance}%, we’ve adjusted your recommendations{' '}
-            {quizPerformance >= 70 ? 'to include advanced topics.' : 'to reinforce the basics.'}
-          </p>
+      {/* Quiz Performance */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Quiz Performance</h3>
+        <div className="w-full bg-gray-200 rounded-full h-4">
+          <div
+            className="bg-blue-500 h-4 rounded-full transition-all duration-300"
+            style={{ width: `${quizPerformance}%` }}
+            title={`${quizPerformance}% Complete`}
+          >
+            <span className="text-xs text-white pl-2">{quizPerformance}%</span>
+          </div>
         </div>
-      )}
-    </section>
+      </div>
+    </div>
   );
 };
 
-// PropTypes validation
 LearningRecommendations.propTypes = {
   suggestedModules: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      difficulty: PropTypes.string.isRequired,
+      moduleTitle: PropTypes.string.isRequired,
+      difficulty: PropTypes.oneOf(['Easy', 'Medium', 'Hard']).isRequired,
     })
-  ),
-  skillImprovements: PropTypes.arrayOf(PropTypes.string),
-  difficultyLevel: PropTypes.oneOf(['Easy', 'Medium', 'Hard']),
-  quizPerformance: PropTypes.number, // Nullable for real-time adaptation
+  ).isRequired,
+  skillImprovements: PropTypes.arrayOf(PropTypes.string).isRequired,
+  difficultyLevel: PropTypes.string.isRequired,
+  quizPerformance: PropTypes.number.isRequired,
 };
 
 export default LearningRecommendations;

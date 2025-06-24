@@ -1,150 +1,141 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import taskServices from '../../services/taskServices';
 
-const InteractiveLearningActivities = ({ initialQuizScore = null, initialExerciseResult = null }) => {
-  // Quiz State
-  const [quizStarted, setQuizStarted] = useState(false);
-  const [quizAnswer, setQuizAnswer] = useState('');
-  const [quizFeedback, setQuizFeedback] = useState(initialQuizScore ? `Previous Score: ${initialQuizScore}%` : null);
+const InteractiveLearningActivities = ({ initialQuizScore, initialExerciseResult }) => {
+  const [quizTitle, setQuizTitle] = useState('');
+  const [quizScore, setQuizScore] = useState('');
+  const [exerciseTitle, setExerciseTitle] = useState('');
+  const [exerciseResult, setExerciseResult] = useState('Correct');
 
-  // Exercise State
-  const [exerciseStarted, setExerciseStarted] = useState(false);
-  const [exerciseAnswer, setExerciseAnswer] = useState('');
-  const [exerciseFeedback, setExerciseFeedback] = useState(initialExerciseResult ? `Previous Result: ${initialExerciseResult}` : null);
-
-  // Sample Quiz Data
-  const quizQuestion = {
-    question: 'What is the primary purpose of React’s Virtual DOM?',
-    options: ['To update the real DOM directly', 'To optimize rendering', 'To store data', 'To handle events'],
-    correctAnswer: 'To optimize rendering',
-  };
-
-  // Sample Exercise Data
-  const exercisePrompt = 'Write a JavaScript function that returns "Hello World".';
-
-  // Handle Quiz Submission
-  const handleQuizSubmit = (e) => {
-    e.preventDefault();
-    if (!quizAnswer) {
-      setQuizFeedback('Please select an answer.');
+  const handleSubmitQuiz = async () => {
+    if (!quizTitle.trim() || !quizScore || isNaN(quizScore) || quizScore < 0 || quizScore > 100) {
+      toast.error('Valid quiz title and score (0-100) are required.');
       return;
     }
-    const isCorrect = quizAnswer === quizQuestion.correctAnswer;
-    setQuizFeedback(
-      isCorrect
-        ? 'Correct! Great job understanding the Virtual DOM.'
-        : 'Incorrect. The Virtual DOM optimizes rendering. Review this topic!'
-    );
-    setQuizStarted(false); // Reset for next attempt
-    setQuizAnswer('');
+    try {
+      await taskServices.submitQuiz(quizTitle, parseFloat(quizScore));
+      toast.success(`Submitted quiz: ${quizTitle} with score ${quizScore}%`);
+      setQuizTitle('');
+      setQuizScore('');
+    } catch (err) {
+      console.error('Failed to submit quiz:', err);
+      toast.error(err.message || 'Failed to submit quiz.');
+    }
   };
 
-  // Handle Exercise Submission
-  const handleExerciseSubmit = (e) => {
-    e.preventDefault();
-    if (!exerciseAnswer.trim()) {
-      setExerciseFeedback('Please enter your answer.');
+  const handleSubmitExercise = async () => {
+    if (!exerciseTitle.trim()) {
+      toast.error('Valid exercise title is required.');
       return;
     }
-    const normalizedAnswer = exerciseAnswer.trim().toLowerCase();
-    const isCorrect = normalizedAnswer.includes('hello world');
-    setExerciseFeedback(
-      isCorrect
-        ? 'Correct! Your function works perfectly.'
-        : 'Incorrect. Ensure your function returns "Hello World". Try again!'
-    );
-    setExerciseStarted(false); // Reset for next attempt
-    setExerciseAnswer('');
+    try {
+      await taskServices.submitExercise(exerciseTitle, exerciseResult);
+      toast.success(`Submitted exercise: ${exerciseTitle} with result ${exerciseResult}`);
+      setExerciseTitle('');
+      setExerciseResult('Correct');
+    } catch (err) {
+      console.error('Failed to submit exercise:', err);
+      toast.error(err.message || 'Failed to submit exercise.');
+    }
   };
 
   return (
-    <section className="mb-8">
-      {/* Section Title */}
-      <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-        Interactive Learning Activities
-      </h2>
+    <div className="space-y-6">
+      <ToastContainer position="top-right" />
+      <h2 className="text-xl font-semibold text-gray-800">Interactive Learning Activities</h2>
 
-      {/* Assessments/Quizzes */}
-      <div className="mt-4">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">Quiz</h3>
-        {!quizStarted ? (
-          <button
-            onClick={() => setQuizStarted(true)}
-            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      {/* Latest Quiz Score */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Latest Quiz Score</h3>
+        <p className="text-gray-600">
+          Score: {initialQuizScore}% {initialQuizScore === 0 && '(No quizzes submitted)'}
+        </p>
+        <div className="w-full bg-gray-200 rounded-full h-4">
+          <div
+            className="bg-blue-500 h-4 rounded-full transition-all duration-300"
+            style={{ width: `${initialQuizScore}%` }}
+            title={`${initialQuizScore}%`}
           >
-            Start Quiz
-          </button>
-        ) : (
-          <form onSubmit={handleQuizSubmit} className="mt-2 space-y-4">
-            <p className="text-gray-600 dark:text-gray-300">{quizQuestion.question}</p>
-            <div className="space-y-2">
-              {quizQuestion.options.map((option, index) => (
-                <label key={index} className="flex items-center">
-                  <input
-                    type="radio"
-                    name="quizAnswer"
-                    value={option}
-                    checked={quizAnswer === option}
-                    onChange={(e) => setQuizAnswer(e.target.value)}
-                    className="mr-2"
-                  />
-                  <span className="text-gray-600 dark:text-gray-300">{option}</span>
-                </label>
-              ))}
-            </div>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-            >
-              Submit Answer
-            </button>
-          </form>
-        )}
-        {quizFeedback && (
-          <p className="mt-2 text-gray-600 dark:text-gray-300">{quizFeedback}</p>
-        )}
+            <span className="text-xs text-white pl-2">{initialQuizScore}%</span>
+          </div>
+        </div>
       </div>
 
-      {/* Interactive Exercises */}
-      <div className="mt-6">
-        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-200">Exercise</h3>
-        {!exerciseStarted ? (
+      {/* Submit Quiz */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Submit a Quiz</h3>
+        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+          <input
+            type="text"
+            value={quizTitle}
+            onChange={(e) => setQuizTitle(e.target.value)}
+            placeholder="Enter quiz title"
+            className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="number"
+            value={quizScore}
+            onChange={(e) => setQuizScore(e.target.value)}
+            placeholder="Score (0-100)"
+            min="0"
+            max="100"
+            className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
           <button
-            onClick={() => setExerciseStarted(true)}
-            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            onClick={handleSubmitQuiz}
+            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
-            Start Exercise
+            Submit Quiz
           </button>
-        ) : (
-          <form onSubmit={handleExerciseSubmit} className="mt-2 space-y-4">
-            <p className="text-gray-600 dark:text-gray-300">{exercisePrompt}</p>
-            <textarea
-              value={exerciseAnswer}
-              onChange={(e) => setExerciseAnswer(e.target.value)}
-              placeholder="Write your code here..."
-              className="w-full p-2 border rounded dark:bg-gray-800 dark:text-white dark:border-gray-700"
-              rows="4"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-            >
-              Submit Answer
-            </button>
-          </form>
-        )}
-        {exerciseFeedback && (
-          <p className="mt-2 text-gray-600 dark:text-gray-300">{exerciseFeedback}</p>
-        )}
+        </div>
       </div>
-    </section>
+
+      {/* Latest Exercise Result */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Latest Exercise Result</h3>
+        <p className="text-gray-600">
+          Result: {initialExerciseResult} {initialExerciseResult === 'Pending' && '(No exercises submitted)'}
+        </p>
+      </div>
+
+      {/* Submit Exercise */}
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium text-gray-700">Submit an Exercise</h3>
+        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+          <input
+            type="text"
+            value={exerciseTitle}
+            onChange={(e) => setExerciseTitle(e.target.value)}
+            placeholder="Enter exercise title"
+            className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <select
+            value={exerciseResult}
+            onChange={(e) => setExerciseResult(e.target.value)}
+            className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="Correct">Correct</option>
+            <option value="Incorrect">Incorrect</option>
+            <option value="Pending">Pending</option>
+          </select>
+          <button
+            onClick={handleSubmitExercise}
+            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          >
+            Submit Exercise
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
-// PropTypes validation
 InteractiveLearningActivities.propTypes = {
-  initialQuizScore: PropTypes.number, // Nullable, for initial feedback
-  initialExerciseResult: PropTypes.string, // Nullable, for initial feedback
+  initialQuizScore: PropTypes.number.isRequired,
+  initialExerciseResult: PropTypes.oneOf(['Correct', 'Incorrect', 'Pending']).isRequired,
 };
 
 export default InteractiveLearningActivities;

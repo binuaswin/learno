@@ -9,120 +9,213 @@ const getAuthHeaders = () => {
   return { headers: { Authorization: `Bearer ${token}` } };
 };
 
+const handleRequest = async (request) => {
+  try {
+    const response = await request();
+    console.log('API response:', response.data); // Debug log
+    return response.data;
+  } catch (error) {
+    console.error('API request failed:', error);
+    throw error.response?.data?.message || 'Request failed';
+  }
+};
+
 const taskServices = {
   fetchTasks: async () => {
-    const response = await axios.get(`${API_URL}/tasks`, getAuthHeaders());
-    return response.data.tasks;
+    const data = await handleRequest(() => axios.get(`${API_URL}/tasks`, getAuthHeaders()));
+    return Array.isArray(data.tasks) ? data.tasks : [];
   },
+
   filterTasks: async (filters) => {
-    const response = await axios.get(`${API_URL}/tasks/filter`, {
-      ...getAuthHeaders(),
-      params: filters,
-    });
-    return response.data.tasks;
+    const data = await handleRequest(() =>
+      axios.get(`${API_URL}/tasks/filter`, {
+        ...getAuthHeaders(),
+        params: filters,
+      })
+    );
+    return Array.isArray(data.tasks) ? data.tasks : [];
   },
+
   addTask: async (taskData) => {
-    const response = await axios.post(`${API_URL}/tasks`, taskData, getAuthHeaders());
-    return response.data.tasks[0];
+    const data = await handleRequest(() => axios.post(`${API_URL}/tasks`, taskData, getAuthHeaders()));
+    return Array.isArray(data.tasks) ? data.tasks[0] : data.tasks;
   },
+
   updateTask: async (taskId, taskData) => {
-    const response = await axios.put(`${API_URL}/tasks/${taskId}`, taskData, getAuthHeaders());
-    return response.data.tasks[0];
+    const data = await handleRequest(() => axios.put(`${API_URL}/tasks/${taskId}`, taskData, getAuthHeaders()));
+    return Array.isArray(data.tasks) ? data.tasks[0] : data.tasks;
   },
+
   deleteTask: async (taskId) => {
-    const response = await axios.delete(`${API_URL}/tasks/${taskId}`, getAuthHeaders());
-    return response.data;
+    return handleRequest(() => axios.delete(`${API_URL}/tasks/${taskId}`, getAuthHeaders()));
   },
+
   setReminder: async (reminderData) => {
-    const response = await axios.post(`${API_URL}/tasks/reminder`, reminderData, getAuthHeaders());
-    return response.data.reminder;
+    return handleRequest(() =>
+      axios.post(`${API_URL}/tasks/reminder`, reminderData, getAuthHeaders())
+    );
   },
+
   getSettings: async (userId) => {
-    const response = await axios.get(`${API_URL}/users/${userId}/settings`, getAuthHeaders());
-    return response.data.settings;
+    const data = await handleRequest(() =>
+      axios.get(`${API_URL}/users/${userId}/settings`, getAuthHeaders())
+    );
+    return data;
   },
+
   updateSettings: async (userId, settingsData) => {
-    const response = await axios.put(`${API_URL}/users/${userId}/settings`, settingsData, getAuthHeaders());
-    return response.data.settings;
+    const data = await handleRequest(() =>
+      axios.put(`${API_URL}/users/${userId}/settings`, settingsData, getAuthHeaders())
+    );
+    return data;
   },
+
   addCategory: async (userId, category) => {
-    console.log('Mock: Adding category', { userId, category });
-    return { category };
+    const data = await handleRequest(() =>
+      axios.post(`${API_URL}/users/${userId}/categories`, { category }, getAuthHeaders())
+    );
+    return data;
   },
+
   syncData: async (userId, syncData) => {
-    console.log('Mock: Syncing data', { userId, syncData });
-    return { success: true };
+    const data = await handleRequest(() =>
+      axios.post(`${API_URL}/users/${userId}/sync`, syncData, getAuthHeaders())
+    );
+    return data;
   },
+
   getAnalytics: async (period) => {
-    const response = await axios.get(`${API_URL}/analytics`, {
-      ...getAuthHeaders(),
-      params: { period },
-    });
-    return response.data;
+    return handleRequest(() =>
+      axios.get(`${API_URL}/analytics`, {
+        ...getAuthHeaders(),
+        params: { period },
+      })
+    );
   },
+
+  getRecentActivities: async () => {
+    const data = await handleRequest(() => axios.get(`${API_URL}/activities`, getAuthHeaders()));
+    return Array.isArray(data) ? data : [];
+  },
+
   getAdaptiveLearningData: async () => {
-    const response = await axios.get(`${API_URL}/adaptiveLearning`, getAuthHeaders());
-    return response.data;
+    return handleRequest(() => axios.get(`${API_URL}/adaptiveLearning`, getAuthHeaders()));
   },
+
   updateAdaptiveLearningData: async (data) => {
-    const response = await axios.put(`${API_URL}/adaptiveLearning`, data, getAuthHeaders());
-    return response.data.learningData;
+    return handleRequest(() =>
+      axios.put(`${API_URL}/adaptiveLearning`, data, getAuthHeaders())
+    );
   },
+
   updateLearningGoal: async (learningGoal) => {
-    const response = await axios.put(`${API_URL}/adaptiveLearning/learningGoal`, { learningGoal }, getAuthHeaders());
-    return response.data.learningGoal;
+    return handleRequest(() =>
+      axios.put(
+        `${API_URL}/adaptiveLearning/learningGoal`,
+        { learningGoal },
+        getAuthHeaders()
+      )
+    );
   },
+
   startModule: async (moduleTitle) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/startModule`, { moduleTitle }, getAuthHeaders());
-    return response.data;
+    return handleRequest(() =>
+      axios.post(`${API_URL}/adaptiveLearning/startModule`, { moduleTitle }, getAuthHeaders())
+    );
   },
+
   updateRecommendation: async (moduleTitle, action, difficulty) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/recommendation`, { moduleTitle, action, difficulty }, getAuthHeaders());
-    return response.data.recommendations;
+    return handleRequest(() =>
+      axios.post(
+        `${API_URL}/adaptiveLearning/recommendation`,
+        { moduleTitle, action, difficulty },
+        getAuthHeaders()
+      )
+    );
   },
+
   updateTimeSpent: async (task, hours) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/timeSpent`, { task, hours }, getAuthHeaders());
-    return response.data.timeSpent;
+    return handleRequest(() =>
+      axios.post(`${API_URL}/adaptiveLearning/timeSpent`, { task, hours }, getAuthHeaders())
+    );
   },
+
   submitQuiz: async (title, score) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/quiz`, { title, score }, getAuthHeaders());
-    return response.data.quizzes;
+    return handleRequest(() =>
+      axios.post(`${API_URL}/adaptiveLearning/quiz`, { title, score }, getAuthHeaders())
+    );
   },
+
   submitExercise: async (title, result) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/exercise`, { title, result }, getAuthHeaders());
-    return response.data.exercises;
+    return handleRequest(() =>
+      axios.post(`${API_URL}/adaptiveLearning/exercise`, { title, result }, getAuthHeaders())
+    );
   },
+
   addGoal: async (skill, target) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/goal`, { skill, target }, getAuthHeaders());
-    return response.data.goals;
+    return handleRequest(() =>
+      axios.post(`${API_URL}/adaptiveLearning/goal`, { skill, target }, getAuthHeaders())
+    );
   },
+
   incrementStreak: async () => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/streak`, {}, getAuthHeaders());
-    return response.data.streak;
+    return handleRequest(() =>
+      axios.post(`${API_URL}/adaptiveLearning/streak`, {}, getAuthHeaders())
+    );
   },
+
   updateLearningMode: async (learningMode) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/learningMode`, learningMode, getAuthHeaders());
-    return response.data.learningMode;
+    return handleRequest(() =>
+      axios.post(`${API_URL}/adaptiveLearning/learningMode`, learningMode, getAuthHeaders())
+    );
   },
+
   updateMilestone: async (title, achieved) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/milestone`, { title, achieved }, getAuthHeaders());
-    return response.data.milestones;
+    return handleRequest(() =>
+      axios.post(
+        `${API_URL}/adaptiveLearning/milestone`,
+        { title, achieved },
+        getAuthHeaders()
+      )
+    );
   },
+
   addReflection: async (module, note) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/reflection`, { module, note }, getAuthHeaders());
-    return response.data.reflection;
+    return handleRequest(() =>
+      axios.post(`${API_URL}/adaptiveLearning/reflection`, { module, note }, getAuthHeaders())
+    );
   },
+
   addFeedback: async (module, comment, rating) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/feedback`, { module, comment, rating }, getAuthHeaders());
-    return response.data.feedback;
+    return handleRequest(() =>
+      axios.post(
+        `${API_URL}/adaptiveLearning/feedback`,
+        { module, comment, rating },
+        getAuthHeaders()
+      )
+    );
   },
+
   addReminder: async (task, dueDate, time) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/reminder`, { task, dueDate, time }, getAuthHeaders());
-    return response.data.reminders;
+    return handleRequest(() =>
+      axios.post(
+        `${API_URL}/adaptiveLearning/reminder`,
+        { task, dueDate, time },
+        getAuthHeaders()
+      )
+    );
   },
+
   dismissAlert: async (message) => {
-    const response = await axios.post(`${API_URL}/adaptiveLearning/dismissAlert`, { message }, getAuthHeaders());
-    return response.data.alerts;
+    return handleRequest(() =>
+      axios.post(`${API_URL}/adaptiveLearning/dismissAlert`, { message }, getAuthHeaders())
+    );
+  },
+
+  logActivity: async (activityData) => {
+    return handleRequest(() =>
+      axios.post(`${API_URL}/activities`, activityData, getAuthHeaders())
+    );
   },
 };
 

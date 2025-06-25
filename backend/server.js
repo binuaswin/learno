@@ -57,7 +57,9 @@ const routes = {
   tasks: require('./routes/taskRoutes'),
   users: require('./routes/preferenceRoutes'),
   analytics: require('./routes/analyticsRoutes'),
-  adaptiveLearning: require('./routes/adaptiveLearningRoutes'), // Added for adaptive learning
+  adaptiveLearning: require('./routes/adaptiveLearningRoutes'),
+  activities: require('./routes/activityRoutes'), // Added for activityController.js constraints.
+  dashboard: require('./routes/dashboardRoutes'),
 };
 
 // Attach routes
@@ -84,20 +86,17 @@ app.use((err, req, res, next) => {
     logger.error(`[${new Date().toISOString()}] Invalid res object:`, { res });
     return next();
   }
-
   const status = err.status || (err.message === 'TokenExpired' ? 401 : 500);
   const message =
     process.env.NODE_ENV === 'production'
       ? 'Something went wrong!'
       : err.message || 'Internal Server Error';
-
   logger.error(`[${new Date().toISOString()}] Server error:`, {
     error: err.message,
     stack: err.stack,
     status,
     path: req.url,
   });
-
   res.status(status).json({
     error: message,
     timestamp: new Date().toISOString(),
@@ -105,7 +104,7 @@ app.use((err, req, res, next) => {
 });
 
 // MongoDB Connection with retry
-const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/db';
+const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/learno_db';
 logger.info(`[${new Date().toISOString()}] MongoDB URI: ${mongoUri.replace(/:.*@/, ':****@')}`);
 
 const connectWithRetry = () => {

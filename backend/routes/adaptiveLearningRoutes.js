@@ -1,3 +1,4 @@
+//backend/routes/adaptiveLearningRoutes.js
 const express = require('express');
 const router = express.Router();
 const { getAdaptiveLearningData, updateAdaptiveLearningData, updateLearningGoal, startModule, updateRecommendation, updateTimeSpent, submitQuiz, submitExercise, addGoal, incrementStreak, updateLearningMode, updateMilestone, addReflection, addFeedback, addReminder, dismissAlert } = require('../controllers/adaptiveLearningController');

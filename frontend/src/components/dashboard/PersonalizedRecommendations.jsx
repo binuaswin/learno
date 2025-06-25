@@ -1,11 +1,11 @@
+//frontend/src/components/dashboard/PersonalizedRecommendations.jsx
 import PropTypes from 'prop-types';
-import './PersonalizedRecommendation.css';
+
 
 const PersonalizedRecommendations = ({ userProgress, supplementaryContent, skillGapsRecommendations, modules }) => {
   // Function to get next module to learn
   const getNextBestModule = () => {
-    const completedModuleNames = userProgress.completedModules;
-    const nextModule = modules.find((module) => !completedModuleNames.includes(module.name));
+    const nextModule = modules.find((module) => !module.isCompleted);
     return nextModule ? nextModule.name : "No more modules to suggest.";
   };
 
@@ -39,7 +39,7 @@ const PersonalizedRecommendations = ({ userProgress, supplementaryContent, skill
         <ul>
           {userProgress.gaps.map((gap, index) => (
             <li key={index}>
-              <p>{skillGapsRecommendations[gap]}</p>
+              <p>{skillGapsRecommendations[gap] || 'No recommendation available'}</p>
             </li>
           ))}
         </ul>
@@ -52,8 +52,6 @@ const PersonalizedRecommendations = ({ userProgress, supplementaryContent, skill
 PersonalizedRecommendations.propTypes = {
   userProgress: PropTypes.shape({
     completedModules: PropTypes.arrayOf(PropTypes.string).isRequired,
-    currentModule: PropTypes.string.isRequired,
-    skills: PropTypes.arrayOf(PropTypes.string).isRequired,
     gaps: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   supplementaryContent: PropTypes.arrayOf(
